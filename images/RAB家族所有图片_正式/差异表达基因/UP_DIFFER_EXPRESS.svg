@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" shape-rendering="auto" text-rendering="auto" xmlns:jfreesvg="http://www.jfree.org/jfreesvg/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 440 440"
+	 style="enable-background:new 0 0 440 440;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1F78B4;fill-opacity:0.6;}
+	.st1{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{font-family:'TimesNewRomanPS-BoldMT';}
+	.st3{font-size:14px;}
+	.st4{fill:#E6550D;fill-opacity:0.6;}
+	.st5{fill:#28E523;fill-opacity:0.6;stroke:#37D133;stroke-miterlimit:10;}
+	.st6{stroke:#000000;stroke-miterlimit:10;}
+</style>
+<ellipse class="st0" cx="160" cy="260" rx="100" ry="100"/>
+<ellipse class="st1" cx="160" cy="260" rx="100" ry="100"/>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 146.72 325)" class="st2 st3">3</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 56.52 370)" class="st2 st3">Drought</text>
+</g>
+<ellipse class="st4" cx="280" cy="260" rx="100" ry="100"/>
+<ellipse class="st1" cx="280" cy="260" rx="100" ry="100"/>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 346.72 325)" class="st2 st3">2</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 390 370)" class="st2 st3">Salt</text>
+</g>
+<ellipse class="st5" cx="220" cy="160" rx="100" ry="100"/>
+<ellipse class="st1" cx="220" cy="160" rx="100" ry="100"/>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 248.1498 156.2766)" class="st2 st3">7</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 234.97 84)" class="st2 st3">ABA</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 246.68 325)" class="st2 st3">2</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 296.71 240)" class="st2 st3">6</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 198.15 240)" class="st2 st3">1</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 246.6604 265)" class="st2 st3">0</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 146.6802 308.0108)" class="st2 st3">3</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 346.6803 308.0108)" class="st2 st3">2</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 248.1103 138.0109)" class="st2 st3">3</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 246.4903 308.0108)" class="st2 st3">3</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 296.6403 223.0109)" class="st2 st3">1</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 198.1103 223.0109)" class="st2 st3">0</text>
+</g>
+<g transform="matrix(1,0,0,1,-30,-30)">
+	<text transform="matrix(1 0 0 1 246.6603 248.0109)" class="st2 st3">6</text>
+</g>
+<line class="st6" x1="167.3" y1="196.2" x2="178.3" y2="196.2"/>
+<line class="st6" x1="265.1" y1="196.2" x2="276.1" y2="196.2"/>
+<line class="st6" x1="214.8" y1="281.4" x2="225.8" y2="281.4"/>
+<line class="st6" x1="216.7" y1="111.4" x2="227.6" y2="111.4"/>
+<line class="st6" x1="214.8" y1="221.9" x2="225.8" y2="221.9"/>
+<line class="st6" x1="115.9" y1="281.4" x2="126.9" y2="281.4"/>
+<line class="st6" x1="315.4" y1="281.4" x2="326.3" y2="281.4"/>
+</svg>
