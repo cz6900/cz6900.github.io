@@ -216,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 15:46:33" itemprop="dateModified" datetime="2022-03-31T15:46:33+08:00">2022-03-31</time>
+                <time title="修改时间：2022-04-25 15:40:11" itemprop="dateModified" datetime="2022-04-25T15:40:11+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">科研教程</span></a>
                 </span>
             </span>
 
@@ -239,7 +239,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基因家族鉴定流程"><a href="#基因家族鉴定流程" class="headerlink" title="基因家族鉴定流程"></a>基因家族鉴定流程</h1><h2 id="1-blast-p"><a href="#1-blast-p" class="headerlink" title="1 blast-p"></a>1 blast-p</h2><h2 id="2-鉴定保守结构域"><a href="#2-鉴定保守结构域" class="headerlink" title="2  鉴定保守结构域"></a>2  鉴定保守结构域</h2><p><a target="_blank" rel="noopener" href="http://pfam.xfam.org/">http://pfam.xfam.org/</a>  ## 验证基因家族鉴定是否正确</p>
+          <h1 id="基因家族鉴定流程"><a href="#基因家族鉴定流程" class="headerlink" title="基因家族鉴定流程"></a>基因家族鉴定流程</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a><center>准备</center></h2><h2 id="1-找到待分析基因家族"><a href="#1-找到待分析基因家族" class="headerlink" title="1 找到待分析基因家族"></a>1 找到待分析基因家族</h2><p>①宜从已发表的文章进行查找，基因家族有相似的保守结构域和序列片段。在基因命名上一般有着相投的字母前缀，如RabA1a、RabA1b、RabA1c、RabA1d和RabA1e。</p>
+<p>②宜根据自己的研究方向进行查找。如我们研究盐胁迫，可在web of science 或谷歌学术上搜索salt tolerance AND genome analysis。仔细阅读文章，在文章的中间或结尾处（ACCESSION NUMBER）会给出基因的登录号或名称都有利于我们的下一步操作。（如The Arabidopsis Genome Initiative locus identifiers for the genes referred to in this paper are At1g06400 (RABA1A), At1g16920 (RABA1B), At5g45750 (RABA1C), At4g18800 (RABA1D), At4g18430 (RABA1E), At5g60860 (RABA1F), At3g15060 (RABA1G), At2g33870 (RABA1H), and At1g28550 (RABA1I)）</p>
+<p>③宜找基因家族成员数量较多，150-200为宜，当然20-150也无不可，只是显得工作量少。</p>
+<h2 id="2-准备基因家族分析的最初的5个文件"><a href="#2-准备基因家族分析的最初的5个文件" class="headerlink" title="2 准备基因家族分析的最初的5个文件"></a>2 准备基因家族分析的最初的5个文件</h2><p>①要研究的物种的基因（gene）序列（Fasta格式）、蛋白质序列（Fasta格式）、CDS（编码区）序列（Fasta格式）、注释文件（GFF格式）,一般课题组内大师兄师姐会有，索要即可。另需要准备你的基因家族在拟南芥上所有成员的蛋白质序列（在拟南芥官网或NCBI上可以下载）。</p>
+<p>②另如需要做不同物种的进化树分析，也应该将其他物种的蛋白序列从NCBI官网或Phytozome官网或该植物的基因组官网（如拟南芥：<a target="_blank" rel="noopener" href="http://www.arabidopsis.org/%EF%BC%89%E3%80%82">www.arabidopsis.org/）。</a></p>
+<p>③如需要做转录组分析，应当准备好要研究物种的地上、地下部各处理、生物学重复、时间点的转录组数据，以及各器官的相关各处理、生物学重复、时间点的转录组数据,一般课题组内大师兄师姐会有，索要即可。</p>
+<h2 id="3-基因家族成员鉴定（进行蛋白质序列blastp比对）"><a href="#3-基因家族成员鉴定（进行蛋白质序列blastp比对）" class="headerlink" title="3 基因家族成员鉴定（进行蛋白质序列blastp比对）"></a>3 基因家族成员鉴定（进行蛋白质序列blastp比对）</h2><p>①使用以下代码对蛋白质序列进行比对，以拟南芥基因家族成员的蛋白序列为库，通过比对，找到你所研究的物种的相应基因家族成员的蛋白质序列的ID号，筛选E值最小的为我们确定对应拟南芥的蛋白质序列。</p>
+<p>②使用TBtools把ID号对应的蛋白质序列都提取出来。</p>
+<p>③对蛋白质序列进行命名，两种命名方式（一是按照染色体位置，也就是登录号的升序排序，进行命名，如XXRab1，XXRab2，XXRab3。二是按照拟南芥命名方式命名，如XXRabA1a、XXRabA1b、XXRabA1c、XXRabA1d和XXRabA1e,XX为你研究的物种的拉丁学名属名与种名的首字母）</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a><center>流程</center></h2><h2 id="1-blast-p"><a href="#1-blast-p" class="headerlink" title="1 blast-p"></a>1 blast-p</h2><h2 id="2-鉴定保守结构域"><a href="#2-鉴定保守结构域" class="headerlink" title="2  鉴定保守结构域"></a>2  鉴定保守结构域</h2><p><a target="_blank" rel="noopener" href="http://pfam.xfam.org/">http://pfam.xfam.org/</a>  ## 验证基因家族鉴定是否正确</p>
 <p><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/tools/meme">https://meme-suite.org/meme/tools/meme</a> ## 鉴定保守结构域</p>
 <h2 id="3-启动子顺式作用元件鉴定"><a href="#3-启动子顺式作用元件鉴定" class="headerlink" title="3 启动子顺式作用元件鉴定"></a>3 启动子顺式作用元件鉴定</h2><p><a target="_blank" rel="noopener" href="http://bioinformatics.psb.ugent.be/webtools/plantcare/html/">http://bioinformatics.psb.ugent.be/webtools/plantcare/html/</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f5ac1c21c202">https://www.jianshu.com/p/f5ac1c21c202</a></p>
@@ -268,7 +277,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/%E5%85%B0%E5%B7%9E%E5%A4%A7%E5%AD%A66-11%E6%9C%88%E4%BB%BD%E5%A4%87%E4%BB%BD/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -282,132 +291,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/28/%E5%85%B0%E5%B7%9E%E5%A4%A7%E5%AD%A66-11%E6%9C%88%E4%BB%BD%E5%A4%87%E4%BB%BD/" class="post-title-link" itemprop="url">兰州大学6-11月份备份</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-28 21:56:44" itemprop="dateCreated datePublished" datetime="2021-11-28T21:56:44+08:00">2021-11-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-30 11:43:35" itemprop="dateModified" datetime="2021-11-30T11:43:35+08:00">2021-11-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="兰州大学6-11月份备份"><a href="#兰州大学6-11月份备份" class="headerlink" title="兰州大学6-11月份备份"></a>兰州大学6-11月份备份</h1><h2 id="目前交办任务【11-28】"><a href="#目前交办任务【11-28】" class="headerlink" title="目前交办任务【11-28】"></a>目前交办任务【11-28】</h2><h3 id="1-基因家族分析"><a href="#1-基因家族分析" class="headerlink" title="1 基因家族分析"></a>1 基因家族分析</h3><p>=== 头等要务 ===</p>
-<ul>
-<li><p>==办理ABA依赖性耐旱文章，==</p>
-</li>
-<li><p>==发一篇SCI,结合酵母杂交与根系过表达验证，读两篇文章，联系吴凡，消化图表，==</p>
-</li>
-<li><p>==跟闫启，西方，许攀联系，==</p>
-</li>
-<li><p>==事事汇报西方和闫启师兄，==</p>
-</li>
-<li><p>==不会的图，立刻问师兄 ===</p>
-</li>
-<li><p>读molecular plant 新文章</p>
-</li>
-<li><p>读宗西方师兄文章</p>
-</li>
-<li><p>美化几个图片【进化图、共线性、共表达、基因结构图、保守结构域、顺式作用元件、蛋白、ks、kegg+go】</p>
-</li>
-<li><p>催要各器官转录组数据</p>
-</li>
-<li><p>蜘蛛网图学习</p>
-</li>
-<li><p>酵母【问师兄师姐】</p>
-</li>
-<li><p>QRT-PCR</p>
-</li>
-<li><p>找盐胁迫验证方法</p>
-</li>
-</ul>
-<h3 id="2-老师交办事情"><a href="#2-老师交办事情" class="headerlink" title="2 老师交办事情"></a>2 老师交办事情</h3><ul>
-<li>=== 写牧草育种小册子文章，先给出提凑，再写  ===</li>
-</ul>
-<h3 id="3-几个作业"><a href="#3-几个作业" class="headerlink" title="3 几个作业"></a>3 几个作业</h3><ul>
-<li>=== 遥感论文 ===</li>
-<li>=== 生理论文 ===</li>
-<li>=== 文献查找word制作 ===</li>
-</ul>
-<h3 id="4-学习"><a href="#4-学习" class="headerlink" title="4 学习"></a>4 学习</h3><ul>
-<li><p>六级备考【听力，作文，翻译至关重要】</p>
-</li>
-<li><p>python【复习即可】</p>
-</li>
-<li><p>perl【全电子笔记】</p>
-</li>
-<li><p>分子生物学基础知识</p>
-<ul>
-<li>putty</li>
-<li>202.201.9.80</li>
-<li>sgrna提取</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/photo.jpg">
-      <meta itemprop="name" content="张蔡斌">
-      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="劲草笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/28/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">RAB所有图片</a>
+            <a href="/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">MARAB基因家族分析图片</a>
         </h2>
 
         <div class="post-meta">
@@ -424,7 +308,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-01 11:45:38" itemprop="dateModified" datetime="2021-12-01T11:45:38+08:00">2021-12-01</time>
+                <time title="修改时间：2022-04-25 15:37:39" itemprop="dateModified" datetime="2022-04-25T15:37:39+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -447,15 +331,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-进化树"><a href="#1-进化树" class="headerlink" title="1 进化树"></a>1 进化树</h1><p>=== 进化树 ===</p>
-<p><code>=== 进化树 ===可以表示高亮</code></p>
-<p>总共219个蛋白序列</p>
-<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/image-20211129163454959.png" alt="image-20211129163454959"></p>
-<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/image-20211129163921030.png" alt="image-20211129163921030"></p>
-<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/11291641.png" alt="11291641"></p>
+          <p>RAB家族图片</p>
+<p>1 进化树</p>
+<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/MA_EVOLUTION.jpg" alt="MA_EVOLUTION"><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/ALL_1202.jpg" alt="ALL_1202"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/11/28/RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/#more" rel="contents">
+              <a class="btn" href="/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -510,7 +391,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-06 09:44:23" itemprop="dateModified" datetime="2021-12-06T09:44:23+08:00">2021-12-06</time>
+                <time title="修改时间：2022-04-25 15:36:14" itemprop="dateModified" datetime="2022-04-25T15:36:14+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -518,7 +399,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">科研知识</span></a>
                 </span>
             </span>
 
@@ -565,7 +446,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/1202_RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/15/AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -579,7 +460,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/28/1202_RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">RAB家族图片</a>
+            <a href="/2022/12/15/AE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">AE学习笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -589,14 +470,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-28 21:56:44" itemprop="dateCreated datePublished" datetime="2021-11-28T21:56:44+08:00">2021-11-28</time>
+              <time title="创建时间：2022-12-15 21:56:44" itemprop="dateCreated datePublished" datetime="2022-12-15T21:56:44+08:00">2022-12-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-07 00:05:12" itemprop="dateModified" datetime="2021-12-07T00:05:12+08:00">2021-12-07</time>
+                <time title="修改时间：2022-04-25 15:50:28" itemprop="dateModified" datetime="2022-04-25T15:50:28+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -604,7 +485,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件教程</span></a>
                 </span>
             </span>
 
@@ -619,12 +500,137 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>RAB家族图片</p>
-<p>1 进化树</p>
-<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/MA_EVOLUTION.jpg" alt="MA_EVOLUTION"><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/ALL_1202.jpg" alt="ALL_1202"></p>
+          <h2 id="AE学习笔记"><a href="#AE学习笔记" class="headerlink" title="AE学习笔记"></a>AE学习笔记</h2><h3 id="1新建"><a href="#1新建" class="headerlink" title="1新建"></a>1新建</h3><p>合成&gt;&gt;&gt;新建合成&gt;&gt;&gt;预设</p>
+<p>1080&gt;&gt;&gt;1080p 分辨率</p>
+<p>25&gt;&gt;&gt;25fps 帧速率 1秒之内传输的图片数量，4K 60帧 B站最大高清度</p>
+<p>HDTV 1080 25（一般使用）&gt;&gt;电视制式PAL制（帕尔）  每秒25帧，中国，英国，德国。NTSC制（国际制），29.97帧，美，日，加。</p>
+<p>长宽比&gt;&gt;用方形像素</p>
+<p>背景颜色</p>
+<p>持续时间</p>
+<p>点确认&gt;&gt;</p>
+<h3 id="2-界面"><a href="#2-界面" class="headerlink" title="2 界面"></a>2 界面</h3><p>顶部为菜单栏、快捷工具栏</p>
+<p><img src="C:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211215190100446.png" alt="image-20211215190100446"></p>
+<p>按住ALT+鼠标左键，切换同一图标的功能</p>
+<p>项目窗口（存放素材）</p>
+<p>合成窗口（预览视频）</p>
+<p>选项面板，小屏幕，效果和预设</p>
+<p>时间窗口</p>
+<p>关键帧（在起点和终点处打上，敲空格后形成动画）</p>
+<h3 id="3首选项设置"><a href="#3首选项设置" class="headerlink" title="3首选项设置"></a>3首选项设置</h3><p>菜单栏&gt;&gt;编辑&gt;&gt;首选项&gt;&gt;显示，运动路径，所有关键帧</p>
+<p>导入，序列素材&gt;&gt;25帧每秒</p>
+<p>媒体和磁盘缓存&gt;&gt;选择存储位置</p>
+<p>自动保存&gt;&gt;保存间隔20min</p>
+<p>内存&gt;&gt;默然即可，允许效率</p>
+<h3 id="4流程"><a href="#4流程" class="headerlink" title="4流程"></a>4流程</h3><p>①新建合成</p>
+<p>②导入素材，直接拖拽，右键，文件&gt;&gt;拖入文件夹，拖入合成</p>
+<p>③编辑素材，添加动效</p>
+<p>④预览效果</p>
+<p>⑤保存CTRL+s</p>
+<p>⑥导出，添加到渲染队列，Adobe meida encoder(AME)</p>
+<p>工程文件aep&gt;&gt;&gt;渲染&gt;&gt;&gt;独立视频mp4</p>
+<p>QUICKtime&gt;&gt;&gt;mov最小的大小(需要下载quicktime)</p>
+<p>H264&gt;&gt;mp4</p>
+<p>勾选&gt;&gt;&gt;输出到&gt;&gt;&gt;渲染</p>
+<p>高清:720p或16:9，全高清:1920*1080</p>
+<h3 id="5-工具栏"><a href="#5-工具栏" class="headerlink" title="5  工具栏"></a>5  工具栏</h3><p>shift 等比正方形</p>
+<p>V 选取工具 </p>
+<p>Space 抓手工具 移动画布 H</p>
+<p>Z 放缩工具 +ALT 缩小  滑轮 滑轮+ALT</p>
+<p>项目&gt;合成&gt;图层</p>
+<p>图层内含内容&gt;矩形</p>
+<p>变换&gt;锚点，位置，缩放，旋转，透明度，A,P,S,R,T</p>
+<p>向后拖锚点 Y</p>
+<p>查看关键帧（详情）U</p>
+<h2 id="6-右键"><a href="#6-右键" class="headerlink" title="6 右键"></a>6 右键</h2><p>右键&gt;&gt;新建&gt;&gt;建立文字，纯色（背景布），灯光（效果），摄像机,空对象（近大远小），效果（高斯模糊）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/Markdown%20%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/04/Markdown%20%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown 语法手册</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-04 21:56:44" itemprop="dateCreated datePublished" datetime="2022-04-04T21:56:44+08:00">2022-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 15:14:07" itemprop="dateModified" datetime="2022-04-25T15:14:07+08:00">2022-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件教程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Markdown-语法手册"><a href="#Markdown-语法手册" class="headerlink" title="Markdown 语法手册"></a>Markdown 语法手册</h1><p>==最后修改时间:2022年4月25日==</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Typroa中显示语法，Ctrl+ /</span><br></pre></td></tr></table></figure>
+
+<h2 id="网页中显示为阅读更多"><a href="#网页中显示为阅读更多" class="headerlink" title="网页中显示为阅读更多"></a>网页中显示为阅读更多</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="标题设置"><a href="#标题设置" class="headerlink" title="标题设置"></a>标题设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级</span><br><span class="line">## 二级</span><br><span class="line">### 三级</span><br><span class="line">#### 四级</span><br></pre></td></tr></table></figure>
+
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">***</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/11/28/1202_RAB%E5%AE%B6%E6%97%8F%E5%9B%BE%E7%89%87/#more" rel="contents">
+              <a class="btn" href="/2022/04/04/Markdown%20%E8%AF%AD%E6%B3%95/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -648,7 +654,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/AI%E7%BB%98%E5%9B%BE%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/%E5%85%B0%E5%B7%9E%E5%A4%A7%E5%AD%A6%E8%8D%89%E5%AD%A6%E5%90%84%E4%B8%AA%E7%A1%95%E5%A3%AB%E8%AF%BE%E7%A8%8B%E8%80%83%E6%A0%B8%E8%A6%81%E6%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -662,7 +668,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/13/AI%E7%BB%98%E5%9B%BE%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">AI绘图笔记</a>
+            <a href="/2022/04/04/%E5%85%B0%E5%B7%9E%E5%A4%A7%E5%AD%A6%E8%8D%89%E5%AD%A6%E5%90%84%E4%B8%AA%E7%A1%95%E5%A3%AB%E8%AF%BE%E7%A8%8B%E8%80%83%E6%A0%B8%E8%A6%81%E6%B1%82/" class="post-title-link" itemprop="url">兰大草学硕士各个课程考核要求</a>
         </h2>
 
         <div class="post-meta">
@@ -672,14 +678,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-12-13 21:56:44" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
+              <time title="创建时间：2022-04-04 21:56:44" itemprop="dateCreated datePublished" datetime="2022-04-04T21:56:44+08:00">2022-04-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-30 17:33:35" itemprop="dateModified" datetime="2021-12-30T17:33:35+08:00">2021-12-30</time>
+                <time title="修改时间：2022-04-25 15:57:40" itemprop="dateModified" datetime="2022-04-25T15:57:40+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -687,7 +693,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                  <a href="/categories/%E6%95%99%E8%82%B2/" itemprop="url" rel="index"><span itemprop="name">教育</span></a>
                 </span>
             </span>
 
@@ -702,69 +708,188 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>AI绘图笔记</p>
-<h2 id="改变图布大小"><a href="#改变图布大小" class="headerlink" title="改变图布大小"></a>改变图布大小</h2><p>现在我们将这个A4的画布调整小一点。执行菜单栏中的文件—<strong>文档设置</strong>，或者直接按<strong>快捷键Alt+Ctrl+P</strong>，如下图所示。</p>
-<p>找到编辑描边后，我们直接点击编辑面板，这时候我们可以发现，我们之前新建的面板周围出现一个虚线框，如下图所示。</p>
-<p><img src="https://img.jbzj.com/file_images/article/201604/20160424151026344.jpg" alt="img"></p>
-<p>我们在虚线框上，可以看到<strong>每条变都有三个锚点，这时候，我们直接按住不放，就可以修改画布的大小</strong>。</p>
-<p><img src="https://img.jbzj.com/file_images/article/201604/20160424151026345.jpg" alt="img"></p>
-<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><p>点击选择旋转工具，按住alt选择中心点(可任意)点下后弹出对话框，输入旋转角度即可，可旋转复制或旋转；重复旋转就按ctrl+D。</p>
-<h2 id="裁剪图片"><a href="#裁剪图片" class="headerlink" title="裁剪图片"></a>裁剪图片</h2><p><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/album/ab69b27062ade32ca7189f3f.html">http://jingyan.baidu.com/album/ab69b27062ade32ca7189f3f.html</a>)</p>
-<p>使我一直头痛的问题终于解决了，我原先以为ps才可以裁剪图片，以为ai没有这个操作，下面就看看我是怎么操作的吧。</p>
-<h2 id="工具-原料"><a href="#工具-原料" class="headerlink" title="工具/原料"></a>工具/原料</h2><ul>
-<li>电脑</li>
-<li>AI (Adobe illustrator)</li>
+          <h2 id="兰大草学硕士各个课程考核要求"><a href="#兰大草学硕士各个课程考核要求" class="headerlink" title="兰大草学硕士各个课程考核要求"></a>兰大草学硕士各个课程考核要求</h2><h3 id="1-草类植物育种研究进展"><a href="#1-草类植物育种研究进展" class="headerlink" title="1 草类植物育种研究进展"></a>1 草类植物育种研究进展</h3><p>超星签到，必须现场到，当面签到，1对1签到，老师现场拿手机让你扫</p>
+<p>考核：PPT汇报，5min左右</p>
+<p>上课：7次外教课+2次中文讲授</p>
+<h3 id="2-草地资源与信息管理"><a href="#2-草地资源与信息管理" class="headerlink" title="2 草地资源与信息管理"></a>2 草地资源与信息管理</h3><p>纸质签到，课次数少</p>
+<p>考核：写一篇综述4000-5000字</p>
+<h3 id="3-实验设计与统计分析"><a href="#3-实验设计与统计分析" class="headerlink" title="3 实验设计与统计分析"></a>3 实验设计与统计分析</h3><p>每节课进行超星签到，大屏幕展示签到码，上课老师会下来转着看你的R语言操作</p>
+<p>考核：超星考试或线下纸质考试</p>
+<h3 id="4-实验室安全管理"><a href="#4-实验室安全管理" class="headerlink" title="4 实验室安全管理"></a>4 实验室安全管理</h3><p>每节课纸质签到</p>
+<p>考核：案例分析一张A4纸</p>
+<h3 id="5-植物逆境生理与分子生物学"><a href="#5-植物逆境生理与分子生物学" class="headerlink" title="5 植物逆境生理与分子生物学"></a>5 植物逆境生理与分子生物学</h3><p>不签到，但会点名，和抽问问题</p>
+<p>考核：小组制作PPT15min，写一篇综述论文4000-5000字</p>
+<h3 id="6-草地营养生态学"><a href="#6-草地营养生态学" class="headerlink" title="6 草地营养生态学"></a>6 草地营养生态学</h3><p>第一次上课签到，后面老师会叫他印象深刻的人回答问题</p>
+<p>考核：开题报告（最后课终改为营养生态学综述或实验现象-假设-实验设计-预期结果一张A4纸）</p>
+<h3 id="7-草地农业生态系统中的真菌"><a href="#7-草地农业生态系统中的真菌" class="headerlink" title="7 草地农业生态系统中的真菌"></a>7 草地农业生态系统中的真菌</h3><p>每节课必须到，5次讲授课+5次汇报课，超星签到，纸质签到结合，所有汇报课要每个人进行打分，下课提交实名打分表。</p>
+<p>考核:5个人形成一个小组，大家一起制作5次不同题目的ppt汇报，还要每人写一篇综述5000字。</p>
+<p>每年上课前，老师还专门开会商讨上课方案。</p>
+<h3 id="8-草地农业生态学"><a href="#8-草地农业生态学" class="headerlink" title="8 草地农业生态学"></a>8 草地农业生态学</h3><p>随机上课纸质签到，点名</p>
+<p>考核：线下考试</p>
+<h3 id="9-论文写作与指导"><a href="#9-论文写作与指导" class="headerlink" title="9 论文写作与指导"></a>9 论文写作与指导</h3><p>随机纸质签到，加点一些资历深的老师的学生名</p>
+<p>考核：超星两次线上作业</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/04/%E6%97%A5%E5%B8%B8%E6%8A%80%E8%83%BD%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/04/%E6%97%A5%E5%B8%B8%E6%8A%80%E8%83%BD%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">日常记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-04 21:56:44" itemprop="dateCreated datePublished" datetime="2022-04-04T21:56:44+08:00">2022-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 15:58:55" itemprop="dateModified" datetime="2022-04-25T15:58:55+08:00">2022-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E5%A4%87%E6%B3%A8/" itemprop="url" rel="index"><span itemprop="name">科研备注</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="日常记录"><a href="#日常记录" class="headerlink" title="日常记录"></a>日常记录</h1><h2 id="关于搭建梯子"><a href="#关于搭建梯子" class="headerlink" title="关于搭建梯子"></a>关于搭建梯子</h2><p>我的文件助手 2022/1/6 23:58:02<br>vl+grpc+tls 然后再弄个优选ip <img src="file:///C:\Users\ZHANGCAIBIN\AppData\Roaming\Tencent\QQTempSys@EBP_`@7" alt="img">F.png)</p>
+<p>我的文件助手 2022/1/6 23:58:06<br>甲骨文要国外的信用卡的吧。。。而且自己搭容易被封，要稳定的话，要走ws+tls，成本不低，而且有点困难</p>
+<p>我的文件助手 2022/1/6 23:58:11<br>还不是tls吗，trojan也差不多啊，都是要域名和tls啊</p>
+<p>我的文件助手 2022/1/6 23:58:20<br>ws+tls和你说的trojan和vl+tls，难度都差不多的</p>
+<p>我的文件助手 2022/1/6 23:58:25<br>YToo和AmyTelecom</p>
+<p>我的文件助手 2022/1/6 23:56:06<br>小白-水木珞研   有没有推荐比较稳定的机场 友友们<br>@21 自动化 甲骨文可以申请免费的</p>
+<p>我的文件助手 2022/1/6 23:56:14<br>有没有推荐比较稳定的机场 友友们 </p>
+<p>我的文件助手 2022/1/6 23:56:23<br>@小白-水木珞研 我有个需要教育邮箱的</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/04/03/Coursera%E5%8A%A9%E5%AD%A6%E9%87%91%E7%94%B3%E8%AF%B7%E7%94%A8%E6%A8%A1%E6%9D%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/03/Coursera%E5%8A%A9%E5%AD%A6%E9%87%91%E7%94%B3%E8%AF%B7%E7%94%A8%E6%A8%A1%E6%9D%BF/" class="post-title-link" itemprop="url">Coursera助学金申请用模板</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-03 21:56:44" itemprop="dateCreated datePublished" datetime="2022-04-03T21:56:44+08:00">2022-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 15:23:39" itemprop="dateModified" datetime="2022-04-25T15:23:39+08:00">2022-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Coursera助学金申请用模板"><a href="#Coursera助学金申请用模板" class="headerlink" title="Coursera助学金申请用模板"></a>Coursera助学金申请用模板</h2><ul>
+<li><p>第一段<br>I am very interested in this course. I believe that this course can effectively help me in the field of biology and make my professional skills more perfect. However, since I am now a full-time student who does not have a job, I can’t afford the extra monthly study fee about this course by relying on scholarships and daily part-time tuition and living expenses. I graduated with a bachelor’s degree from Sichuan Agriculture University， a 211 project University. Now,I learn in Lanzhou University，a 985 project University. The ability to learn, adapt, communicate, and organize is excellent. I believe that there will be achievements in society in the future. I have also been actively repaying the society. I have volunteered for a year in the Women and Children’s Hospital to participate in the rehabilitation of autistic angels. I also actively participate in various educational activities. I am determined to complete this course, please give me this huge opportunity.</p>
+</li>
+<li><p>第二段<br>I am a student majoring in biology, the course involves computer operation,biology knowledge and website usage introduction etc . , and there is also relevant content of quantitative analysis. During the learning process, I gradually discovered the need to dig deep into big data, which can help me understand the computer knowledge. And this course can help me start with basic programming, better handle big data and analyze trends through programming. In addition, commutation has gradually become a must-have skill in marketing-related job requirements. After studying this course, I can better enrich my professional skills and become a professional with not only theoretical knowledge but also operational ability. I hope that after graduation, I can find a career related to this course. I hope that when I choose products and publicity channels, I can use this course to know trends and predict trends. More over,I believe we could have a delighted course in future period.</p>
+</li>
+<li><p>第三段<br>I am completely independent from home now, without any economic income. Scholarships and part-time income sometimes cannot even meet daily needs, and I have plans to continue my Ph. D. , and I expect that my income will not be high in the next four years. I hope that I can give back to the website through my good things, such as promoting the Coursera on the website, forums and other platforms, through my excellent results word of mouth marketing.</p>
+</li>
 </ul>
-<h2 id="方法-步骤"><a href="#方法-步骤" class="headerlink" title="方法/步骤"></a>方法/步骤</h2><ol>
-<li><p>1</p>
-<p>打开ai软件 ，拖入要裁剪的图片</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/edd84743040148fe1fe8ccde8fd149299b880203.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="AI怎么裁剪图片"></p>
-</li>
-<li><p>2</p>
-<p>在图片上绘制一个矩形，矩形范围是要保留的部分</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/58021a0148fe1e425fc19564c2299a8838130303.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="AI怎么裁剪图片"></p>
-</li>
-<li><p>3</p>
-<p>将绘制的矩形与图片一起选中</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/054056fe1e425d6b077bd89c11883913e9e50003.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="AI怎么裁剪图片"></p>
-</li>
-<li><p>4</p>
-<p>点击鼠标右键，选择【建立剪切蒙版】</p>
-<p>或者 按下 快捷键 ctrl +7  </p>
-<p><img src="https://exp-picture.cdn.bcebos.com/49bf00425d6b04d14d830b3db213e8e5edee0103.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="AI怎么裁剪图片"></p>
-</li>
-<li><p>5</p>
-<p>裁剪后的效果图如下</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/bff8683e21c2bbd6b47afc5d116186254093ae03.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="AI怎么裁剪图片"></p>
-</li>
-<li><p>6</p>
-<p>取消裁剪 ：选择图形 &gt;右键 &gt;释放剪切蒙版</p>
-<p>或者按下快捷键 ctrl+ shift +7</p>
-</li>
-<li><p>7</p>
-<p>注意：图片在下，矩形在上。 （矩形可以是任意形状，如圆形，三角形，六边形等等。</p>
-</li>
-</ol>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p><img src="C:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211230155507191.png" alt="image-20211230155507191"></p>
-<p><img src="C:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211230155437433.png" alt="image-20211230155437433"></p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><ol>
-<li><p>我们选择椭圆工具，任意的绘制一个椭圆，将填充设置为任意色，描边设置为无，然后将不透明度设置为0%，</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/3201a8f39187031c5d89cb496a86242fa972ece2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-</li>
-<li><p>将椭圆画好后，选择工具箱中的选择工具，选中整体，也就是选中我们之前画的椭圆和图片，如下图所示。</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/955ea0e434daf05e876a1dc4751d96d81919e5e2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-</li>
-<li><p>选中椭圆和风景图片后，执行菜单栏中的对象—拼合透明度，然后直接点击确定。如下图所示。</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/6061b9cd0c6efbf2d4fa1162127bbbf4db58dae2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-<p><img src="https://exp-picture.cdn.bcebos.com/739bc049610f8b56724d4add9ce951e10ff8d3e2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-</li>
-<li><p>拼合透明度后，右键单击图片找到取消编组，如下图所示。</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/5917cb3da824d8e9249bdfd3da598540112ac8e2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-</li>
-<li><p>取消编组后，我们直接用选择工具，选中外面的部分，然后按Delete键删除，图片就被我们裁剪出来了。</p>
-<p><img src="https://exp-picture.cdn.bcebos.com/05a320a23a42a07a5159d886673834bb18efc1e2.jpg?x-bce-process=image/resize,m_lfit,w_500,limit_1/format,f_jpg/quality,q_80" alt="ai怎么裁剪，ai中怎么裁剪图片，裁剪图片详解"></p>
-</li>
-</ol>
 
       
     </div>
@@ -784,7 +909,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/DELTAGEN%E7%AC%94%E8%AE%B0-2021-11-23/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/31/%E8%A7%81%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -798,84 +923,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/13/DELTAGEN%E7%AC%94%E8%AE%B0-2021-11-23/" class="post-title-link" itemprop="url">DELTAGEN笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-12-13 21:56:44 / 修改时间：23:22:50" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>DELTAGEN笔记-2021-11-23</p>
-<p>library(tidyverse)</p>
-<p>load(“.RData”)</p>
-<p>str()</p>
-<p>&lt;-</p>
-<p>group_by()</p>
-<p>summarise_all(mean,na.rm=true)</p>
-<p>save(,file=””)</p>
-<p>load()</p>
-<p>library(predictmeans)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/qRT-PCR%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/photo.jpg">
-      <meta itemprop="name" content="张蔡斌">
-      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="劲草笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/13/qRT-PCR%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">qRT-PCR流程</a>
+            <a href="/2022/03/31/%E8%A7%81%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="post-title-link" itemprop="url">见习工程师-Visual Studio Code的安装-HTML准备</a>
         </h2>
 
         <div class="post-meta">
@@ -885,14 +933,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-12-13 21:56:44" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
+              <time title="创建时间：2022-03-31 21:56:44" itemprop="dateCreated datePublished" datetime="2022-03-31T21:56:44+08:00">2022-03-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-23 10:39:41" itemprop="dateModified" datetime="2021-12-23T10:39:41+08:00">2021-12-23</time>
+                <time title="修改时间：2022-04-25 15:25:29" itemprop="dateModified" datetime="2022-04-25T15:25:29+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -900,7 +948,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
                 </span>
             </span>
 
@@ -915,240 +963,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>qRT-PCR流程</p>
-<h2 id="1-准备材料"><a href="#1-准备材料" class="headerlink" title="1 准备材料"></a>1 准备材料</h2><p>A引物，顶部和底部引物，Bmix，CddH2O,D各处理下的cDNA，E各规格10，100，200，1000微升的枪头和移液枪，F50毫升离心管，G离心机，H震荡仪，I-20度冰箱，J制冰机与冰盒，KqRT-PCR机，L灭菌锅，M烘锅</p>
-<h2 id="2-稀释引物"><a href="#2-稀释引物" class="headerlink" title="2 稀释引物"></a>2 稀释引物</h2><p>在所有工作开始之前，请务必保证已经穿好实验服，已经戴好一次性手套，已经使用酒精对手套和袖子进行灭菌操作。</p>
-<p>①将引物与备份分开。一般我们设计的引物，若OD数为2，公司会将一对引物（包含顶部和底部）制作两份交给我们。这时我们需要在引物盒将备份与做实验要用的那一份分开，引物在引物盒内的分布一般是有规律可循的。</p>
-<p>②将做实验需用的那份引物进行离心，30s，12000转速。注意好配平与盖好盖子。</p>
-<p>③将ddH2O分装至50毫升离心管内。注意离心管应当灭过菌。</p>
-<p>④使用1000微升的枪头和移液枪按每个引物上注明的加水量加入ddH2O。如若枪头接触管壁，务必换枪头，不可快速吸取和排出液体，吸取液体，在空中将枪向下按至1档位，深入加入的液体中慢慢松开拇指进行吸取，排出液体时，应当悬空缓慢按下挤出液体，注意挤出液体时，拇指应当按至最底部档位。另注意枪不可倒立放置，会造成枪的损毁。</p>
-<p>⑤所有引物稀释好后，先在震荡仪上进行2-3s的震荡后，再在离心机上进心30s，12000转速的离心。如若当前不进行下一步操作，请将制备好的稀释引物的盒子上注明稀释日期后，放回-20度冰箱。</p>
-<h2 id="3-开始点样"><a href="#3-开始点样" class="headerlink" title="3 开始点样"></a>3 开始点样</h2><p>在工作前，请准备好：</p>
-<p>稀释好的一对引物（从-20度内取出，刚化时就要吸取，避免反复冻融）,</p>
-<p>ddH2O,</p>
-<p>MIX（从-20度内取出，刚化时就要吸取，避免反复冻融）,(有的可能用到buffer),</p>
-<p>cDNA(各处理与对照CK，刚化时就要吸取，避免反复冻融，而且需要避光进行，加cDNA的过程不应该长于30min，如3H-ROOT-DROUGHT,24H-ROOT-DROUGHT)，</p>
-<p>qRT-PCR机器专用八连管与盖子</p>
-<p>冰盒与冰板</p>
-<p>①配置预混液</p>
-<table>
-<thead>
-<tr>
-<th align="center">预混液配置</th>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center">MIX</td>
-<td align="center">5μL*12=60μL</td>
-<td align="center">合计9μL乘12倍为108微升     使用引物类似的离心管</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center">引物1</td>
-<td align="center">0.2μL*12=2.4μL</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center">引物2</td>
-<td align="center">0.2μL*12=2.4μL</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center">ddH2O</td>
-<td align="center">3.6μL*12=43.2μL</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center">cDNA</td>
-<td align="center">1μL</td>
-<td align="center">每个管子加入的cDNA不同，最后点样再加，预混液中不加</td>
-</tr>
-</tbody></table>
-<p>因为我们要对同一个基因的不同处理使用的是同样的混合液，所以根据我有3个处理*3个重复=</p>
-<p>9个点样,根据经验，我们应该在配置预混液时将各组分乘以12倍（配置9倍会导致最后几个管子加不够，因为移液有误差和损失），预混液在15μL的离心管内配置，该过程请在冰盒和冰板上进行，在液体刚化时就要吸液，不可完全融化，先加容量大的组分，最后加少的，加少的时，移液枪可插入液面后将液体全部推出。</p>
-<p>②设计八连管排列</p>
-<table>
-<thead>
-<tr>
-<th>Qrt-PCR</th>
-<th>96孔板规划</th>
-<th></th>
-<th>批次:</th>
-<th>01批次</th>
-<th>日期：</th>
-<th>2021年</th>
-<th>12月</th>
-<th>日</th>
-<th>周</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>一</td>
-<td>二</td>
-<td>三</td>
-<td>四</td>
-<td>五</td>
-<td>六</td>
-<td>七</td>
-<td>八</td>
-<td>九</td>
-<td>十</td>
-<td>十一</td>
-<td>十二</td>
-</tr>
-<tr>
-<td></td>
-<td>CK</td>
-<td>CK</td>
-<td>CK</td>
-<td>3H</td>
-<td>3H</td>
-<td>3H</td>
-<td>24H</td>
-<td>24H</td>
-<td>24H</td>
-<td>CK</td>
-<td>3H</td>
-<td>24H</td>
-</tr>
-<tr>
-<td>一</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab1</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-</tr>
-<tr>
-<td>二</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab5</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-</tr>
-<tr>
-<td>三</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab11</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-<td>MaRab23</td>
-</tr>
-<tr>
-<td>四</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab13</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-</tr>
-<tr>
-<td>五</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab15</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-</tr>
-<tr>
-<td>六</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab17</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-<td>MaRab25</td>
-</tr>
-<tr>
-<td>七</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td>MaRab19</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>八</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td>Acting</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>③先对预混液进行9000X的瞬时离心，再将预混液分装入八连管，每管（9μL），注意枪头更换，是否吸取到液体</p>
-<p>④将cDNA从-20度取出，将各处理的cDNA分别取1μL加入你规划的八连管中，该过程请在冰盒和冰板上进行，在液体刚化时就要吸液，不可完全融化，避光30min内进行。</p>
-<p>⑤对八连管进行标记（八连管尾部和头部有个小孔，其左右朝向方位不同，可指示位置），之后放入离心机，进行9000X的瞬时离心。若暂时无法进行qRT-PCR,应当将其放在冰盒内，避光保存。</p>
-<p>⑥将所有样品按照规划放入qRT-PCR机器内，在电脑中输入样品标记，温度程序，开始允许，该过程会持续1h08min。</p>
-<p>⑦将数据导出后，进行系列运算后，得到RPKM值。</p>
-<p>⑧进行origin绘图。</p>
+          <h1 id="见习工程师-Visual-Studio-Code的安装-HTML准备"><a href="#见习工程师-Visual-Studio-Code的安装-HTML准备" class="headerlink" title="见习工程师-Visual Studio Code的安装-HTML准备"></a>见习工程师-Visual Studio Code的安装-HTML准备</h1><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><p>Visual Studio Code</p>
+<p>Google Chrome</p>
+<p>在扩展里安装</p>
+<p>Chinese(Simplified) Language —- 界面汉化</p>
+<p>Live Server —- 代码实时运行（不必时时刷新）</p>
+<p>ctrl + / —- 注释当前行（typroa为可视化代码）</p>
+<h3 id="HTML结构"><a href="#HTML结构" class="headerlink" title="HTML结构"></a>HTML结构</h3><p>//windows下形成当前文件夹下目录树// <code> tree /f &gt; list.txt</code></p>
+<p>├─C1_web<br>│  └─01_html基础<br>│      ├─css<br>│      ├─img<br>│      └─js</p>
+<p>将该01_html基础目录直接拖至Visual Studio Code窗口就可打开</p>
+<p>新建index.html</p>
+<p>输入英文状态下!后再按下Tab键，就可行成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">//&lt;!-- 使用HTML5的标准进行文档解析 --&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">//&lt;!-- 根标签 --&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">//&lt;!-- 引入与网页相关的描述及配置信息 --&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;CSDN,C1,CEGE&quot;&gt;</span><br><span class="line">    //&lt;!-- 引入keywords，便于网络爬虫 --&gt;</span><br><span class="line">    &lt;meta name=&quot;description&quot; content=&quot;关于C1学习的练习文档&quot;&gt;</span><br><span class="line">    //&lt;!-- 引入description --&gt;</span><br><span class="line">    &lt;meta name=&quot;author&quot; content=&quot;XIAN&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">        //&lt;!-- 窗口大小 --&gt;</span><br><span class="line">    &lt;title&gt;CEGECSDN&lt;/title&gt;</span><br><span class="line">        //&lt;!-- 标题名称 --&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">//&lt;!-- 正文 --&gt;    </span><br><span class="line">HELLO CSDN!</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>右键 –&gt; open with live sever</p>
+<p>即可用浏览器打开</p>
 
       
     </div>
@@ -1168,7 +997,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/22/JS%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -1182,7 +1011,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/13/%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">基因家族分析流程</a>
+            <a href="/2022/03/22/JS%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">JS基础</a>
         </h2>
 
         <div class="post-meta">
@@ -1191,10 +1020,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-13 21:56:44 / 修改时间：23:20:31" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
+              <time title="创建时间：2022-03-22 21:56:44" itemprop="dateCreated datePublished" datetime="2022-03-22T21:56:44+08:00">2022-03-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 15:27:46" itemprop="dateModified" datetime="2022-04-25T15:27:46+08:00">2022-04-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1216,102 +1051,618 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>基因家族分析流程</p>
-<h2 id="1-找到待分析基因家族"><a href="#1-找到待分析基因家族" class="headerlink" title="1 找到待分析基因家族"></a>1 找到待分析基因家族</h2><p>①宜从已发表的文章进行查找，基因家族有相似的保守结构域和序列片段。在基因命名上一般有着相投的字母前缀，如RabA1a、RabA1b、RabA1c、RabA1d和RabA1e。</p>
-<p>②宜根据自己的研究方向进行查找。如我们研究盐胁迫，可在web of science 或谷歌学术上搜索salt tolerance AND genome analysis。仔细阅读文章，在文章的中间或结尾处（ACCESSION NUMBER）会给出基因的登录号或名称都有利于我们的下一步操作。（如The Arabidopsis Genome Initiative locus identifiers for the genes referred to in this paper are At1g06400 (RABA1A), At1g16920 (RABA1B), At5g45750 (RABA1C), At4g18800 (RABA1D), At4g18430 (RABA1E), At5g60860 (RABA1F), At3g15060 (RABA1G), At2g33870 (RABA1H), and At1g28550 (RABA1I)）</p>
-<p>③宜找基因家族成员数量较多，150-200为宜，当然20-150也无不可，只是显得工作量少。</p>
-<h2 id="2-准备基因家族分析的最初的5个文件"><a href="#2-准备基因家族分析的最初的5个文件" class="headerlink" title="2 准备基因家族分析的最初的5个文件"></a>2 准备基因家族分析的最初的5个文件</h2><p>①要研究的物种的基因（gene）序列（Fasta格式）、蛋白质序列（Fasta格式）、CDS（编码区）序列（Fasta格式）、注释文件（GFF格式）,一般课题组内大师兄师姐会有，索要即可。另需要准备你的基因家族在拟南芥上所有成员的蛋白质序列（在拟南芥官网或NCBI上可以下载）。</p>
-<p>②另如需要做不同物种的进化树分析，也应该将其他物种的蛋白序列从NCBI官网或Phytozome官网或该植物的基因组官网（如拟南芥：<a target="_blank" rel="noopener" href="http://www.arabidopsis.org/%EF%BC%89%E3%80%82">www.arabidopsis.org/）。</a></p>
-<p>③如需要做转录组分析，应当准备好要研究物种的地上、地下部各处理、生物学重复、时间点的转录组数据，以及各器官的相关各处理、生物学重复、时间点的转录组数据,一般课题组内大师兄师姐会有，索要即可。</p>
-<h2 id="3-基因家族成员鉴定（进行蛋白质序列blastp比对）"><a href="#3-基因家族成员鉴定（进行蛋白质序列blastp比对）" class="headerlink" title="3 基因家族成员鉴定（进行蛋白质序列blastp比对）"></a>3 基因家族成员鉴定（进行蛋白质序列blastp比对）</h2><p>①使用以下代码对蛋白质序列进行比对，以拟南芥基因家族成员的蛋白序列为库，通过比对，找到你所研究的物种的相应基因家族成员的蛋白质序列的ID号，筛选E值最小的为我们确定对应拟南芥的蛋白质序列。</p>
-<p>②使用TBtools把ID号对应的蛋白质序列都提取出来。</p>
-<p>③对蛋白质序列进行命名，两种命名方式（一是按照染色体位置，也就是登录号的升序排序，进行命名，如XXRab1，XXRab2，XXRab3。二是按照拟南芥命名方式命名，如XXRabA1a、XXRabA1b、XXRabA1c、XXRabA1d和XXRabA1e,XX为你研究的物种的拉丁学名属名与种名的首字母）</p>
-<h2 id="4-进化树分析"><a href="#4-进化树分析" class="headerlink" title="4 进化树分析"></a>4 进化树分析</h2>
-      
-    </div>
+          <h1 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h1><h1 id="29-JavaScript变量命名规则"><a href="#29-JavaScript变量命名规则" class="headerlink" title="29 JavaScript变量命名规则"></a>29 JavaScript变量命名规则</h1><h2 id="一、任务目标"><a href="#一、任务目标" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中变量的命名规则</strong></p>
+<h2 id="二、任务背景"><a href="#二、任务背景" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>某位大牛曾说：计算机科学领域有两个难题：一个是缓存失效，另一个就是命名。这里说到的命名不仅是要符合语法层面的规则，还要符合工程层面的规范。如果变量的命名不符合语法层面的规则，那么程序就会报错；如果变量的命名不符合工程规范，将会影响项目的开发与后续的维护。</p>
+<h2 id="三、任务内容"><a href="#三、任务内容" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、语法层面"><a href="#1、语法层面" class="headerlink" title="1、语法层面"></a>1、语法层面</h3><h4 id="1-1-变量名不能以数字或者某些特殊字符开头"><a href="#1-1-变量名不能以数字或者某些特殊字符开头" class="headerlink" title="1.1 变量名不能以数字或者某些特殊字符开头"></a>1.1 变量名不能以数字或者某些特殊字符开头</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> </span><br><span class="line">1a </span><br><span class="line">*a </span><br><span class="line">(a </span><br><span class="line">%a </span><br><span class="line">&lt;r</span><br><span class="line"><span class="comment">// 以上都是非法的变量名，会直接报错</span></span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E7%99%BD%E8%8A%B1%E8%8D%89%E6%9C%A8%E6%A8%A8%E7%9A%84%E7%A7%8D%E6%A4%8D%E6%B5%81%E7%A8%8B/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/photo.jpg">
-      <meta itemprop="name" content="张蔡斌">
-      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
-    </span>
+<h4 id="1-2-变量名不能是关键字"><a href="#1-2-变量名不能是关键字" class="headerlink" title="1.2 变量名不能是关键字"></a>1.2 变量名不能是关键字</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> </span><br><span class="line"><span class="keyword">if</span> </span><br><span class="line"><span class="keyword">for</span> </span><br><span class="line"><span class="comment">// 以上都是非法的变量名，会直接报错</span></span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="劲草笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/13/%E7%99%BD%E8%8A%B1%E8%8D%89%E6%9C%A8%E6%A8%A8%E7%9A%84%E7%A7%8D%E6%A4%8D%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">白花草木樨的种植流程</a>
-        </h2>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-12-13 21:56:44 / 修改时间：23:21:43" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
-                </span>
-            </span>
+<h3 id="2、工程层面"><a href="#2、工程层面" class="headerlink" title="2、工程层面"></a>2、工程层面</h3><ul>
+<li>一般应当坚持使用拉丁字符(0-9,a-z,A-Z)和下划线字符。</li>
+<li>不应当使用规则之外的其他字符，因为它们可能引发错误，或对国际用户来说难以理解。</li>
+<li>变量名不要以下划线开头—— 以下划线开头的被某些JavaScript设计为特殊的含义，因此可能让人迷惑。</li>
+<li>变量名不要以数字开头。这种行为是不被允许的，并且将引发一个错误。</li>
+<li>一个可靠的命名约定叫做 “小写驼峰命名法”，用来将多个单词组在一起，小写整个命名的第一个字母然后大写剩下单词的首字符。</li>
+<li>让变量名直观，它们描述了所包含的数据。不要只使用单一的字母/数字，或者长句。</li>
+<li>变量名大小写敏感</li>
+<li>最后也是最重要的一点—— 你应当避免使用JavaScript的保留字给变量命名。保留字，即是组成JavaScript的实际语法的单词！因此诸如 var, function, let和 for等，都不能被作为变量名使用。浏览器将把它们识别为不同的代码项，因此你将得到错误。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下是一些好的命名，不仅不会报错，还便于理解 </span></span><br><span class="line">age </span><br><span class="line">myAge </span><br><span class="line">init </span><br><span class="line">finalOutputValue </span><br><span class="line">audio1 </span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是一些不好的命名，有些会报错，有些不便于理解 </span></span><br><span class="line"><span class="number">1</span> </span><br><span class="line">a </span><br><span class="line">_12 </span><br><span class="line">MYAGE</span><br><span class="line"><span class="keyword">var</span> </span><br><span class="line">Document </span><br><span class="line">skjfndskjfnbdskjfb </span><br></pre></td></tr></table></figure>
 
-          
 
-        </div>
-      </header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<h1 id="30-逻辑运算"><a href="#30-逻辑运算" class="headerlink" title="30 逻辑运算"></a>30 逻辑运算</h1><h2 id="一、任务目标-1"><a href="#一、任务目标-1" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解与灵活运用JavaScript的比较运算符</strong></p>
+<p><strong>理解与灵活使用JavaScript的逻辑运算符</strong></p>
+<h2 id="二、任务背景-1"><a href="#二、任务背景-1" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>JavaScript比较运算符在逻辑语句中使用，以判定变量或值是否相等，返回true 或 false；逻辑运算符用于判定变量或值之间的逻辑。</p>
+<h2 id="三、任务内容-1"><a href="#三、任务内容-1" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、比较运算符"><a href="#1、比较运算符" class="headerlink" title="1、比较运算符"></a>1、比较运算符</h3><blockquote>
+<p>我们假定 num = 5，下表中解释了比较运算符：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==</td>
+<td>等于</td>
+<td>num == 6</td>
+<td>false</td>
+</tr>
+<tr>
+<td>===</td>
+<td>值相等且类型相等</td>
+<td>num === “5”</td>
+<td>false</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+<td>num != 7</td>
+<td>true</td>
+</tr>
+<tr>
+<td>!==</td>
+<td>值不相等或类型不相等</td>
+<td>num !== 5</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>num &gt; 9</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>num &lt; 9</td>
+<td>true</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于或等于</td>
+<td>num &gt;= 8</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于或等于</td>
+<td>num &lt;= 7</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<h3 id="2、逻辑运算符"><a href="#2、逻辑运算符" class="headerlink" title="2、逻辑运算符"></a>2、逻辑运算符</h3><blockquote>
+<p>我们假定num = 5，下表中解释了逻辑运算符：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&amp;&amp;</code></td>
+<td>与</td>
+<td>（num%2==1 &amp;&amp; num&gt;1)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>||</td>
+<td>或</td>
+<td>(num%2==0 || num&gt;1)</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>非</td>
+<td>!(num%2==0)</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<h3 id="3、知识拓展"><a href="#3、知识拓展" class="headerlink" title="3、知识拓展"></a>3、知识拓展</h3><p>比较运算和逻辑运算大概率情况下都会配合【条件分支】(if 、三元运算、switch等)结合使用</p>
+<h3 id="4、示例"><a href="#4、示例" class="headerlink" title="4、示例"></a>4、示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">8</span></span><br><span class="line"><span class="keyword">if</span>(age &gt;= <span class="number">60</span> || age &lt;=<span class="number">12</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;老人与儿童可以免票&quot;</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;您请购买全票&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-          <p>白花草木樨的种植流程</p>
-<h2 id="1-种子发胀"><a href="#1-种子发胀" class="headerlink" title="1 种子发胀"></a>1 种子发胀</h2><p>①将种子磨好，NaClO3灭菌,H2SO4破硬实，均匀平铺至琼脂培养基。</p>
-<p>②放至-4度冰箱进行春化，使萌发程度一致。</p>
-<p>③待种子露出白芽。</p>
-<h2 id="2-水培法"><a href="#2-水培法" class="headerlink" title="2 水培法"></a>2 水培法</h2><p>①将水培盒进行完全的清洗，酒精消毒后，洗去酒精，或灭菌锅内120度灭菌。</p>
-<p>②在水培盒内平铺一层A4打印纸，湿润该A4纸，在A4打印纸上用镊子均匀戳洞（或用锡箔纸，可以有效防止水中出现绿藻）。</p>
-<p>③将种子（发胀后约2d）平铺至水培盒内A4纸上的孔洞。</p>
-<p>④加水至刚好沁湿润A4纸的水位（另可以在盒盖上喷水，以保证A4纸始终保持湿润）。</p>
-<p>⑤此后将水位保持在与根冠位置齐平处，以利于发根。</p>
-<h2 id="3-土培法"><a href="#3-土培法" class="headerlink" title="3 土培法"></a>3 土培法</h2><p>①准备材料：A花盆数:30个，9cmX9cmX11cm，B大托盘2个，50cmX35cmX4cm，C草碳土:约15L,D君子兰营养土：约5L，E黄金蛭石：约5L,F电子天平，G烘箱，H灭菌锅，I水壶，J筛子，K大盆，L滤纸（按花盆底裁好，30个）,M移液枪头1个</p>
-<p>②首先对各项材料进行灭菌，花盆如若为旧的，宜放至灭菌锅120度灭菌。大托盘宜喷酒精消毒后洗干净。</p>
-<p>③拌土，首先用2mm筛子筛草炭土（仔细揉搓），蛭石宜用更细孔径筛子，君子兰营养土同草炭土孔径，注意草炭土：营养土：蛭石=3:1:1，其中营养土可不加，比例为草炭土：蛭石=3:1，加入至大盆内进行搅拌后备用。</p>
-<p>④烘土，将拌好的土放至烘箱在120度下进行烘干。</p>
-<p>⑤将烘好的土加入花盆，注意花盆内垫好滤纸。将垫好滤纸的花盆放在天平上进行去皮操作，往花盆内加土，加至花盆一半时，进行压实，而后再加土，不在压实（利于植物向下生长）。当花盆加好土后放至天平称重，本方法统一为115g（一般干旱实验需统一每个花盆土的重量）。</p>
-<p>④当所有土加好后，将花盆防至托盘内。在托盘内加水至托盘口下1cm处。</p>
-<p>⑤待表土侵湿后，可将种子播种入花盆。（若经过5h后仍未沁湿，先用镊子插入土壤，看内部土是否湿润，若已湿润，可在表层土上用水壶喷洒水以进行湿润）</p>
-<p>⑥用移液枪头，在每个花盆土表戳出4个约2cm深的洞，将种子播至距洞表约0.5cm处，后将土浅浅覆盖至种子上，不要压实！（本方法一个花盆播种4粒种子）</p>
-<p>⑦播种后，将托盘内的水全部倒出。</p>
-<h2 id="4-日常管理"><a href="#4-日常管理" class="headerlink" title="4 日常管理"></a>4 日常管理</h2>
+<p>【思路】</p>
+<blockquote>
+<p>已知预先给定age为8，判断条件为当age大于或等于60或者age小于或等于12时输出”老人与儿童可以免票”，否则”您请购买全票”</p>
+</blockquote>
+<h1 id="31-隐式类型转换"><a href="#31-隐式类型转换" class="headerlink" title="31 隐式类型转换"></a>31 隐式类型转换</h1><h2 id="一、任务目标-2"><a href="#一、任务目标-2" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握常见场景中隐式类型转换的规律</strong></p>
+<h2 id="二、任务背景-2"><a href="#二、任务背景-2" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>每一个变量或者值都有其对应的类型，在JavaScript中如Number、String、Boolean、Array、Object等。在强类型的语言中，不同类型的变量或值之间不能进行运算；在弱类型的语言中，不同类型的变量或值可进行一些运算，这主要是因为解释器做了隐式类型转换的工作。</p>
+<h2 id="三、任务内容-2"><a href="#三、任务内容-2" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、字符串和数字的运算"><a href="#1、字符串和数字的运算" class="headerlink" title="1、字符串和数字的运算"></a>1、字符串和数字的运算</h3><h4 id="1-1-字符串和数字进行加运算时，会将数字转换成字符串，然后和另一个字符串进行拼接"><a href="#1-1-字符串和数字进行加运算时，会将数字转换成字符串，然后和另一个字符串进行拼接" class="headerlink" title="1.1 字符串和数字进行加运算时，会将数字转换成字符串，然后和另一个字符串进行拼接"></a>1.1 字符串和数字进行加运算时，会将数字转换成字符串，然后和另一个字符串进行拼接</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="string">&#x27;123&#x27;</span> </span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">12</span> </span><br><span class="line"><span class="keyword">var</span> num3 = num1 + num2 </span><br><span class="line"><span class="built_in">console</span>.log(num3) <span class="comment">// 预期输出：&#x27;12312&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-字符串和数字进行减、乘、除运算，以及大小比较时，会将字符串转换成数字，再和另一个数字进行运算或比较"><a href="#1-2-字符串和数字进行减、乘、除运算，以及大小比较时，会将字符串转换成数字，再和另一个数字进行运算或比较" class="headerlink" title="1.2 字符串和数字进行减、乘、除运算，以及大小比较时，会将字符串转换成数字，再和另一个数字进行运算或比较"></a>1.2 字符串和数字进行减、乘、除运算，以及大小比较时，会将字符串转换成数字，再和另一个数字进行运算或比较</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="string">&#x27;123&#x27;</span> </span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">12</span> </span><br><span class="line"><span class="keyword">var</span> num3 = num1 - num2 </span><br><span class="line"><span class="built_in">console</span>.log(num3) <span class="comment">// 预期输出：111 </span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="string">&#x27;123&#x27;</span> </span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">12</span> </span><br><span class="line"><span class="keyword">var</span> num3 = num1 * num2 </span><br><span class="line"><span class="built_in">console</span>.log(num3) <span class="comment">// 预期输出：1476 </span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="string">&#x27;123&#x27;</span> </span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">12</span> </span><br><span class="line"><span class="keyword">var</span> num3 = num1 / num2 </span><br><span class="line"><span class="built_in">console</span>.log(num3) <span class="comment">// 预期输出：10.25 </span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="string">&#x27;123&#x27;</span> </span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">15</span> </span><br><span class="line"><span class="keyword">var</span> t = num1 &gt; num2 </span><br><span class="line"><span class="built_in">console</span>.log(t) <span class="comment">// 预期输出：true </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、各种值转换成布尔值"><a href="#2、各种值转换成布尔值" class="headerlink" title="2、各种值转换成布尔值"></a>2、各种值转换成布尔值</h3><h4 id="2-1-数字0，空字符串””，null，undefined-转成布尔值的时候都是false"><a href="#2-1-数字0，空字符串””，null，undefined-转成布尔值的时候都是false" class="headerlink" title="2.1 数字0，空字符串””，null，undefined 转成布尔值的时候都是false"></a>2.1 数字0，空字符串””，null，undefined 转成布尔值的时候都是false</h4><h4 id="2-2-非0数字，非空字符串转成布尔值的时候都是true"><a href="#2-2-非0数字，非空字符串转成布尔值的时候都是true" class="headerlink" title="2.2 非0数字，非空字符串转成布尔值的时候都是true"></a>2.2 非0数字，非空字符串转成布尔值的时候都是true</h4><h4 id="2-3-任何数组（即使是空数组），任何对象（即使是空对象）-转成布尔值的时候都是true"><a href="#2-3-任何数组（即使是空数组），任何对象（即使是空对象）-转成布尔值的时候都是true" class="headerlink" title="2.3 任何数组（即使是空数组），任何对象（即使是空对象） 转成布尔值的时候都是true"></a>2.3 任何数组（即使是空数组），任何对象（即使是空对象） 转成布尔值的时候都是true</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span> </span><br><span class="line"><span class="keyword">if</span> (a) &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>) </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;world&#x27;</span>) </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 当a=0或&quot;&quot;或null或undefined的时候，预期输出：world </span></span><br><span class="line"><span class="comment">// 当a=[]或空对象的时候，预期输出：hello </span></span><br><span class="line"><span class="comment">// 当a=-1或&quot;abc&quot;时候，预期输出：hello</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="32-条件分支"><a href="#32-条件分支" class="headerlink" title="32 条件分支"></a>32 条件分支</h1><h2 id="一、任务目标-3"><a href="#一、任务目标-3" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握if分支</strong></p>
+<p><strong>理解并掌握switch分支</strong></p>
+<h2 id="二、任务背景-3"><a href="#二、任务背景-3" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>条件分支是编程语言必备的流程控制之一。它能根据所给定值或表达式的真假来运行不同区块的代码。日常编码中，不可避免的要使用到它。</p>
+<h2 id="三、任务内容-3"><a href="#三、任务内容-3" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、if分支"><a href="#1、if分支" class="headerlink" title="1、if分支"></a>1、if分支</h3><h4 id="1-1-基本语法结构"><a href="#1-1-基本语法结构" class="headerlink" title="1.1 基本语法结构"></a>1.1 基本语法结构</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件<span class="number">1</span>) &#123; </span><br><span class="line">    <span class="comment">// 代码块1 </span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件<span class="number">2</span>) &#123; </span><br><span class="line">    <span class="comment">// 代码块2 </span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="comment">// 代码块3 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-说明"><a href="#1-2-说明" class="headerlink" title="1.2 说明"></a>1.2 说明</h4><ul>
+<li><p>如果条件1为真就会执行代码块1。即使条件2为真也不会去执行代码块2，更不会执行代码块3</p>
+</li>
+<li><p>只有当条件1为假，并且条件2为真的时候，才会执行代码块2</p>
+</li>
+<li><p>如果条件1和条件2都为假，才会执行代码块3</p>
+</li>
+<li><p>else if 和 else 部分不是必需的。</p>
+</li>
+<li><p>可以有多个else if</p>
+</li>
+</ul>
+<h4 id="1-3-示例"><a href="#1-3-示例" class="headerlink" title="1.3 示例"></a>1.3 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">20</span> </span><br><span class="line"><span class="keyword">if</span> (x &gt; <span class="number">5</span>) &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;a&#x27;</span>) </span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; <span class="number">50</span>) &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;b&#x27;</span>) </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;c&#x27;</span>) </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 如果x=20，上述代码预期输出：&#x27;a&#x27; </span></span><br><span class="line"><span class="comment">// 如果x=100，上述代码预期输出也是：&#x27;a&#x27; </span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、switch分支"><a href="#2、switch分支" class="headerlink" title="2、switch分支"></a>2、switch分支</h3><h4 id="2-1-基本语法结果"><a href="#2-1-基本语法结果" class="headerlink" title="2.1 基本语法结果"></a>2.1 基本语法结果</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (expression) &#123; </span><br><span class="line">    <span class="keyword">case</span> value1: </span><br><span class="line">        <span class="comment">// 当 expression 的结果与 value1 匹配时，执行此处语句 	</span></span><br><span class="line">        [<span class="keyword">break</span>;] </span><br><span class="line">    <span class="keyword">case</span> value2: </span><br><span class="line">        <span class="comment">// 当 expression 的结果与 value2 匹配时，执行此处语句 	</span></span><br><span class="line">        [<span class="keyword">break</span>;] </span><br><span class="line">    ... </span><br><span class="line">    <span class="keyword">case</span> valueN: </span><br><span class="line">        <span class="comment">// 当 expression 的结果与 valueN 匹配时，执行此处语句 	</span></span><br><span class="line">        [<span class="keyword">break</span>;] </span><br><span class="line">    [<span class="keyword">default</span>: </span><br><span class="line">        <span class="comment">// 如果 expression 与上面的 value 值都不匹配，执行此处语句 </span></span><br><span class="line">        [<span class="keyword">break</span>;]] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h4><ul>
+<li>[]表示这一部分语句是可选的，并不是说正常代码中要加[]</li>
+<li>expression和value的是进行严格模式的匹配</li>
+<li>如果所有case都没有匹配到，将执行default分支的代码</li>
+</ul>
+<h3 id="2-3-示例"><a href="#2-3-示例" class="headerlink" title="2.3 示例"></a>2.3 示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expr = <span class="string">&#x27;樱桃&#x27;</span> </span><br><span class="line"><span class="keyword">switch</span> (expr) &#123; </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;樱桃&#x27;</span>: </span><br><span class="line">        <span class="comment">// 代码块1</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;樱桃每斤7元&#x27;</span>); </span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;芒果&#x27;</span>: </span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;木瓜&#x27;</span>: </span><br><span class="line">        <span class="comment">// 代码块2</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;芒果 和 木瓜 每斤10元&#x27;</span>); </span><br><span class="line">        <span class="keyword">break</span>; </span><br><span class="line">    <span class="keyword">default</span>: </span><br><span class="line">        <span class="comment">// 代码块3</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;对不起，我们没有 &#x27;</span> + expr + <span class="string">&#x27;.&#x27;</span>); </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// 如果expr值为&#x27;樱桃&#x27;，则预期输出：&#x27;樱桃每斤7元&#x27; </span></span><br><span class="line"><span class="comment">// 当expr的值为&#x27;樱桃&#x27;时就会执行代码块1，且代码块1中有break，所有不会执行其他代码块 </span></span><br><span class="line"><span class="comment">// 注意：如果expr匹配到某一个case，且这个case里面代码没有break，那么执行完这个代码块后，紧接着就会执行下一个case的代码，不管expr有没有匹配到下一个case的值 </span></span><br><span class="line"><span class="comment">// 所以当expr的值为&#x27;芒果&#x27;的时候，代码块2也将被执行</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="33-For循环"><a href="#33-For循环" class="headerlink" title="33 For循环"></a>33 For循环</h1><h2 id="一、任务目标-4"><a href="#一、任务目标-4" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解JavaScript的for循环代码结构</strong></p>
+<p><strong>理解JavaScript的for循环对数字、数组、对象的操作</strong></p>
+<p><strong>掌握JavaScript的for循环的迭代器递增、递减的操作</strong></p>
+<h2 id="二、任务背景-4"><a href="#二、任务背景-4" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>当我们在编写代码的时候，假如您需要运行代码多次，且每次使用不同的值，那么循环相当方便使用。</p>
+<h2 id="三、任务内容-4"><a href="#三、任务内容-4" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、for循环的使用方法"><a href="#1、for循环的使用方法" class="headerlink" title="1、for循环的使用方法"></a>1、for循环的使用方法</h3><ul>
+<li>for：多次遍历代码块</li>
+<li>for/in：遍历对象属性</li>
+</ul>
+<h3 id="2、使用示例"><a href="#2、使用示例" class="headerlink" title="2、使用示例"></a>2、使用示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (语句 <span class="number">1</span>; 语句 <span class="number">2</span>; 语句 <span class="number">3</span>) &#123;</span><br><span class="line">    要执行的代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-for循环是您希望创建循环时经常使用的语法结构，代码结构如下："><a href="#2-1-for循环是您希望创建循环时经常使用的语法结构，代码结构如下：" class="headerlink" title="2.1 for循环是您希望创建循环时经常使用的语法结构，代码结构如下："></a>2.1 for循环是您希望创建循环时经常使用的语法结构，代码结构如下：</h4><ul>
+<li>语句 1 在循环（代码块）开始之前执行。</li>
+<li>语句 2 定义运行循环（代码块）的条件。</li>
+<li>语句 3 会在循环（代码块）每次被执行后执行。</li>
+</ul>
+<h4 id="2-2-for循环代码实例一（普通遍历）："><a href="#2-2-for循环代码实例一（普通遍历）：" class="headerlink" title="2.2 for循环代码实例一（普通遍历）："></a>2.2 for循环代码实例一（普通遍历）：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i+=<span class="number">2</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果</span></span><br><span class="line"><span class="number">0</span> <span class="number">2</span> <span class="number">4</span> <span class="number">6</span> <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>语句1在循环之前设置一个变量(var i = 0),从0开始遍历</li>
+<li>语句2定义运行循环的条件(i必须小于10)，当i = 10的时候不满足循环条件</li>
+<li>语句3会在代码块每次执行之后对变量值i进行递增(i++)</li>
+<li>语句3 (i+=2) 相当于每次循环迭代器i+2，也可以这么写（i=i+2）</li>
+</ul>
+<h4 id="2-3-for循环代码实例二（数组遍历）："><a href="#2-3-for循环代码实例二（数组遍历）：" class="headerlink" title="2.3 for循环代码实例二（数组遍历）："></a>2.3 for循环代码实例二（数组遍历）：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arr[i])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果</span></span><br><span class="line"><span class="number">11</span> <span class="number">22</span> <span class="number">33</span> <span class="number">44</span> <span class="number">55</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>语句1在循环之前设置一个变量(var i = 0),从0开始遍历(数组下标从0开始)</li>
+<li>语句2定义运行循环的条件(i必须小于arr的数组长度)，当arr下标正好是0-3，4的时候不满足循环要求</li>
+<li>语句3会在代码块每次执行之后对变量值i进行递增(i++)从arr[0]-arr[3]</li>
+</ul>
+<h4 id="2-4-for循环代码实例三（对象遍历）："><a href="#2-4-for循环代码实例三（对象遍历）：" class="headerlink" title="2.4 for循环代码实例三（对象遍历）："></a>2.4 for循环代码实例三（对象遍历）：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>:<span class="string">&quot;tom&quot;</span>, <span class="attr">gender</span>:<span class="string">&quot;man&quot;</span>, <span class="attr">age</span>:<span class="number">32</span>&#125; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="comment">// 打印键</span></span><br><span class="line">    <span class="built_in">console</span>.log(key)</span><br><span class="line">    <span class="comment">// 打印值</span></span><br><span class="line">    <span class="built_in">console</span>.log(obj[key])</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 执行结果</span></span><br><span class="line">name</span><br><span class="line">tom</span><br><span class="line">gender</span><br><span class="line">man</span><br><span class="line">age</span><br><span class="line"><span class="number">32</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>JavaScript提供了一种特殊的循环（也就是for .. in循环），用来迭代对象的属性或数组的每个元素，for…in循环中的循环计数器是字符串，而不是数字。它包含当前属性的名称或当前数组元素的索引</p>
+<h1 id="34-Math内置对象"><a href="#34-Math内置对象" class="headerlink" title="34 Math内置对象"></a>34 Math内置对象</h1><h2 id="一、任务目标-5"><a href="#一、任务目标-5" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解与灵活运用JavaScript的Math对象的常用方法</strong></p>
+<h2 id="二、任务背景-5"><a href="#二、任务背景-5" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>Math对象的作用是：执行常见的算数任务。保存数学公式和信息，与我们在JavaScript直接编写计算功能相比，Math对象提供的计算功能执行起来要快得多。</p>
+<h2 id="三、任务内容-5"><a href="#三、任务内容-5" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、Math对象的常用方法："><a href="#1、Math对象的常用方法：" class="headerlink" title="1、Math对象的常用方法："></a>1、Math对象的常用方法：</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>作用</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>max()</td>
+<td>用于确定一组数值中的最大值</td>
+<td>Math.max(11,3,17,6)</td>
+<td>17</td>
+</tr>
+<tr>
+<td>min()</td>
+<td>用于确定一组数值中的最小值</td>
+<td>Math.min(11,3,17,6)</td>
+<td>3</td>
+</tr>
+<tr>
+<td>ceil()</td>
+<td>执行向上取整，即它总是将数值向上取整为最接近的整数</td>
+<td>Math.ceil(25.1)</td>
+<td>26</td>
+</tr>
+<tr>
+<td>floor()</td>
+<td>执行向下取整，即它总是将数值向下取整为最接近的整数</td>
+<td>Math.floor(25.8)</td>
+<td>25</td>
+</tr>
+<tr>
+<td>round()</td>
+<td>执行标准取整，即它总是将数值四舍五入为最接近的整数</td>
+<td>Math.round(25.8)</td>
+<td>26</td>
+</tr>
+<tr>
+<td>random()</td>
+<td>该方法返回介于 0 到 1 之间一个随机小数，包括 0 和不包含 1</td>
+<td>Math.random()</td>
+<td>例如0.3123868992708143</td>
+</tr>
+<tr>
+<td>abs()</td>
+<td>该方法返回参数的绝对值</td>
+<td>Math.abs(-9)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>sqrt()</td>
+<td>该方法返回参数的平方根</td>
+<td>Math.sqrt(49)</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<h4 id="2、实例一"><a href="#2、实例一" class="headerlink" title="2、实例一"></a>2、实例一</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 要想以下JavaScript代码符合预期，空格处应该填什么？</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">Math</span>._____(-<span class="number">120.38</span>)</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line">预期输出结果：</span><br><span class="line">-<span class="number">121</span></span><br></pre></td></tr></table></figure>
+
+<p>【思路】</p>
+<ul>
+<li>给出的数值-120.38 ，预期结果-121，说明是向下取整</li>
+<li>Math.floor() 正是向下取整</li>
+</ul>
+<h4 id="3、组合实例"><a href="#3、组合实例" class="headerlink" title="3、组合实例"></a>3、组合实例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取一个10-50的随机整数</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">40</span>)+<span class="number">10</span></span><br><span class="line"><span class="built_in">Math</span>.random()*<span class="number">40</span> <span class="comment">//获取40以内的随机数（当前还是浮点数）</span></span><br></pre></td></tr></table></figure>
+
+<p>【思路】</p>
+<ul>
+<li>Math.random()*40；为获取一个40以内的随机数（浮点数）</li>
+<li>Math.floor(Math.random()*40)；将这个浮点数舍1取整</li>
+<li>在最后加10则不管随机数是最小数还是最大数，都满足要求10-50</li>
+</ul>
+<h1 id="35-对象属性"><a href="#35-对象属性" class="headerlink" title="35 对象属性"></a>35 对象属性</h1><h2 id="一、任务目标-6"><a href="#一、任务目标-6" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中如何查询对象的属性</strong></p>
+<p><strong>理解并掌握JavaScript中如何添加对象的属性</strong></p>
+<p><strong>理解并掌握JavaScript中使用for-in遍历对象属性</strong></p>
+<h2 id="二、任务背景-6"><a href="#二、任务背景-6" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>对象属性指的是与JavaScript对象相关的值。JavaScript对象是无序属性的集合。属性通常可以被修改、添加和删除，但是某些属性是只读的。</p>
+<h2 id="三、任务内容-6"><a href="#三、任务内容-6" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、对象定义-以下操作都基于这个对象"><a href="#1、对象定义-以下操作都基于这个对象" class="headerlink" title="1、对象定义(以下操作都基于这个对象)"></a>1、对象定义(以下操作都基于这个对象)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个对象</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">&quot;李明&quot;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">gender</span>: <span class="string">&quot;man&quot;</span>, <span class="attr">city</span>: <span class="string">&quot;山东&quot;</span>, <span class="attr">hobby</span>: <span class="string">&quot;游泳&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、访问对象属性的语法"><a href="#2、访问对象属性的语法" class="headerlink" title="2、访问对象属性的语法"></a>2、访问对象属性的语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 访问对象属性方式一</span></span><br><span class="line">obj.name</span><br><span class="line"><span class="comment">// 访问对象属性方式二</span></span><br><span class="line">obj[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line"><span class="comment">// 访问对象属性方式三</span></span><br><span class="line"><span class="comment">// 将对象属性赋值给一个变量，使用变量方式访问</span></span><br><span class="line"><span class="keyword">var</span> key = <span class="string">&#x27;name&#x27;</span></span><br><span class="line">obj[key]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、添加对象的属性语法"><a href="#3、添加对象的属性语法" class="headerlink" title="3、添加对象的属性语法"></a>3、添加对象的属性语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加一个属性方式一</span></span><br><span class="line">obj.nickName = <span class="string">&quot;小明&quot;</span></span><br><span class="line"><span class="comment">// 添加一个属性方式二</span></span><br><span class="line">obj[<span class="string">&quot;nickName&quot;</span>] = <span class="string">&quot;小明&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br><span class="line"><span class="comment">// &#123;name: &#x27;李明&#x27;, age: 19, gender: &#x27;man&#x27;, city: &#x27;山东&#x27;, hobby: &#x27;游泳&#x27;, nickName: &quot;小明&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、修改对象的属性语法"><a href="#4、修改对象的属性语法" class="headerlink" title="4、修改对象的属性语法"></a>4、修改对象的属性语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改一个属性方式一</span></span><br><span class="line">obj.age = <span class="number">19</span></span><br><span class="line"><span class="comment">// 修改一个属性方式二</span></span><br><span class="line">obj[<span class="string">&quot;age&quot;</span>] = <span class="number">19</span></span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br><span class="line"><span class="comment">// &#123; name: &#x27;李明&#x27;, age: 19, gender: &#x27;man&#x27;, city: &#x27;山东&#x27;, hobby: &#x27;游泳&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5、删除对象的属性语法"><a href="#5、删除对象的属性语法" class="headerlink" title="5、删除对象的属性语法"></a>5、删除对象的属性语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除一个属性</span></span><br><span class="line"><span class="keyword">delete</span> obj.age</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br><span class="line"><span class="comment">// &#123;name:&#x27;李明&#x27;, gender: &#x27;man&#x27;, city: &#x27;山东&#x27;, hobby: &#x27;游泳&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6、for循环遍历对象属性的语法"><a href="#6、for循环遍历对象属性的语法" class="headerlink" title="6、for循环遍历对象属性的语法"></a>6、for循环遍历对象属性的语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for循环遍历对象，需要使用for ... in</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key)</span><br><span class="line">    <span class="built_in">console</span>.log(obj[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="36-函数定义与调用"><a href="#36-函数定义与调用" class="headerlink" title="36 函数定义与调用"></a>36 函数定义与调用</h1><h2 id="一、任务目标-7"><a href="#一、任务目标-7" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中函数的定义的两种方式：声明式，表达式式</strong></p>
+<p><strong>理解并掌握JavaScript中函数的调用</strong></p>
+<h2 id="二、任务背景-7"><a href="#二、任务背景-7" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>我们可以把一系列的代码封装成一个函数，然后在任意位置去调用它，从而执行这一系列的代码。使用函数是一种简单直观的复用代码的方式。合理的定义和使用函数能使得我们的代码结构更加清晰、更便于阅读和维护。</p>
+<h2 id="三、任务内容-7"><a href="#三、任务内容-7" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、通过声明来定义函数"><a href="#1、通过声明来定义函数" class="headerlink" title="1、通过声明来定义函数"></a>1、通过声明来定义函数</h3><h4 id="1-1-function关键字"><a href="#1-1-function关键字" class="headerlink" title="1.1 function关键字"></a>1.1 function关键字</h4><blockquote>
+<p>我们可以使用function关键字来定义一个具有名称的函数，其语法结构如下</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">[param[, param[, ... param]]]</span>) </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    [statements] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-说明-1"><a href="#1-2-说明-1" class="headerlink" title="1.2 说明"></a>1.2 说明</h4><ul>
+<li>[]表示可选，并不是正常代码中需要使用[]</li>
+<li>name表示函数名，()中的表示参数，{}中的表示函数体。在函数被调用的时候，会执行函数体中的代码。</li>
+<li>注意：函数被定义的时候，函数体中的代码并不会被执行。只有到函数被调用的时候，函数体中的代码才会被执行。</li>
+<li>对于使用函数声明这个方法定义的函数，函数调用可以在函数定义之前，如示例中的pri函数。</li>
+</ul>
+<h4 id="1-3-示例-1"><a href="#1-3-示例-1" class="headerlink" title="1.3 示例"></a>1.3 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pri(); <span class="comment">// 预期输出：&quot;foo&quot; </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pri</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;foo&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、通过表达式来定义函数"><a href="#2、通过表达式来定义函数" class="headerlink" title="2、通过表达式来定义函数"></a>2、通过表达式来定义函数</h3><h4 id="2-1-表达式定义法"><a href="#2-1-表达式定义法" class="headerlink" title="2.1 表达式定义法"></a>2.1 表达式定义法</h4><blockquote>
+<p>我们还可以使用函数表达式的方式来定义一个函数，这时可以将函数直接赋值给一个变量，其语法结构如下</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunction = <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">[param[, param[, ... param]]]</span>) </span>&#123; </span><br><span class="line">    statements </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2-说明-1"><a href="#2-2-说明-1" class="headerlink" title="2.2 说明"></a>2.2 说明</h4><ul>
+<li>[]表示可选，并不是正常代码中需要使用[]</li>
+<li>name表示函数名，可以省略，()中的表示参数，{}中的表示函数体。在函数被调用的时候，会执行函数体中的代码。</li>
+<li>注意：函数被定义的时候，函数体中的代码并不会被执行。只有到函数被调用的时候，函数体中的代码才会被执行。</li>
+<li>对于使用函数表达式这个方法定义的函数，函数调用必须在函数定义之后。</li>
+<li>如果省略name，我们称该函数为匿名函数。</li>
+</ul>
+<h4 id="2-3-示例-1"><a href="#2-3-示例-1" class="headerlink" title="2.3 示例"></a>2.3 示例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunction = <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="comment">// statements </span></span><br><span class="line">&#125; </span><br><span class="line">myFunction() </span><br><span class="line">foo() <span class="comment">// 会报错，并不能调用成功。命名函数表达式的好处是当我们遇到错误时，堆栈跟踪会显示函数名，容易寻找错误。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、函数调用"><a href="#3、函数调用" class="headerlink" title="3、函数调用"></a>3、函数调用</h3><ul>
+<li>对于使用函数声明的方法定义的函数，可以使用函数名加括号的方式来调用；对于使用函数表达式定义的函数，可以使用表达式所赋值的变量名加括号来调用。如上述代码所示。</li>
+<li>在函数被执行的时候，会运行函数体中的代码。如果函数体中有return语句，则会在函数被调用处返回return出来的值，并结束函数的运行。return并不是必需的，没有return的话，函数会返回undefined。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add1</span>(<span class="params">a, b</span>) </span>&#123; </span><br><span class="line">   <span class="keyword">return</span> a + b; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> res = add1(<span class="number">4</span>, <span class="number">5</span>) </span><br><span class="line"><span class="built_in">console</span>.log(res) <span class="comment">// 预期输出：9 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add2</span>(<span class="params">a, b</span>) </span>&#123; </span><br><span class="line">   a + b; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> res = add2(<span class="number">4</span>, <span class="number">5</span>) </span><br><span class="line"><span class="built_in">console</span>.log(res) <span class="comment">// 预期输出：undefined </span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数在调用的时候，会将调用时给定的参数和定义时设定的参数依次绑定。如果调用时给定的参数个数不够，那么函数体中没有绑定的参数将被赋值为undefined</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a, b</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(b) </span><br><span class="line">&#125; </span><br><span class="line">foo(<span class="number">4</span>) <span class="comment">// 预期输出：undefined </span></span><br><span class="line">foo(<span class="number">4</span>,<span class="number">8</span>) <span class="comment">// 预期输出：8</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数在调用时可以接受一个函数作为参数，也可以返回一个函数作为返回值。这是函数的高阶用法，暂不涉及，可自行查阅。</li>
+</ul>
+<h1 id="37-常见内置函数"><a href="#37-常见内置函数" class="headerlink" title="37 常见内置函数"></a>37 常见内置函数</h1><h2 id="一、任务目标-8"><a href="#一、任务目标-8" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中常见的内置函数</strong></p>
+<h2 id="二、任务背景-8"><a href="#二、任务背景-8" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>JavaScript是一个基于原型链的面向对象的语言，很多其他语言常见的函数会以对象上的各种方法存在，例如数组对象的各种方法，字符串对象的各种方法等。即便如此，JavaScript还是有一些顶层的内置函数，了解这些常见的内置函数对我们进行JavaScript编码有很大的帮助。</p>
+<h2 id="三、任务内容-8"><a href="#三、任务内容-8" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、eval"><a href="#1、eval" class="headerlink" title="1、eval"></a>1、eval</h3><blockquote>
+<p>eval函数会将传入的字符串当做 JavaScript 代码进行执行。这是一个十分危险的函数，一般情况不建议使用。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">eval</span>(<span class="string">&quot;2+2&quot;</span>) </span><br><span class="line"><span class="built_in">console</span>.log(a) </span><br><span class="line"><span class="comment">// 预期输出：4 </span></span><br><span class="line"><span class="comment">// 这里eval把字符串&quot;2+2&quot;，当成js代码执行，得到结果4 </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">&quot;console.log(&#x27;hello world&#x27;)&quot;</span>) </span><br><span class="line"><span class="comment">// 预期输出：hello world </span></span><br><span class="line"><span class="comment">// 这里eval把字符串&quot;console.log(&#x27;hello world&#x27;)&quot;，当成js代码执行，打印输出：hello world</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、isNaN"><a href="#2、isNaN" class="headerlink" title="2、isNaN"></a>2、isNaN</h3><blockquote>
+<p>用来确定一个值是否为NaN。NaN表示不是一个数字。如果isNaN函数的参数不是Number类型， isNaN函数会首先尝试将这个参数转换为数值，然后才会对转换后的结果是否是NaN进行判断。因此，对于能被强制转换为有效的非NaN数值来说（空字符串和布尔值分别会被强制转换为数值0和1），返回false值也许会让人感觉莫名其妙。比如说，空字符串就明显“不是数值（not a number）”。这种怪异行为起源于：”不是数值（not a number）”在基于IEEE-754数值的浮点计算体制中代表了一种特定的含义。isNaN函数其实等同于回答了这样一个问题：被测试的值在被强制转换成数值时会不会返回IEEE-754中所谓的“不是数值（not a number）”。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="string">&#x27;abc&#x27;</span>) <span class="comment">// 返回值：true 因为字符串&#x27;abc&#x27;不是一个数字 </span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&#x27;12.23&#x27;</span>) <span class="comment">// 返回值：false 因为字符串&#x27;12.23&#x27;是一个数字 </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>);       <span class="comment">// true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">isNaN</span>(&#123;&#125;);        <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">true</span>);      <span class="comment">// false</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="literal">null</span>);      <span class="comment">// false</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="number">37</span>);        <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// strings</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;37&quot;</span>);      <span class="comment">// false: 可以被转换成数值37</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;37.37&quot;</span>);   <span class="comment">// false: 可以被转换成数值37.37</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;37,5&quot;</span>);    <span class="comment">// true</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&#x27;123ABC&#x27;</span>);  <span class="comment">// true:  parseInt(&quot;123ABC&quot;)的结果是 123, 但是Number(&quot;123ABC&quot;)结果是 NaN</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;&quot;</span>);        <span class="comment">// false: 空字符串被转换成0</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot; &quot;</span>);       <span class="comment">// false: 包含空格的字符串被转换成0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// dates</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="keyword">new</span> <span class="built_in">Date</span>());                <span class="comment">// false</span></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());     <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">&quot;blabla&quot;</span>)   <span class="comment">// true: &quot;blabla&quot;不能转换成数值</span></span><br><span class="line">                  <span class="comment">// 转换成数值失败， 返回NaN</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、parseFloat"><a href="#3、parseFloat" class="headerlink" title="3、parseFloat"></a>3、parseFloat</h3><blockquote>
+<p>根据给定的参数返回其对应的浮点数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>(<span class="number">3.14</span>); </span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27;3.14&#x27;</span>); </span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27; 3.14 &#x27;</span>); </span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27;314e-2&#x27;</span>); </span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27;0.0314E+2&#x27;</span>); </span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">&#x27;3.14some non-digit characters&#x27;</span>); </span><br><span class="line"><span class="comment">// 以上的返回值都是3.14</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、parseInt"><a href="#4、parseInt" class="headerlink" title="4、parseInt"></a>4、parseInt</h3><blockquote>
+<p>解析一个字符串并返回指定基数的十进制整数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;0xF&quot;</span>, <span class="number">16</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;F&quot;</span>, <span class="number">16</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;17&quot;</span>, <span class="number">8</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="number">021</span>, <span class="number">8</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;015&quot;</span>, <span class="number">10</span>); <span class="comment">// parseInt(015, 8); 返回 13 parseInt(15.99, 10); </span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;15,123&quot;</span>, <span class="number">10</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;FXX123&quot;</span>, <span class="number">16</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;1111&quot;</span>, <span class="number">2</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;15 * 3&quot;</span>, <span class="number">10</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;15e2&quot;</span>, <span class="number">10</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;15px&quot;</span>, <span class="number">10</span>); </span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&quot;12&quot;</span>, <span class="number">13</span>); <span class="comment">// 以上都返回15，第二个参数表示基数（可以理解为进制）</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="38-字符串定义与转义字符"><a href="#38-字符串定义与转义字符" class="headerlink" title="38 字符串定义与转义字符"></a>38 字符串定义与转义字符</h1><h2 id="一、任务目标-9"><a href="#一、任务目标-9" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中字符串的定义方法</strong></p>
+<p><strong>理解并掌握JavaScript中常见的特殊字符的转义方法</strong></p>
+<h2 id="二、任务背景-9"><a href="#二、任务背景-9" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>在各种编程语言中，字符串一直都是十分基础与重要的数据类型。在JavaScript中有多种定义字符串的方式，每种方式适合不同的应用场景。字符串中除了包含一般常见的字符外，可能还需要包含一些特殊字符（例如回车、制表符等），这时就需要转义字符的协助了。掌握字符串的常见定义方法，熟悉常见的特殊字符的转义方式，会提升我们的编码能力。</p>
+<h2 id="三、任务内容-9"><a href="#三、任务内容-9" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、使用引号来定义字符串"><a href="#1、使用引号来定义字符串" class="headerlink" title="1、使用引号来定义字符串"></a>1、使用引号来定义字符串</h3><blockquote>
+<p>我们可以使用一对单引号或者一对双引号来定义一个字符串</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;这是双引号定义的字符串&quot;</span> </span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&#x27;这是单引号定义的字符串&#x27;</span> </span><br><span class="line"><span class="comment">// 1. 在JavaScript中双引号定义的字符串和单引号定义的字符串没有本质区别 </span></span><br><span class="line"><span class="comment">// 2. 无论是单引号还是双引号，都必须配对使用，不能一个单引号和双引号配对 </span></span><br><span class="line"><span class="comment">// 3. 单引号中的字符串中不能出现单引号，可以出现双引号；双引号中的字符串中不能出现双引号，可以出现单引号</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>使用模板字符串的方式定义字符串：我们可以使用一对反引号来定义字符串(模板字符串内含调用参数) 变量的解析${}</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">`这是一个普通的字符串`</span> </span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">`这是一个换行的 </span></span><br><span class="line"><span class="string">字符串`</span> </span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span> </span><br><span class="line"><span class="keyword">var</span> b = <span class="number">3</span> </span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">`这是一个可以解析变量的字符串，例如：<span class="subst">$&#123;a + b&#125;</span>`</span> </span><br><span class="line"><span class="comment">// 最终str3的值为： </span></span><br><span class="line"><span class="comment">// 这是一个可以解析变量的字符串，例如：5</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、转义符"><a href="#2、转义符" class="headerlink" title="2、转义符"></a>2、转义符</h3><blockquote>
+<p>在定义一个字符串的时候，有些特殊字符并不适合直接出现。例如：换行符、单引号（不能出现在单引号内）、双引号（不能出现在双引号内），这个时候可以我们需要使用\转义符，例如：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&#x27;这是一个换行的\n字符串&#x27;</span> </span><br><span class="line"><span class="built_in">console</span>.log(str1) </span><br><span class="line"><span class="comment">// 预期输出： </span></span><br><span class="line"><span class="comment">// 这是一个换行的 </span></span><br><span class="line"><span class="comment">// 字符串 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这里使用了\n来代表换行符。如果直接在定义字符串的时候回车换行，将出现语法错误 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;如何使用双引号\&quot;&quot;</span> </span><br><span class="line"><span class="built_in">console</span>.log(str2) </span><br><span class="line"><span class="comment">// 预期输出： </span></span><br><span class="line"><span class="comment">// 如何使用双引号&quot; </span></span><br><span class="line"><span class="comment">// 在这里使用了\&quot;来代表双引号。如果在双引号定义的字符串中直接使用双引号，将出现语法错误。单引号同理。 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果使用模板字符串的方式定义字符串，可以直接使用回车换行。但是要在其中使用反引号`，也必须转义</span></span><br></pre></td></tr></table></figure>
+
+<p>单引号内加双引号并加转义字符，双引号正常显示，转义字符不显示，如同没加</p>
+<p>转义符本身也能被转义，转义后就被当成一个普通的反斜杠字符（<code>\</code>）使用，不再具有转义的效果了。</p>
+<p>var str = ‘\n这是为什么呢？”‘ console.log(str)</p>
+<p>\n  &#39;   &quot;  ` </p>
+<h1 id="39-字符串常见方法与属性"><a href="#39-字符串常见方法与属性" class="headerlink" title="39 字符串常见方法与属性"></a>39 字符串常见方法与属性</h1><h2 id="一、任务目标-10"><a href="#一、任务目标-10" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解与灵活运用JavaScript的String对象的常用属性</strong></p>
+<p><strong>理解与灵活使用JavaScript的String对象的常用方法</strong></p>
+<h2 id="二、任务背景-10"><a href="#二、任务背景-10" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>字符串在JavaScript中几乎无处不在，在你处理用户的输入数据的时候，在读取或设置DOM对象的属性时，在操作cookie时，当然还有更多。JavaScript的核心部分提供了一组属性和方法用于通用的字符串操作，如分割字符串，改变字符串的大小写，操作子字符串等。</p>
+<h2 id="三、任务内容-10"><a href="#三、任务内容-10" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、String对象属性"><a href="#1、String对象属性" class="headerlink" title="1、String对象属性"></a>1、String对象属性</h3><table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>作用</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>length</td>
+<td>获取字符串入的长度</td>
+<td>‘abcd’.length</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<h3 id="2、String对象的常用方法"><a href="#2、String对象的常用方法" class="headerlink" title="2、String对象的常用方法"></a>2、String对象的常用方法</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>作用</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>charAt()</td>
+<td>获取指定位置的字符</td>
+<td>‘abcd’.charAt(2)</td>
+<td>c</td>
+</tr>
+<tr>
+<td>indexOf()</td>
+<td>检索指定的字符串值在字符串中首次出现的位置</td>
+<td>‘abcd’.indexOf(‘a’)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>lastIndexOf()</td>
+<td>从后往前查询所要搜索的字符串在原字符串中第一次出现的位置（索引），找不到则返回-1</td>
+<td>‘abcdabc’.lastIndexOf(‘a’)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>search()</td>
+<td>检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串</td>
+<td>‘abcd’.search(‘c’)</td>
+<td>2</td>
+</tr>
+<tr>
+<td>match()</td>
+<td>字符串内检索指定的值，或找到一个或多个正则表达式的匹配</td>
+<td>‘abcdabc’.match(‘a’)</td>
+<td>[‘a’, index: 0, input: ‘abcdabc’]</td>
+</tr>
+<tr>
+<td>substring()</td>
+<td>字符串截取方法，它可以接收两个参数，分别是要截取的开始位置和结束位置，它将返回一个新的字符串（含首不含尾,且为正数ID）</td>
+<td>‘abcdabc’.substring(1, 4)</td>
+<td>bcd</td>
+</tr>
+<tr>
+<td>slice()</td>
+<td>与substring()方法非常类似，它传入的两个参数也分别对应着开始位置和结束位置。而区别在于，slice()中的参数可以为负值</td>
+<td>‘abcdabc’.slice(1, 4)</td>
+<td>bcd</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>用来进行字符串替换操作，它可以接收两个参数，前者为被替换的子字符串，后者为用来替换的文本</td>
+<td>‘abcd’.replace(‘a’, ‘A’)</td>
+<td>Abcd</td>
+</tr>
+<tr>
+<td>split()</td>
+<td>于把一个字符串分割成字符串数组</td>
+<td>‘abcd’.split(‘’)</td>
+<td>[‘a’, ‘b’, ‘c’, ‘d’]</td>
+</tr>
+<tr>
+<td>toLowerCase()</td>
+<td>可以把字符串中的大写字母转换为小写</td>
+<td>‘Abcd’.toLowerCase()</td>
+<td>abcd</td>
+</tr>
+<tr>
+<td>toUpperCase()</td>
+<td>可以把字符串中的小写字母转换为大写</td>
+<td>‘Abcd’.toUpperCase()</td>
+<td>ABCD</td>
+</tr>
+</tbody></table>
+<p>列表是正数 0，1，2，3 同时也是-4，-3，-2，-1</p>
+<p>字符串是反数3，2，1，0</p>
+<h1 id="40-数组常见方法与属性"><a href="#40-数组常见方法与属性" class="headerlink" title="40 数组常见方法与属性"></a>40 数组常见方法与属性</h1><h2 id="一、任务目标-11"><a href="#一、任务目标-11" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握JavaScript中数组定义</strong></p>
+<p><strong>理解并掌握JavaScript中数组中值的访问与修改</strong></p>
+<p><strong>理解并掌握JavaScript中数组常见属性</strong></p>
+<h2 id="二、任务背景-11"><a href="#二、任务背景-11" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>数组是大多数编程语言的内置数据结构。我们可以利用数组顺序存储一系列的值，使用相关的函数或者方法可以对这些值进行处理。合理的使用数组能给我们编码带来很大的便利。</p>
+<h2 id="三、任务内容-11"><a href="#三、任务内容-11" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、数组定义"><a href="#1、数组定义" class="headerlink" title="1、数组定义"></a>1、数组定义</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接使用中括号就能定义一个数组，数组中的值的类型不必相同，数组中可以嵌套数组 </span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="string">&#x27;init&#x27;</span>, [<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>, <span class="number">4</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、数组中值的访问与修改"><a href="#2、数组中值的访问与修改" class="headerlink" title="2、数组中值的访问与修改"></a>2、数组中值的访问与修改</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="string">&#x27;init&#x27;</span>, [<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>, <span class="number">4</span>]] <span class="comment">// 可以使用下标（或者叫索引）来取数组中的值。下标是从0开始的 </span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">0</span>] <span class="comment">// 取下标为0的值，即1 </span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">3</span>] <span class="comment">// 取下标为3的值，即&#x27;init&#x27; </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们可以给数组中某一个下标的值进行重新赋值，即修改该下标的值 </span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="string">&#x27;name&#x27;</span> <span class="comment">// 将字符串&#x27;name&#x27;赋值给数组arr下标为0的位置，此时arr[0]的值就为&#x27;name&#x27;了，而不是1了</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、数组常见属性"><a href="#3、数组常见属性" class="headerlink" title="3、数组常见属性"></a>3、数组常见属性</h3><h4 id="3-1-length"><a href="#3-1-length" class="headerlink" title="3.1 length"></a>3.1 length</h4><blockquote>
+<p>访问一个数组的length属性，返回该数组的长度，即该数组元素的个数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="string">&#x27;init&#x27;</span>, [<span class="string">&#x27;apple&#x27;</span>, <span class="number">2</span>, <span class="number">4</span>]]</span><br><span class="line"> </span><br><span class="line">arr.length <span class="comment">// 返回数组arr的长度，即5</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、数组常见方法"><a href="#4、数组常见方法" class="headerlink" title="4、数组常见方法"></a>4、数组常见方法</h3><h4 id="4-1-forEach"><a href="#4-1-forEach" class="headerlink" title="4.1 forEach()"></a>4.1 forEach()</h4><blockquote>
+<p>对数组的每个元素执行一次给定的函数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>] </span><br><span class="line"></span><br><span class="line">array1.forEach( <span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123; </span><br><span class="line"><span class="built_in">console</span>.log(element) </span><br><span class="line">&#125;) </span><br><span class="line"><span class="comment">// 预期输出 </span></span><br><span class="line"><span class="comment">// &quot;a&quot; </span></span><br><span class="line"><span class="comment">// &quot;b&quot; </span></span><br><span class="line"><span class="comment">// &quot;c&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-indexOf"><a href="#4-2-indexOf" class="headerlink" title="4.2 indexOf()"></a>4.2 indexOf()</h4><blockquote>
+<p>返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> beasts = [<span class="string">&#x27;ant&#x27;</span>, <span class="string">&#x27;bison&#x27;</span>, <span class="string">&#x27;camel&#x27;</span>, <span class="string">&#x27;duck&#x27;</span>, <span class="string">&#x27;bison&#x27;</span>] </span><br><span class="line"><span class="built_in">console</span>.log(beasts.indexOf(<span class="string">&#x27;bison&#x27;</span>)) <span class="comment">// 预期输出: 1 </span></span><br><span class="line"><span class="comment">// start from index 2 </span></span><br><span class="line"><span class="built_in">console</span>.log(beasts.indexOf(<span class="string">&#x27;bison&#x27;</span>, <span class="number">2</span>)) <span class="comment">// 预期输出: 4</span></span><br><span class="line"><span class="built_in">console</span>.log(beasts.indexOf(<span class="string">&#x27;giraffe&#x27;</span>)) <span class="comment">// 预期输出: -1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-3-join"><a href="#4-3-join" class="headerlink" title="4.3 join()"></a>4.3 join()</h4><blockquote>
+<p>将一个数组的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = [<span class="string">&#x27;Fire&#x27;</span>, <span class="string">&#x27;Air&#x27;</span>, <span class="string">&#x27;Water&#x27;</span>] </span><br><span class="line"><span class="built_in">console</span>.log(elements.join()) <span class="comment">// 预期输出: &quot;Fire,Air,Water&quot; </span></span><br><span class="line"><span class="built_in">console</span>.log(elements.join(<span class="string">&#x27;&#x27;</span>)) <span class="comment">// 预期输出: &quot;FireAirWater&quot; </span></span><br><span class="line"><span class="built_in">console</span>.log(elements.join(<span class="string">&#x27;-&#x27;</span>)) <span class="comment">// 预期输出: &quot;Fire-Air-Water&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-4-map"><a href="#4-4-map" class="headerlink" title="4.4 map()"></a>4.4 map()</h4><blockquote>
+<p>创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]; <span class="comment">// 传入一个回调函数给map方法 </span></span><br><span class="line"><span class="keyword">var</span> map1 = array1.map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x * <span class="number">2</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(map1); <span class="comment">// 预期输出: Array [2, 8, 18, 32]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-5-pop"><a href="#4-5-pop" class="headerlink" title="4.5 pop()"></a>4.5 pop()</h4><blockquote>
+<p>从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plants = [<span class="string">&#x27;broccoli&#x27;</span>, <span class="string">&#x27;cauliflower&#x27;</span>, <span class="string">&#x27;cabbage&#x27;</span>, <span class="string">&#x27;kale&#x27;</span>, <span class="string">&#x27;tomato&#x27;</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(plants.pop()); <span class="comment">// 预期输出: &quot;tomato&quot; </span></span><br><span class="line"><span class="built_in">console</span>.log(plants); <span class="comment">// 预期输出: Array [&quot;broccoli&quot;, &quot;cauliflower&quot;, &quot;cabbage&quot;, &quot;kale&quot;] </span></span><br><span class="line">plants.pop(); </span><br><span class="line"><span class="built_in">console</span>.log(plants); <span class="comment">// 预期输出: Array [&quot;broccoli&quot;, &quot;cauliflower&quot;, &quot;cabbage&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-6-push"><a href="#4-6-push" class="headerlink" title="4.6 push()"></a>4.6 push()</h4><blockquote>
+<p>将一个或多个元素添加到数组的末尾，并返回该数组的新长度。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animals = [<span class="string">&#x27;pigs&#x27;</span>, <span class="string">&#x27;goats&#x27;</span>, <span class="string">&#x27;sheep&#x27;</span>]; </span><br><span class="line"><span class="keyword">var</span> count = animals.push(<span class="string">&#x27;cows&#x27;</span>); </span><br><span class="line"><span class="built_in">console</span>.log(count); <span class="comment">// 预期输出: 4 </span></span><br><span class="line"><span class="built_in">console</span>.log(animals); <span class="comment">// 预期输出: Array [&quot;pigs&quot;, &quot;goats&quot;, &quot;sheep&quot;, &quot;cows&quot;] </span></span><br><span class="line">animals.push(<span class="string">&#x27;chickens&#x27;</span>, <span class="string">&#x27;cats&#x27;</span>, <span class="string">&#x27;dogs&#x27;</span>); </span><br><span class="line"><span class="built_in">console</span>.log(animals); <span class="comment">// 预期输出: Array [&quot;pigs&quot;, &quot;goats&quot;, &quot;sheep&quot;, &quot;cows&quot;, &quot;chickens&quot;, &quot;cats&quot;, &quot;dogs&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-7-reverse"><a href="#4-7-reverse" class="headerlink" title="4.7 reverse()"></a>4.7 reverse()</h4><blockquote>
+<p>将数组中元素的位置颠倒，并返回该数组。数组的第一个元素会变成最后一个，数组的最后一个元素变成第一个。该方法会改变原数组。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;three&#x27;</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;array1:&#x27;</span>, array1); <span class="comment">// 预期输出: &quot;array1:&quot; Array [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;] </span></span><br><span class="line"><span class="keyword">var</span> reversed = array1.reverse(); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;reversed:&#x27;</span>, reversed); <span class="comment">// 预期输出: &quot;reversed:&quot; Array [&quot;three&quot;, &quot;two&quot;, &quot;one&quot;] </span></span><br><span class="line"><span class="comment">// 注意：该方法会修改原数组 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;array1:&#x27;</span>, array1); <span class="comment">// 预期输出: &quot;array1:&quot; Array [&quot;three&quot;, &quot;two&quot;, &quot;one&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-8-shift"><a href="#4-8-shift" class="headerlink" title="4.8 shift()"></a>4.8 shift()</h4><blockquote>
+<p>从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; </span><br><span class="line"><span class="keyword">var</span> firstElement = array1.shift(); </span><br><span class="line"><span class="built_in">console</span>.log(array1); <span class="comment">// 预期输出: Array [2, 3] </span></span><br><span class="line"><span class="built_in">console</span>.log(firstElement); <span class="comment">// 预期输出: 1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-9-slice"><a href="#4-9-slice" class="headerlink" title="4.9 slice()"></a>4.9 slice()</h4><blockquote>
+<p>返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animals = [<span class="string">&#x27;ant&#x27;</span>, <span class="string">&#x27;bison&#x27;</span>, <span class="string">&#x27;camel&#x27;</span>, <span class="string">&#x27;duck&#x27;</span>, <span class="string">&#x27;elephant&#x27;</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(animals.slice(<span class="number">2</span>)); <span class="comment">// 预期输出: Array [&quot;camel&quot;, &quot;duck&quot;, &quot;elephant&quot;] </span></span><br><span class="line"><span class="built_in">console</span>.log(animals.slice(<span class="number">2</span>, <span class="number">4</span>)); <span class="comment">// 预期输出: Array [&quot;camel&quot;, &quot;duck&quot;] </span></span><br><span class="line"><span class="built_in">console</span>.log(animals.slice(<span class="number">1</span>, <span class="number">5</span>)); <span class="comment">// 预期输出: Array [&quot;bison&quot;, &quot;camel&quot;, &quot;duck&quot;, &quot;elephant&quot;] </span></span><br><span class="line"><span class="built_in">console</span>.log(animals.slice(-<span class="number">2</span>)); <span class="comment">// 预期输出: Array [&quot;duck&quot;, &quot;elephant&quot;] </span></span><br><span class="line"><span class="built_in">console</span>.log(animals.slice(<span class="number">2</span>, -<span class="number">1</span>)); <span class="comment">// 预期输出: Array [&quot;camel&quot;, &quot;duck&quot;]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-10-sort"><a href="#4-10-sort" class="headerlink" title="4.10 sort()"></a>4.10 sort()</h4><blockquote>
+<p>对数组的元素进行排序，并返回数组。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> months = [<span class="string">&#x27;March&#x27;</span>, <span class="string">&#x27;Jan&#x27;</span>, <span class="string">&#x27;Feb&#x27;</span>, <span class="string">&#x27;Dec&#x27;</span>]; </span><br><span class="line">months.sort(); </span><br><span class="line"><span class="built_in">console</span>.log(months); <span class="comment">// 预期输出: Array [&quot;Dec&quot;, &quot;Feb&quot;, &quot;Jan&quot;, &quot;March&quot;] </span></span><br><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">30</span>, <span class="number">4</span>, <span class="number">21</span>, <span class="number">100000</span>]; </span><br><span class="line">array1.sort(); </span><br><span class="line"><span class="built_in">console</span>.log(array1); <span class="comment">// 预期输出: Array [1, 100000, 21, 30, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果sort()方法调用的时候没有传入回调函数，会将数组转成字符串然后进行大小比较并升序排列，字符串的大小比较是按照字典顺序进行的。所以10000会比21小。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果sort()方法调用的时候传入了回调函数，会按回调函数的返回值来决定相邻两个元素的排序，例如：</span></span><br><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">30</span>, <span class="number">4</span>, <span class="number">21</span>, <span class="number">100000</span>]; </span><br><span class="line">array1.sort(<span class="function"><span class="keyword">function</span> (<span class="params">item1, item2</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> item1 - item2</span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(array1); <span class="comment">// 预期输出: Array [1, 4, 21, 30, 100000]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里面的item, item2参数就是array1里面相邻的两个元素</span></span><br><span class="line"><span class="comment">// 如果这个回调函数返回的结果大于0，那么item2将排在item1的前面</span></span><br><span class="line"><span class="comment">// 如果这个回调函数返回的结果小于0，那么item1将排在item2的前面</span></span><br><span class="line"><span class="comment">// 如果这个回调函数返回的是0，那么item1和item2的位置不变</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-11-unshift"><a href="#4-11-unshift" class="headerlink" title="4.11 unshift()"></a>4.11 unshift()</h4><blockquote>
+<p>将一个或多个元素添加到数组的开头，并返回该数组的新长度(该方法修改原有数组)。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(array1.unshift(<span class="number">4</span>, <span class="number">5</span>)); <span class="comment">// 预期输出: 5 </span></span><br><span class="line"><span class="built_in">console</span>.log(array1); <span class="comment">// 预期输出: Array [4, 5, 1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>unshift()为前面加元素，shift()为前面消除元素</p>
+<p>push()为后面加元素，pop()为后面消除元素</p>
+
       
     </div>
 
@@ -1397,14 +1748,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
