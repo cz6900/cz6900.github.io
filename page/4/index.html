@@ -190,113 +190,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/12/30/Linux%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/photo.jpg">
-      <meta itemprop="name" content="张蔡斌">
-      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="劲草笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/30/Linux%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">Linux操作技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-12-30 21:56:44" itemprop="dateCreated datePublished" datetime="2021-12-30T21:56:44+08:00">2021-12-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 16:46:32" itemprop="dateModified" datetime="2022-04-25T16:46:32+08:00">2022-04-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Linux操作技巧"><a href="#Linux操作技巧" class="headerlink" title="Linux操作技巧"></a>Linux操作技巧</h2><h3 id="1-rep包的安装"><a href="#1-rep包的安装" class="headerlink" title="1 rep包的安装"></a>1 rep包的安装</h3><h1 id="CentOS7-安装-浏览器"><a href="#CentOS7-安装-浏览器" class="headerlink" title="CentOS7 安装 浏览器"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ndos/p/11672467.html">CentOS7 安装 浏览器</a></h1><ol>
-<li><ol>
-<li>firefox(火狐)<br><code>sudo yum install firefox</code></li>
-<li>chrome(谷歌)<br>添加源：<code>sudo wget http://repo.fdzh.org/chrome/google-chrome-mirrors.repo -P /etc/yum.repos.d/</code><br>安装：<code>sudo yum install google-chrome-stable</code></li>
-</ol>
-</li>
-</ol>
-<p>改编为通用则为：[zcb1998@localhost ~]$ sudo wget <a target="_blank" rel="noopener" href="https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.3.0/baidunetdisk-4.3.0.x86_64.rpm">https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.3.0/baidunetdisk-4.3.0.x86_64.rpm</a><br>[sudo] zcb1998 的密码：<br>–2021-12-29 02:59:27–  <a target="_blank" rel="noopener" href="https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.3.0/baidunetdisk-4.3.0.x86_64.rpm">https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.3.0/baidunetdisk-4.3.0.x86_64.rpm</a><br>正在解析主机 issuepcdn.baidupcs.com (issuepcdn.baidupcs.com)… 222.199.191.38<br>正在连接 issuepcdn.baidupcs.com (issuepcdn.baidupcs.com)|222.199.191.38|:443… 已连接。<br>已发出 HTTP 请求，正在等待回应… 200 OK<br>长度：169322486 (161M) [application/octet-stream]<br>正在保存至: “baidunetdisk-4.3.0.x86_64.rpm”</p>
-<p>100%[======================================&gt;] 169,322,486 18.5MB/s 用时 9.3s   </p>
-<p>2021-12-29 02:59:36 (17.4 MB/s) - 已保存 “baidunetdisk-4.3.0.x86_64.rpm” [169322486/169322486])</p>
-<p>[zcb1998@localhost ~]$ sudo yum install baidunetdisk-4.3.0.x86_64.rpm<br>已加载插件：fastestmirror, langpacks<br>正在检查 baidunetdisk-4.3.0.x86_64.rpm: baidunetdisk-4.3.0-1.x86_64<br>baidunetdisk-4.3.0.x86_64.rpm 将被安装<br>正在解决依赖关系<br>–&gt; 正在检查事务<br>—&gt; 软件包 baidunetdisk.x86_64.0.4.3.0-1 将被 安装<br>–&gt; 正在处理依赖关系 libXScrnSaver，它被软件包 baidunetdisk-4.3.0-1.x86_64 需要<br>Loading mirror speeds from cached hostfile</p>
-<ul>
-<li>base: mirror.lzu.edu.cn</li>
-<li>extras: mirror.lzu.edu.cn</li>
-<li>updates: mirror.lzu.edu.cn</li>
-</ul>
-<p>–&gt; 正在检查事务<br>—&gt; 软件包 libXScrnSaver.x86_64.0.1.2.2-6.1.el7 将被 安装<br>–&gt; 解决依赖关系完成</p>
-<p>依赖关系解决</p>
-<p>================================================================================<br> Package         架构     版本               源                            大小<br>================================================================================<br>正在安装:<br> baidunetdisk    x86_64   4.3.0-1            /baidunetdisk-4.3.0.x86_64   761 M<br>为依赖而安装:<br> libXScrnSaver   x86_64   1.2.2-6.1.el7      base                          24 k</p>
-<h1 id="事务概要"><a href="#事务概要" class="headerlink" title="事务概要"></a>事务概要</h1><p>安装  1 软件包 (+1 依赖软件包)</p>
-<p>总计：761 M<br>总下载量：24 k<br>安装大小：761 M<br>Is this ok [y/d/N]: y<br>Downloading packages:<br>libXScrnSaver-1.2.2-6.1.el7.x86_64.rpm                     |  24 kB   00:00<br>Running transaction check<br>Running transaction test<br>Transaction test succeeded<br>Running transaction<br>  正在安装    : libXScrnSaver-1.2.2-6.1.el7.x86_64                          1/2<br>  正在安装    : baidunetdisk-4.3.0-1.x86_64                                 2/2<br>  验证中      : libXScrnSaver-1.2.2-6.1.el7.x86_64                          1/2<br>  验证中      : baidunetdisk-4.3.0-1.x86_64                                 2/2 </p>
-<p>已安装:<br>  baidunetdisk.x86_64 0:4.3.0-1                                                 </p>
-<p>作为依赖被安装:<br>  libXScrnSaver.x86_64 0:1.2.2-6.1.el7                                          </p>
-<p>完毕！<br>[zcb1998@localhost ~]$ </p>
-<h3 id="2-linux更改安装目录"><a href="#2-linux更改安装目录" class="headerlink" title="2 linux更改安装目录"></a><em><strong>2 linux更改安装目录</strong></em></h3><p>可以使用cd命令将当前目录切换到指定的文件夹。cd是change directory的缩写。<br>命令格式：cd  [目录名]<br>有几个符号作为目录名有特殊的含义：“/”代表根目录、“..”代表上一级目录、“~”代表HOME目录、“-”代表前一目录。<br>用法示例：切换当前目录到/var/log目录<br>$ cd /var/log</p>
-<h3 id="3-mkdir命令创建目录"><a href="#3-mkdir命令创建目录" class="headerlink" title="*** 3 mkdir命令创建目录***"></a>*** 3 mkdir命令创建目录***</h3><p>1、直接用<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=mkdir">mkdir</a>指令</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/91acacd4ca26051fe1ae39f33b817439.png" alt="img"></p>
-<p>2、mkdir -p ：递归创建目录，即使上级目录不存在，会按目录层级自动创建目录</p>
-<p><img src="https://img-blog.csdnimg.cn/img_convert/15a81459ac243ce385e88277f2062f95.png" alt="img"></p>
-<p>mkdir -p xx/yy的好处就是一次可以创建多级文件夹，若xx文件夹不存在，则先创建xx文件夹，然后在xx文件夹下创建yy文件夹</p>
-<p>1、创建 test01 、test02、test03 三个文件夹命令：</p>
-<p>[root@localhost ~]# mkdir test01 test02 test03<br>1<br>2、使用 -p 参数来创建多级文件夹，例如： test01/test02/test03</p>
-<p>[root@localhost ~]# mkdir -p  test01/test02/test03<br>1<br>3、在多个文件夹里的每个文件夹里面需要创建一个tool文件夹的话，可以用如下命令实现：</p>
-<p>[root@localhost ~]# mkdir {test01,test02,test013}/tool<br>————————————————<br>版权声明：本文为CSDN博主「小志的博客」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/li1325169021/article/details/90769601">https://blog.csdn.net/li1325169021/article/details/90769601</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/12/30/%E5%9F%BA%E5%9B%A0%E5%85%8B%E9%9A%86%E5%AE%9E%E9%AA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1298,7 +1191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/12/13/DELTAGEN%E7%AC%94%E8%AE%B0-2021-11-23/">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/11/29/%E9%85%8D%E7%BD%AE%E7%90%BC%E8%84%82%E5%87%9D%E8%83%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/photo.jpg">
@@ -1312,7 +1205,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/12/13/DELTAGEN%E7%AC%94%E8%AE%B0-2021-11-23/" class="post-title-link" itemprop="url">DELTAGEN笔记</a>
+            <a href="/2021/11/29/%E9%85%8D%E7%BD%AE%E7%90%BC%E8%84%82%E5%87%9D%E8%83%B6/" class="post-title-link" itemprop="url">配置琼脂凝胶</a>
         </h2>
 
         <div class="post-meta">
@@ -1322,14 +1215,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-12-13 21:56:44" itemprop="dateCreated datePublished" datetime="2021-12-13T21:56:44+08:00">2021-12-13</time>
+              <time title="创建时间：2021-11-29 21:56:44" itemprop="dateCreated datePublished" datetime="2021-11-29T21:56:44+08:00">2021-11-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 16:45:08" itemprop="dateModified" datetime="2022-04-25T16:45:08+08:00">2022-04-25</time>
+                <time title="修改时间：2022-04-25 16:47:46" itemprop="dateModified" datetime="2022-04-25T16:47:46+08:00">2022-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1337,7 +1230,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件教程</span></a>
+                  <a href="/categories/%E7%A7%91%E7%A0%94%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">科研教程</span></a>
                 </span>
             </span>
 
@@ -1352,16 +1245,91 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="DELTAGEN笔记-2021-11-23"><a href="#DELTAGEN笔记-2021-11-23" class="headerlink" title="DELTAGEN笔记-2021-11-23"></a>DELTAGEN笔记-2021-11-23</h1><p>library(tidyverse)</p>
-<p>load(“.RData”)</p>
-<p>str()</p>
-<p>&lt;-</p>
-<p>group_by()</p>
-<p>summarise_all(mean,na.rm=true)</p>
-<p>save(,file=””)</p>
-<p>load()</p>
-<p>library(predictmeans)</p>
+          <h1 id="配置琼脂凝胶"><a href="#配置琼脂凝胶" class="headerlink" title="配置琼脂凝胶"></a>配置琼脂凝胶</h1><p>100ml 1XTAE，1.5g琼脂，微波炉打热2min,后加入maraker。</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/" class="post-title-link" itemprop="url">MARAB基因家族分析图片</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-28 15:57:06" itemprop="dateCreated datePublished" datetime="2021-11-28T15:57:06+08:00">2021-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 20:00:42" itemprop="dateModified" datetime="2022-04-25T20:00:42+08:00">2022-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url" rel="index"><span itemprop="name">科研</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>RAB家族图片</p>
+<p>1 进化树</p>
+<p><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/MA_EVOLUTION.jpg" alt="MA_EVOLUTION"><img src="/images/RAB%E5%AE%B6%E6%97%8F%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87_%E6%AD%A3%E5%BC%8F/%E8%BF%9B%E5%8C%96%E6%A0%91/ALL_1202.jpg" alt="ALL_1202"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/28/MARAB%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E5%88%86%E6%9E%90%E5%9B%BE%E7%89%87/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
