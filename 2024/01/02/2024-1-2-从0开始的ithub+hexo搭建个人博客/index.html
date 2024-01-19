@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/photo.jpg">
+  <link rel="mask-icon" href="/images/photo.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cz6900.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="从0开始的github+hexo搭建个人博客1 工具准备使用&lt;!-- more --&gt;为阅读全文  node.js下载：https:&#x2F;&#x2F;nodeis.org&#x2F;dist&#x2F;v4.2.3&#x2F;node-v4.2.3-x64.msi  【它让JavaScript成为与PHP、Python、Per1、Ruby等服务端请言平起平坐的脚本语言。】 https:&#x2F;&#x2F;oss.npmmirror.com&#x2F;di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0开始的ithub+hexo搭建个人博客">
+<meta property="og:url" content="https://cz6900.github.io/2024/01/02/2024-1-2-%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84ithub+hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="劲草笔记">
+<meta property="og:description" content="从0开始的github+hexo搭建个人博客1 工具准备使用&lt;!-- more --&gt;为阅读全文  node.js下载：https:&#x2F;&#x2F;nodeis.org&#x2F;dist&#x2F;v4.2.3&#x2F;node-v4.2.3-x64.msi  【它让JavaScript成为与PHP、Python、Per1、Ruby等服务端请言平起平坐的脚本语言。】 https:&#x2F;&#x2F;oss.npmmirror.com&#x2F;di">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031201966.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031201011.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031159970.png">
+<meta property="article:published_time" content="2024-01-02T13:56:44.000Z">
+<meta property="article:modified_time" content="2024-01-04T14:46:07.085Z">
+<meta property="article:author" content="张蔡斌">
+<meta property="article:tag" content="科工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031201966.png">
+
+<link rel="canonical" href="https://cz6900.github.io/2024/01/02/2024-1-2-%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84ithub+hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>从0开始的ithub+hexo搭建个人博客 | 劲草笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">劲草笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，记录知识</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/book/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-english">
+
+    <a href="/english/" rel="section"><i class="fa fa-language fa-fw"></i>EN</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2024/01/02/2024-1-2-%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84ithub+hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          从0开始的ithub+hexo搭建个人博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-01-02 21:56:44" itemprop="dateCreated datePublished" datetime="2024-01-02T21:56:44+08:00">2024-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-04 22:46:07" itemprop="dateModified" datetime="2024-01-04T22:46:07+08:00">2024-01-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="从0开始的github-hexo搭建个人博客"><a href="#从0开始的github-hexo搭建个人博客" class="headerlink" title="从0开始的github+hexo搭建个人博客"></a>从0开始的github+hexo搭建个人博客</h1><h2 id="1-工具准备"><a href="#1-工具准备" class="headerlink" title="1 工具准备"></a>1 工具准备</h2><p><code>使用&lt;!-- more --&gt;为阅读全文</code></p>
+<ul>
+<li><p><strong>node.js下载</strong>：<a target="_blank" rel="noopener" href="https://nodeis.org/dist/v4.2.3/node-v4.2.3-x64.msi">https://nodeis.org/dist/v4.2.3/node-v4.2.3-x64.msi</a></p>
+<blockquote>
+<p>【它让JavaScript成为与PHP、Python、Per1、Ruby等服务端请言平起平坐的脚本语言。】</p>
+<p><a target="_blank" rel="noopener" href="https://oss.npmmirror.com/dist/node/v16.13.0/node-v16.13.0-x64.msi">https://oss.npmmirror.com/dist/node/v16.13.0/node-v16.13.0-x64.msi</a></p>
+<p>安装教程：<a target="_blank" rel="noopener" href="https://ww.cnblogs.com/liuqiyun/p/8133904.html">https://ww.cnblogs.com/liuqiyun/p/8133904.html</a> </p>
+<p>报错解决方案：<a target="_blank" rel="noopener" href="https://www.blogs.com/qdjl/p/9481720.html">https://www.blogs.com/qdjl/p/9481720.html</a></p>
+</blockquote>
+</li>
+<li><p><strong>Git下载：</strong><a target="_blank" rel="noopener" href="https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.3/Git-2.11.0.3-64-bit.exe">https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.3/Git-2.11.0.3-64-bit.exe</a></p>
+<blockquote>
+<p>【Git是一个年源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理】<br>安装教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xueweisuoyong/p/11914045.html">https://www.cnblogs.com/xueweisuoyong/p/11914045.html</a> </p>
+<p>node-v npm-V git–version Hexo下载：npm install hexo-cli-g</p>
+<p>下载方式：<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p>
+<span id="more"></span></blockquote>
+</li>
+</ul>
+<h2 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2 安装hexo"></a>2 安装hexo</h2><ul>
+<li>先安装cnpm，使得npm可替换为在国内可用的cnpm</li>
+<li>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></li>
+<li>然后按照hexo</li>
+<li>cnpm install -g hexo</li>
+<li>npm install hexo-deployer-git –save -g</li>
+<li>创建博客的本地目录</li>
+<li>C:\Users\ZHANGCAIBIN&gt;md blog</li>
+<li>C:\Users\ZHANGCAIBIN&gt;dir</li>
+<li>cd blog</li>
+<li>初始化hexo模板</li>
+<li>hexo init</li>
+<li>网页预览博客</li>
+<li>hexo s</li>
+<li>hexo s –debug</li>
+<li>创建第一篇文章</li>
+<li>hexo n “My first essay”</li>
+<li>下载next主题<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yinxiang/p/9237752.html">https://www.cnblogs.com/yinxiang/p/9237752.html</a></li>
+</ul>
+<h2 id="3-写文章"><a href="#3-写文章" class="headerlink" title="3 写文章"></a>3 写文章</h2><ul>
+<li>在soure里找到md并编辑</li>
+</ul>
+<h2 id="4-配置ssH"><a href="#4-配置ssH" class="headerlink" title="4 配置ssH"></a>4 配置ssH</h2><ul>
+<li><p>cd D:\blog</p>
+</li>
+<li><p>安装hexo必要插件</p>
+</li>
+<li><p>npm install hexo-abbrlink –save</p>
+</li>
+<li><p>Git bash 内输入，设置ssh钥匙</p>
+</li>
+<li><p>ssh-keygen -t rsa -C “<a href="mailto:&#122;&#104;&#x61;&#x6e;&#103;&#x63;&#98;&#50;&#x31;&#64;&#x6c;&#122;&#x75;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#x6e;">&#122;&#104;&#x61;&#x6e;&#103;&#x63;&#98;&#50;&#x31;&#64;&#x6c;&#122;&#x75;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#x6e;</a>“</p>
+</li>
+<li><p>用txt打开pub，复制ssh-开头的全文内容，在github里总的settings中的ssh里创建新的中输入</p>
+</li>
+<li><p>检测是否ssh设置成功</p>
+</li>
+<li><p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+</li>
+<li><p>输入yes</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br><span class="line">The authenticity of host &#x27;github.com (20.205.243.166)&#x27; can&#x27;t be established.</span><br><span class="line">ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.</span><br><span class="line">This key is not known by any other names.</span><br><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])? ED25519</span><br><span class="line">Please type &#x27;yes&#x27;, &#x27;no&#x27; or the fingerprint: yes</span><br><span class="line">Warning: Permanently added &#x27;github.com&#x27; (ED25519) to the list of known hosts.</span><br><span class="line">Hi cz6900! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在github里创建respority</p>
+</li>
+<li><p>打开blog下面_config.yml，添加</p>
+</li>
+<li><p>type: git</p>
+</li>
+<li><p>repo: 地址</p>
+</li>
+<li><p>branch: master</p>
+</li>
+<li><pre><code> git config --global user.email &quot;zhangcb21@lzu.edu.cn&quot;
+ git config --global user.name &quot;cz6900&quot;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 先按esc再按:wq</span><br><span class="line"></span><br><span class="line">- :wq!就是强制保存</span><br><span class="line"></span><br><span class="line">- type和repo的冒号后面要加空格，不然会卡死</span><br><span class="line"></span><br><span class="line">- 在git bash命令窗口中输入git config --global user.name &quot;xxx&quot;</span><br><span class="line"></span><br><span class="line">- windows这里报错的同学看下提示，输入两行代码配置，然后再hexo d就可以了</span><br><span class="line"></span><br><span class="line">## 5 插入图片、音乐、视频 ##</span><br><span class="line"></span><br><span class="line">- 视频、音乐在网站上找镶入链接</span><br><span class="line"></span><br><span class="line">  ` 图片用“![]()”格式 `</span><br><span class="line"></span><br><span class="line">## 6 文本编辑类型 ##</span><br><span class="line"></span><br><span class="line">```  library(ggplot2)</span><br><span class="line">        library(ggsci)</span><br><span class="line">        library(cowplot)</span><br><span class="line">        </span><br><span class="line">        data(&quot;iris&quot;)</span><br><span class="line">        View(iris)</span><br><span class="line">        </span><br><span class="line">        ggplot (data = iris, mapping = aes (x = Species, y = Sepal.Length)) +</span><br><span class="line">          geom_point (position = &#x27;jitter&#x27;, aes (color = Species), </span><br><span class="line">                      size = 3, alpha= 0.5, shape = 21) +</span><br><span class="line">          theme_cowplot()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-PDF"><a href="#7-PDF" class="headerlink" title="7 PDF"></a>7 PDF</h2><p>cnpm install –save hexo-pdf</p>
+<div class="pdfobject-container" data-target="https://cdn01.foxitsoftware.com/pub/foxit/manual/phantom/zh_cn/Foxit-PDF-Editor-Quick-Guide11.1.pdf" data-height="500px"></div>
+
+
+
+<h2 id="8-阅读全文"><a href="#8-阅读全文" class="headerlink" title="8 阅读全文"></a>8 阅读全文</h2><p>1、开启阅读全文按钮，打开主题配置文件themes\next_config.yml，找到auto_excerpt</p>
+<p>auto_excerpt:<br>  enable: true<br>  length: 150 #默认截取全文开篇前150字，可自行修改<br>————————————————</p>
+<p><code>使用&lt;!-- more --&gt;为阅读全文</code></p>
+<h2 id="9-置顶"><a href="#9-置顶" class="headerlink" title="9  置顶"></a>9  置顶</h2><p>cnpm install hexo-generator-topindex –save</p>
+<p>cnpm i object-assign</p>
+<p>每篇文章加入top: 10</p>
+<p>文章内加入的文件（图片等）名称内不得包含空格</p>
+<blockquote>
+<p>默认情况下， Hexo文章图片左对齐</p>
+</blockquote>
+<h4 id="如何实现居中对齐呢"><a href="#如何实现居中对齐呢" class="headerlink" title="如何实现居中对齐呢"></a>如何实现居中对齐呢</h4><p><strong>方法一</strong></p>
+<p>直接添加html元素，当然这种稍显麻烦，比较每次都要加html元素，还好一般图片不多适合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=center&gt;</span><br><span class="line">![微信小程序 导航菜单](/images/miniapp-navigatortitle.png)</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二</strong></p>
+<p>直接修改Hexo主题的css样式表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.posts-expand .post-body img &#123;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文章可以拥有如下属性：</p>
+<p>Setting	Description	Default<br>layout	Layout	post或page<br>title	文章的标题	<br>date	创建日期	文件的创建日期<br>updated	修改日期	文件的修改日期<br>comments	是否开启评论	true<br>tags	标签	<br>categories	分类	<br>permalink	url中的名字	文件名</p>
+<p>文字居中 <center>这是需要居中的文字</center></p>
+ <center>这是需要居中的文字</center>
+
+<p>这是<label style="color:red">红色</label>字体 这是<label style="color:green">绿色</label>字体 这是<label style="color:yellow">黄色</label>字体 这是<label style="color:blue">蓝色</label>字体</p>
+<h2 id="10-部署"><a href="#10-部署" class="headerlink" title="10 部署"></a>10 部署</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 在blog文件夹中右键git bash</span><br><span class="line">2. hexo clean</span><br><span class="line">3. hexo g</span><br><span class="line">4. hexo d</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="11-可能出现的错误"><a href="#11-可能出现的错误" class="headerlink" title="11 可能出现的错误"></a>11 可能出现的错误</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FATAL &#123;</span><br><span class="line">  err: Error: Spawn failed</span><br><span class="line">      at ChildProcess.&lt;anonymous&gt; (C:\Users\myosotis\Desktop\Hexo_blog\node_modules\hexo-util\lib\spawn.js:51:21)</span><br><span class="line">      at ChildProcess.emit (events.js:315:20)</span><br><span class="line">      at ChildProcess.cp.emit (C:\Users\myosotis\Desktop\Hexo_blog\node_modules\cross-spawn\lib\enoent.js:34:29)</span><br><span class="line">      at Process.ChildProcess._handle.onexit (internal/child_process.js:277:12) &#123;</span><br><span class="line">    code: 128</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##进入站点根目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##删除git提交内容文件夹，</span></span><br><span class="line"><span class="built_in">rm</span> -rf .deploy_git/</span><br><span class="line"></span><br><span class="line"><span class="comment">##执行</span></span><br><span class="line">git config --global core.autocrlf <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##最后</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p><strong>还需要手动删除这个文件夹</strong>  deploy_git&#x2F;</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><blockquote>
+<p>修改 _config.yml 文件，将配置地址http方式切换成ssh方式</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##进入站点根目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##删除git提交内容文件夹</span></span><br><span class="line">vim _config.yml</span><br><span class="line"></span><br><span class="line"><span class="comment">##修改</span></span><br><span class="line">deploy:</span><br><span class="line"></span><br><span class="line"><span class="built_in">type</span>: git</span><br><span class="line"></span><br><span class="line">repository: https://github.com/Uninfo/blog.github.io.git </span><br><span class="line">-&gt; git@github.com:Uninfo/blog.github.io.git</span><br><span class="line"></span><br><span class="line">branch: master</span><br><span class="line"></span><br><span class="line"><span class="comment">##最后</span></span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><blockquote>
+<p>强制上传，不建议</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##进入站点根目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##进入depoly文件夹</span></span><br><span class="line"><span class="built_in">cd</span> .deploy_git/</span><br><span class="line"></span><br><span class="line"><span class="comment">##强制推送</span></span><br><span class="line">git push -f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解决The authenticity of host ‘github.com (20.205.243.166)‘ can‘t be established.</span><br><span class="line"></span><br><span class="line">beichyes</span><br></pre></td></tr></table></figure>
+
+<p>已于 2023-03-29 15:27:28 修改</p>
+<p>在使用git推送到github仓库的时候提示这个</p>
+<p>需要将</p>
+<p><img src="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031201966.png" alt="202401022339391"></p>
+<p> 将框内的key输入到下面的输入栏里面，然后的点ok</p>
+<p>之后会弹出一个弹窗输入yes就行了<img src="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031201011.png" alt="202401022339305"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/cz6900/img/image/202401031159970.png" alt="img"></p>
+<p>————————————————<br>版权声明：本文为CSDN博主「beichyes」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/beichyes/article/details/">https://blog.csdn.net/beichyes/article/details/</a></p>
+<h2 id="12-模块安装"><a href="#12-模块安装" class="headerlink" title="12 模块安装"></a>12 模块安装</h2><p>第一步先根据提示在node_modules中删除对应模块<br>第二步 安装下列模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo</span><br><span class="line">npm install hexo-deployer-git --save -g</span><br><span class="line">npm install --save hexo-pdf</span><br><span class="line">npm install --save hexo-generator-topindex</span><br><span class="line">cnpm install hexo-generator-topindex --save</span><br><span class="line">npm i object-assign</span><br><span class="line">npm install --save hexo-deployer-git</span><br><span class="line">cnpm install --save hexo-pdf</span><br><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="13-文章内图片自动上传至github图床"><a href="#13-文章内图片自动上传至github图床" class="headerlink" title="13 文章内图片自动上传至github图床"></a>13 文章内图片自动上传至github图床</h2><p>在GitHub内settings里developer settings里面的personal access tokens里面的tokens(classic)里generate new token，设置名称，自动产生token</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">目前的token：img: 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</span><br><span class="line">（至2025年1月1日，有效期：365 days，每次使用前请检查邮箱）</span><br><span class="line">https://cdn.jsdelivr.net/gh/cz6900/img</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#_3">一、什么叫图床</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#_9">二、什么时候需要用到图床</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#_18">三、图床集合</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#PicGoGitHubCDNTyporaWindows_28">四、PicGo+GitHub+CDN加速+Typora搭建图床（Windows系统）</a></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#1_PicGo_29">1. 下载PicGo</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#2_GitHub_32">2. GitHub步骤</a>（新建仓库，仓库配置，token生成）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#3_PicGoGitHub_53">3. PicGo配置GitHub图床</a>（填写目录，仓库名，分支名，token）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#4_TyporaPicGo_55">4. Typora配置PicGo</a>（设置为PICGO(APP),PICGO路径，验证图片上传成功）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#5__61">5. 验证成功</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45260582/article/details/129152892?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-129152892-blog-124125236.235%5Ev35%5Epc_relevant_yljh&utm_relevant_index=1#_65">五、总结</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢你们对我的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    我愿意资助创作者
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WXZF.jpg" alt="张蔡斌 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/ZFB.jpg" alt="张蔡斌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>张蔡斌
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cz6900.github.io/2024/01/02/2024-1-2-%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84ithub+hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="从0开始的ithub+hexo搭建个人博客">https://cz6900.github.io/2024/01/02/2024-1-2-从0开始的ithub+hexo搭建个人博客/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章，均在可信时间戳认证机构完成确权，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处，侵权必究！商业性使用请联系主理人购买授权许可。
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/WX.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E5%B7%A5/" rel="tag"># 科工</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/15/2023-5-15-win11%E4%B8%8Ewin10%E7%95%8C%E9%9D%A2%E4%BA%92%E8%BD%AC/" rel="prev" title="win11与win10界面互转">
+      <i class="fa fa-chevron-left"></i> win11与win10界面互转
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/01/02/2024-1-2-%E8%AF%A6%E8%A7%A3Git%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/" rel="next" title="详解Git安装过程">
+      详解Git安装过程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">从0开始的github+hexo搭建个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">1 工具准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85hexo"><span class="nav-number">1.2.</span> <span class="nav-text">2 安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%86%99%E6%96%87%E7%AB%A0"><span class="nav-number">1.3.</span> <span class="nav-text">3 写文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%85%8D%E7%BD%AEssH"><span class="nav-number">1.4.</span> <span class="nav-text">4 配置ssH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-PDF"><span class="nav-number">1.5.</span> <span class="nav-text">7 PDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87"><span class="nav-number">1.6.</span> <span class="nav-text">8 阅读全文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E7%BD%AE%E9%A1%B6"><span class="nav-number">1.7.</span> <span class="nav-text">9  置顶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90%E5%91%A2"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">如何实现居中对齐呢</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E9%83%A8%E7%BD%B2"><span class="nav-number">1.8.</span> <span class="nav-text">10 部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">1.9.</span> <span class="nav-text">11 可能出现的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">1.9.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">1.9.2.</span> <span class="nav-text">方法二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89"><span class="nav-number">1.9.3.</span> <span class="nav-text">方法三</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85"><span class="nav-number">1.10.</span> <span class="nav-text">12 模块安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-%E6%96%87%E7%AB%A0%E5%86%85%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E8%87%B3github%E5%9B%BE%E5%BA%8A"><span class="nav-number">1.11.</span> <span class="nav-text">13 文章内图片自动上传至github图床</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="张蔡斌"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">张蔡斌</p>
+  <div class="site-description" itemprop="description">糖只有那么甜，盐只有那么咸。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cz6900" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cz6900" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhangcb21@lzu.edu.cn" title="E-Mail → mailto:zhangcb21@lzu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6350133249" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6350133249" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hei-ma-49-26-76" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-ma-49-26-76" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/319272265" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;319272265" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.lzu.edu.cn/" title="http:&#x2F;&#x2F;www.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">兰州大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xjtudlc.com/" title="https:&#x2F;&#x2F;www.xjtudlc.com&#x2F;" rel="noopener" target="_blank">西安交通大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sicau.edu.cn/" title="https:&#x2F;&#x2F;www.sicau.edu.cn&#x2F;" rel="noopener" target="_blank">四川农业大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://my.lzu.edu.cn:8080/login?service=http://my.lzu.edu.cn" title="http:&#x2F;&#x2F;my.lzu.edu.cn:8080&#x2F;login?service&#x3D;http:&#x2F;&#x2F;my.lzu.edu.cn" rel="noopener" target="_blank">工作台|办公邮箱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://pan.reol.me/" title="http:&#x2F;&#x2F;pan.reol.me" rel="noopener" target="_blank">REOL云盘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mp.weixin.qq.com/" title="https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;" rel="noopener" target="_blank">微信平台</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://xiumi.us/" title="https:&#x2F;&#x2F;xiumi.us&#x2F;" rel="noopener" target="_blank">秀米</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.135plat.com/" title="https:&#x2F;&#x2F;www.135plat.com&#x2F;" rel="noopener" target="_blank">135编辑器</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://caoye.lzu.edu.cn/" title="http:&#x2F;&#x2F;caoye.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">草地农业科技学院</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://oversea.cnki.net/index/" title="https:&#x2F;&#x2F;oversea.cnki.net&#x2F;index&#x2F;" rel="noopener" target="_blank">知网</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://scholar.scqylaw.com/" title="http:&#x2F;&#x2F;scholar.scqylaw.com&#x2F;" rel="noopener" target="_blank">谷歌学术镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.webofscience.com/wos/alldb/basic-search" title="https:&#x2F;&#x2F;www.webofscience.com&#x2F;wos&#x2F;alldb&#x2F;basic-search" rel="noopener" target="_blank">WEB OF SCIENCE</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.home-for-researchers.com/" title="https:&#x2F;&#x2F;www.home-for-researchers.com&#x2F;" rel="noopener" target="_blank">科研者之家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.deepl.com/translator" title="https:&#x2F;&#x2F;www.deepl.com&#x2F;translator" rel="noopener" target="_blank">DEEPL翻译</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sci-hub.ren/" title="https:&#x2F;&#x2F;www.sci-hub.ren&#x2F;" rel="noopener" target="_blank">SCI_HUB</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.connectedpapers.com/" title="https:&#x2F;&#x2F;www.connectedpapers.com&#x2F;" rel="noopener" target="_blank">CONNECTEDPAPERS</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-tv"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张蔡斌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>

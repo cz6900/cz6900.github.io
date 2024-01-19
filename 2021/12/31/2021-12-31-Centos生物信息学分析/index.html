@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/photo.jpg">
+  <link rel="mask-icon" href="/images/photo.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cz6900.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Centos生物信息学分析1 go注释前的比对*** [zcb1998@localhost ~]$ cd &#x2F;home&#x2F;zcb1998&#x2F;Desktop[zcb1998@localhost Desktop]$ tar xzf diamond-linux64.tar.gz ***** [zcb1998@localhost Desktop]$ wget ftp:&#x2F;&#x2F;ftp.n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos生物信息学分析">
+<meta property="og:url" content="https://cz6900.github.io/2021/12/31/2021-12-31-Centos%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="劲草笔记">
+<meta property="og:description" content="Centos生物信息学分析1 go注释前的比对*** [zcb1998@localhost ~]$ cd &#x2F;home&#x2F;zcb1998&#x2F;Desktop[zcb1998@localhost Desktop]$ tar xzf diamond-linux64.tar.gz ***** [zcb1998@localhost Desktop]$ wget ftp:&#x2F;&#x2F;ftp.n">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211231122026800.png">
+<meta property="article:published_time" content="2021-12-31T13:56:44.000Z">
+<meta property="article:modified_time" content="2023-05-14T14:37:46.897Z">
+<meta property="article:author" content="张蔡斌">
+<meta property="article:tag" content="科工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211231122026800.png">
+
+<link rel="canonical" href="https://cz6900.github.io/2021/12/31/2021-12-31-Centos%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Centos生物信息学分析 | 劲草笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">劲草笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，记录知识</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/book/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-english">
+
+    <a href="/english/" rel="section"><i class="fa fa-language fa-fw"></i>EN</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2021/12/31/2021-12-31-Centos%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Centos生物信息学分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-12-31 21:56:44" itemprop="dateCreated datePublished" datetime="2021-12-31T21:56:44+08:00">2021-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-14 22:37:46" itemprop="dateModified" datetime="2023-05-14T22:37:46+08:00">2023-05-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">生物信息学</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Centos生物信息学分析"><a href="#Centos生物信息学分析" class="headerlink" title="Centos生物信息学分析"></a>Centos生物信息学分析</h1><h2 id="1-go注释前的比对"><a href="#1-go注释前的比对" class="headerlink" title="1 go注释前的比对"></a>1 go注释前的比对</h2><p>*** [zcb1998@localhost ~]$ cd &#x2F;home&#x2F;zcb1998&#x2F;Desktop<br>[zcb1998@localhost Desktop]$ tar xzf diamond-linux64.tar.gz **<br>*** [zcb1998@localhost Desktop]$ wget <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/swissprot.gz">ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/swissprot.gz</a><br>–2021-12-29 03:58:10–  <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/swissprot.gz">ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/swissprot.gz</a> **<br>           &#x3D;&gt; “swissprot.gz”</p>
+<span id="more"></span>
+
+<p>正在解析主机 ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)… 130.14.250.12, 130.14.250.11, 2607:f220:41e:250::13, …<br>正在连接 ftp.ncbi.nlm.nih.gov (ftp.ncbi.nlm.nih.gov)|130.14.250.12|:21… 已连接。<br>正在以 anonymous 登录 … 登录成功！<br>&#x3D;&#x3D;&gt; SYST … 完成。   &#x3D;&#x3D;&gt; PWD … 完成。<br>&#x3D;&#x3D;&gt; TYPE I … 完成。 &#x3D;&#x3D;&gt; CWD (1) &#x2F;blast&#x2F;db&#x2F;FASTA … 完成。<br>&#x3D;&#x3D;&gt; SIZE swissprot.gz … 141082489<br>&#x3D;&#x3D;&gt; PASV … 完成。   &#x3D;&#x3D;&gt; RETR swissprot.gz … 完成。<br>长度：141082489 (135M) (非正式数据)</p>
+<p>100%[&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt;] 141,082,489 2.40MB&#x2F;s 用时 53s    </p>
+<p>2021-12-29 03:59:07 (2.52 MB&#x2F;s) - “swissprot.gz” 已保存 [141082489]</p>
+<p>*** &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond help **<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#x62;&#117;&#99;&#x68;&#x66;&#x69;&#x6e;&#x6b;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;">&#x62;&#117;&#99;&#x68;&#x66;&#x69;&#x6e;&#x6b;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#109;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>Syntax: diamond COMMAND [OPTIONS]</p>
+<p>Commands:<br>makedb	Build DIAMOND database from a FASTA file<br>blastp	Align amino acid query sequences against a protein reference database<br>blastx	Align DNA query sequences against a protein reference database<br>view	View DIAMOND alignment archive (DAA) formatted file<br>help	Produce help message<br>version	Display version information<br>getseq	Retrieve sequences from a DIAMOND database file<br>dbinfo	Print information about a DIAMOND database file</p>
+<p>General options:<br>–threads (-p)         number of CPU threads<br>–db (-d)              database file<br>–out (-o)             output file<br>–outfmt (-f)          output format<br>    0   &#x3D; BLAST pairwise<br>    5   &#x3D; BLAST XML<br>    6   &#x3D; BLAST tabular<br>    100 &#x3D; DIAMOND alignment archive (DAA)<br>    101 &#x3D; SAM</p>
+<pre><code>Value 6 may be followed by a space-separated list of these keywords:
+
+qseqid means Query Seq - id
+qlen means Query sequence length
+sseqid means Subject Seq - id
+sallseqid means All subject Seq - id(s), separated by a &#39;;&#39;
+slen means Subject sequence length
+qstart means Start of alignment in query
+qend means End of alignment in query
+sstart means Start of alignment in subject
+send means End of alignment in subject
+qseq means Aligned part of query sequence
+full_qseq means Query sequence
+sseq means Aligned part of subject sequence
+full_sseq means Subject sequence
+evalue means Expect value
+bitscore means Bit score
+score means Raw score
+length means Alignment length
+pident means Percentage of identical matches
+nident means Number of identical matches
+mismatch means Number of mismatches
+positive means Number of positive - scoring matches
+gapopen means Number of gap openings
+gaps means Total number of gaps
+ppos means Percentage of positive - scoring matches
+qframe means Query frame
+btop means Blast traceback operations(BTOP)
+staxids means unique Subject Taxonomy ID(s), separated by a &#39;;&#39; (in numerical order)
+stitle means Subject Title
+salltitles means All Subject Title(s), separated by a &#39;&lt;&gt;&#39;
+qcovhsp means Query Coverage Per HSP
+qtitle means Query title
+qqual means Query quality values
+
+Default: qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+</code></pre>
+<p>–verbose (-v)         verbose console output<br>–log                  enable debug log<br>–quiet                disable console output<br>–header               Write header lines to blast tabular format.</p>
+<p>Makedb options:<br>–in                   input reference file in FASTA format</p>
+<p>Aligner options:<br>–query (-q)           input query file<br>–strand               query strands to search (both&#x2F;minus&#x2F;plus)<br>–un                   file for unaligned queries<br>–al                   file or aligned queries<br>–unfmt                format of unaligned query file (fasta&#x2F;fastq)<br>–alfmt                format of aligned query file (fasta&#x2F;fastq)<br>–unal                 report unaligned queries (0&#x3D;no, 1&#x3D;yes)<br>–max-target-seqs (-k) maximum number of target sequences to report alignments for<br>–top                  report alignments within this percentage range of top alignment score (overrides –max-target-seqs)<br>–range-culling        restrict hit culling to overlapping query ranges<br>–compress             compression for output files (0&#x3D;none, 1&#x3D;gzip)<br>–evalue (-e)          maximum e-value to report alignments (default&#x3D;0.001)<br>–min-score            minimum bit score to report alignments (overrides e-value setting)<br>–id                   minimum identity% to report an alignment<br>–query-cover          minimum query cover% to report an alignment<br>–subject-cover        minimum subject cover% to report an alignment<br>–sensitive            enable sensitive mode (default: fast)<br>–more-sensitive       enable more sensitive mode (default: fast)<br>–block-size (-b)      sequence block size in billions of letters (default&#x3D;2.0)<br>–index-chunks (-c)    number of chunks for index processing<br>–tmpdir (-t)          directory for temporary files<br>–gapopen              gap open penalty<br>–gapextend            gap extension penalty<br>–frameshift (-F)      frame shift penalty (default&#x3D;disabled)<br>–long-reads           short for –range-culling –top 10 -F 15<br>–matrix               score matrix for protein alignment (default&#x3D;BLOSUM62)<br>–custom-matrix        file containing custom scoring matrix<br>–lambda               lambda parameter for custom matrix<br>–K                    K parameter for custom matrix<br>–comp-based-stats     enable composition based statistics (0&#x2F;1&#x3D;default)<br>–masking              enable masking of low complexity regions (0&#x2F;1&#x3D;default)<br>–query-gencode        genetic code to use to translate query (see user manual)<br>–salltitles           include full subject titles in DAA file<br>–sallseqid            include all subject ids in DAA file<br>–no-self-hits         suppress reporting of identical self hits<br>–taxonmap             protein accession to taxid mapping file<br>–taxonnodes           taxonomy nodes.dmp from NCBI<br>–taxonlist            restrict search to list of taxon ids (comma-separated)</p>
+<p>Advanced options:<br>–algo                 Seed search algorithm (0&#x3D;double-indexed&#x2F;1&#x3D;query-indexed)<br>–bin                  number of query bins for seed search<br>–min-orf (-l)         ignore translated sequences without an open reading frame of at least this length<br>–freq-sd              number of standard deviations for ignoring frequent seeds<br>–id2                  minimum number of identities for stage 1 hit<br>–window (-w)          window size for local hit search<br>–xdrop (-x)           xdrop for ungapped alignment<br>–ungapped-score       minimum alignment score to continue local extension<br>–hit-band             band for hit verification<br>–hit-score            minimum score to keep a tentative alignment<br>–gapped-xdrop (-X)    xdrop for gapped alignment in bits<br>–band                 band for dynamic programming computation<br>–shapes (-s)          number of seed shapes (0 &#x3D; all available)<br>–shape-mask           seed shapes<br>–index-mode           index mode (0&#x3D;4x12, 1&#x3D;16x9)<br>–rank-ratio           include subjects within this ratio of last hit (stage 1)<br>–rank-ratio2          include subjects within this ratio of last hit (stage 2)<br>–max-hsps             maximum number of HSPs per subject sequence to save for each query<br>–range-cover          percentage of query range to be covered for hit culling (default&#x3D;50)<br>–dbsize               effective database size (in letters)<br>–no-auto-append       disable auto appending of DAA and DMND file extensions<br>–xml-blord-format     Use gnl|BL_ORD_ID| style format in XML output</p>
+<p>View options:<br>–daa (-a)             DIAMOND alignment archive (DAA) file<br>–forwardonly          only show alignments of forward strand</p>
+<p>Getseq options:<br>–seq                  Sequence numbers to display.</p>
+<p>*** [zcb1998@localhost Desktop]$ &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond makedb –in swissprot.fa -d swissprot **##建库<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#98;&#117;&#99;&#104;&#102;&#105;&#x6e;&#107;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#98;&#117;&#99;&#104;&#102;&#105;&#x6e;&#107;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>#CPU threads: 2<br>Scoring parameters: (Matrix&#x3D;BLOSUM62 Lambda&#x3D;0.267 K&#x3D;0.041 Penalties&#x3D;11&#x2F;1)<br>Database file: swissprot.fa<br>Opening the database file…  [0.000323s]<br>Loading sequences…  [1.22648s]<br>Masking sequences…  [19.5554s]<br>Writing sequences…  [0.297977s]<br>Hashing sequences…  [0.080532s]<br>Loading sequences…  [2.1e-05s]<br>Writing trailer…  [0.006372s]<br>Closing the input file…  [3.3e-05s]<br>Closing the database file…  [0.000281s]<br>Database hash &#x3D; 686d3f918d042fac076e19e4f210ff7b<br>Processed 478006 sequences, 181230906 letters.<br>Total time &#x3D; 21.1677s<br>*** [zcb1998@localhost Desktop]$ &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond blastp -d swissprot -q Caomuxi.pep.fasta -o matches.m8 **##蛋白比对<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#x62;&#117;&#99;&#x68;&#102;&#105;&#110;&#x6b;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#x62;&#117;&#99;&#x68;&#102;&#105;&#110;&#x6b;&#64;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>#CPU threads: 2<br>Scoring parameters: (Matrix&#x3D;BLOSUM62 Lambda&#x3D;0.267 K&#x3D;0.041 Penalties&#x3D;11&#x2F;1)<br>Temporary directory:<br>Opening the database…  [2.8e-05s]<br>#Target sequences to report alignments for: 25<br>Opening the input file…  [4.6e-05s]<br>Error: Error detecting input file format. First line seems to be blank.<br>[zcb1998@localhost Desktop]$ &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond blastx -d swissprot -q Caomuxi.cds.fasta -o matches.m8<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#x62;&#117;&#x63;&#104;&#x66;&#105;&#x6e;&#107;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x62;&#117;&#x63;&#104;&#x66;&#105;&#x6e;&#107;&#64;&#103;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>#CPU threads: 2<br>Scoring parameters: (Matrix&#x3D;BLOSUM62 Lambda&#x3D;0.267 K&#x3D;0.041 Penalties&#x3D;11&#x2F;1)<br>Temporary directory:<br>Opening the database…  [2.7e-05s]<br>#Target sequences to report alignments for: 25<br>Opening the input file…  [0.000312s]<br>Opening the output file…  [5.8e-05s]<br>Loading query sequences…  [0.037517s]<br>Masking queries…<br> [0.894515s]<br>Building query seed set…  [0.025912s]<br>Algorithm: Double-indexed<br>Building query histograms…  [0.069256s]<br>Allocating buffers…  [2.3e-05s]<br>Loading reference sequences…  [0.333567s]<br>Building reference histograms…  [1.93306s]<br>Allocating buffers…  [2e-05s]<br>Initializing temporary storage…  [0.01277s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.<br>Building reference index…  [2.69179s]<br>Building query index…  [0.09718s]<br>Building seed filter…  [0.162043s]<br>Searching alignments…  [0.23148s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 1.<br>Building reference index…  [2.73463s]<br>Building query index…  [0.094026s]<br>Building seed filter…  [0.160724s]<br>Searching alignments…  [0.21505s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 2.<br>Building reference index…  [3.1013s]<br>Building query index…  [0.098308s]<br>Building seed filter…  [0.1586s]<br>Searching alignments…  [0.211197s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 3.<br>Building reference index…  [2.4869s]<br>Building query index…  [0.066303s]<br>Building seed filter…  [0.16881s]<br>Searching alignments…  [0.213401s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 0.<br>Building reference index…  [2.52274s]<br>Building query index…  [0.077635s]<br>Building seed filter…  [0.166746s]<br>Searching alignments…  [0.193984s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 1.<br>Building reference index…  [2.7968s]<br>Building query index…  [0.079784s]<br>Building seed filter…  [0.15885s]<br>Searching alignments…  [0.207618s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 2.<br>Building reference index…  [3.01136s]<br>Building query index…  [0.085289s]<br>Building seed filter…  [0.14848s]<br>Searching alignments…  [0.195939s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 3.<br>Building reference index…  [2.50633s]<br>Building query index…  [0.092534s]<br>Building seed filter…  [0.180737s]<br>Searching alignments…  [0.232746s]<br>Deallocating buffers…  [0.05002s]<br>Computing alignments…  [4.62268s]<br>Deallocating reference…  [0.012437s]<br>Loading reference sequences…  [0.000173s]<br>Deallocating buffers…  [0.000118s]<br>Deallocating queries…  [0.000254s]<br>Loading query sequences…  [1.9e-05s]<br>Closing the input file…  [1e-05s]<br>Closing the output file…  [6.7e-05s]<br>Closing the database file…  [6e-06s]<br>Deallocating taxonomy…  [1e-06s]<br>Total time &#x3D; 33.544s<br>Reported 33730 pairwise alignments, 33824 HSPs.<br>2225 queries aligned.<br>[zcb1998@localhost Desktop]$<br>[zcb1998@localhost Desktop]$ &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond blastp -d swissprot -q Caomuxi.pep.fasta -o matches2021.xls<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#98;&#117;&#x63;&#104;&#102;&#x69;&#110;&#x6b;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#98;&#117;&#x63;&#104;&#102;&#x69;&#110;&#x6b;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>#CPU threads: 2<br>Scoring parameters: (Matrix&#x3D;BLOSUM62 Lambda&#x3D;0.267 K&#x3D;0.041 Penalties&#x3D;11&#x2F;1)<br>Temporary directory:<br>Opening the database…  [0.002064s]<br>#Target sequences to report alignments for: 25<br>Opening the input file…  [0.00017s]<br>Error: Error detecting input file format. First line seems to be blank.<br>[zcb1998@localhost Desktop]$ &#x2F;home&#x2F;zcb1998&#x2F;Desktop&#x2F;diamond blastx -d swissprot -q Caomuxi.cds.fasta -o matches.m8<br>diamond v0.9.24.125 | by Benjamin Buchfink <a href="mailto:&#98;&#x75;&#x63;&#x68;&#x66;&#x69;&#110;&#107;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#98;&#x75;&#x63;&#x68;&#x66;&#x69;&#110;&#107;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;</a><br>Licensed under the GNU GPL <a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl.txt">https://www.gnu.org/licenses/gpl.txt</a><br>Check <a target="_blank" rel="noopener" href="http://github.com/bbuchfink/diamond">http://github.com/bbuchfink/diamond</a> for updates.</p>
+<p>#CPU threads: 2<br>Scoring parameters: (Matrix&#x3D;BLOSUM62 Lambda&#x3D;0.267 K&#x3D;0.041 Penalties&#x3D;11&#x2F;1)<br>Temporary directory:<br>Opening the database…  [2.9e-05s]<br>#Target sequences to report alignments for: 25<br>Opening the input file…  [0.010838s]<br>Opening the output file…  [0.001086s]<br>Loading query sequences…  [0.137648s]<br>Masking queries…  [1.19867s]<br>Building query seed set…  [0.025168s]<br>Algorithm: Double-indexed<br>Building query histograms…  [0.124588s]<br>Allocating buffers…  [2.2e-05s]<br>Loading reference sequences…  [1.11715s]<br>Building reference histograms…  [3.64051s]<br>Allocating buffers…  [4.9e-05s]<br>Initializing temporary storage…  [0.014819s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 0.<br>Building reference index…  [5.65281s]<br>Building query index…  [0.142622s]<br>Building seed filter…  [0.215267s]<br>Searching alignments…  [0.440092s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 1.<br>Building reference index…  [4.36867s]<br>Building query index…  [0.131952s]<br>Building seed filter…  [0.277002s]<br>Searching alignments…  [0.36881s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 2.<br>Building reference index…  [4.52613s]<br>Building query index…  [0.115202s]<br>Building seed filter…  [0.253503s]<br>Searching alignments…  [0.290895s]<br>Processing query chunk 0, reference chunk 0, shape 0, index chunk 3.<br>Building reference index…  [3.95865s]<br>Building query index…  [0.128909s]<br>Building seed filter…  [0.219909s]<br>Searching alignments…  [0.479451s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 0.<br>Building reference index…  [3.85583s]<br>Building query index…  [0.116726s]<br>Building seed filter…  [0.21339s]<br>Searching alignments…  [0.402212s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 1.<br>Building reference index…  [4.14518s]<br>Building query index…  [0.122619s]<br>Building seed filter…  [0.216045s]<br>Searching alignments…  [0.274904s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 2.<br>Building reference index…  [4.33934s]<br>Building query index…  [0.143687s]<br>Building seed filter…  [0.194082s]<br>Searching alignments…  [0.250045s]<br>Processing query chunk 0, reference chunk 0, shape 1, index chunk 3.<br>Building reference index…  [3.55633s]<br>Building query index…  [0.101393s]<br>Building seed filter…  [0.245083s]<br>Searching alignments…  [0.26321s]<br>Deallocating buffers…  [0.033141s]<br>Computing alignments…  [6.5803s]<br>Deallocating reference…  [0.010486s]<br>Loading reference sequences…  [0.000244s]<br>Deallocating buffers…  [0.000767s]<br>Deallocating queries…  [0.000737s]<br>Loading query sequences…  [4.2e-05s]<br>Closing the input file…  [1.4e-05s]<br>Closing the output file…  [4.3e-05s]<br>Closing the database file…  [8e-06s]<br>Deallocating taxonomy…  [2e-06s]<br>Total time &#x3D; 52.9132s<br>Reported 33730 pairwise alignments, 33824 HSPs.<br>2225 queries aligned.<br>[zcb1998@localhost Desktop]$ </p>
+<p><strong>PS C:\Users\ZHANGCAIBIN\Desktop\uniprot_sprot.fasta&gt; makeblastdb -in uniprot_sprot.fasta -dbtype prot -title uniprot_sprot-parse_seqids -out uniprot_sprot -logfile uniprot_sprot.log<br>PS C:\Users\ZHANGCAIBIN\Desktop\uniprot_sprot.fasta&gt; cat uniprot_sprot.log</strong></p>
+<p>Building a new DB, current time: 12&#x2F;29&#x2F;2021 17:17:23<br>New DB name:   C:\Users\ZHANGCAIBIN\Desktop\uniprot_sprot.fasta\uniprot_sprot<br>New DB title:  uniprot_sprot-parse_seqids<br>Sequence type: Protein<br>Keep MBits: T<br>Maximum file size: 1000000000B<br>Adding sequences from FASTA; added 565928 sequences in 15.5581 seconds.</p>
+<p>**PS C:\Users\ZHANGCAIBIN\Desktop\uniprot_sprot.fasta&gt; blastp -query caomuxi.pep.fasta -out swiss-prot.tab -db uniprot_sprot -evalue 1e-5 -outfmt 7 **</p>
+<p><img src="C:\Users\ZHANGCAIBIN\AppData\Roaming\Typora\typora-user-images\image-20211231122026800.png" alt="image-20211231122026800"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢你们对我的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    我愿意资助创作者
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WXZF.jpg" alt="张蔡斌 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/ZFB.jpg" alt="张蔡斌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>张蔡斌
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cz6900.github.io/2021/12/31/2021-12-31-Centos%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%88%86%E6%9E%90/" title="Centos生物信息学分析">https://cz6900.github.io/2021/12/31/2021-12-31-Centos生物信息学分析/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章，均在可信时间戳认证机构完成确权，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处，侵权必究！商业性使用请联系主理人购买授权许可。
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/WX.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E5%B7%A5/" rel="tag"># 科工</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/30/2021-12-30-%E8%9A%82%E8%9A%81%E7%9A%84%E5%8C%96%E5%AD%A6%E4%BF%A1%E4%BD%BF%E8%8F%B2%E8%8B%A5%E8%92%99/" rel="prev" title="蚂蚁的化学信使菲若蒙">
+      <i class="fa fa-chevron-left"></i> 蚂蚁的化学信使菲若蒙
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/06/2022-1-6-%E6%B7%B1%E5%9C%B3IO%E7%AC%94%E8%AE%B0/" rel="next" title="深圳I/O笔记">
+      深圳I/O笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Centos%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">Centos生物信息学分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-go%E6%B3%A8%E9%87%8A%E5%89%8D%E7%9A%84%E6%AF%94%E5%AF%B9"><span class="nav-number">1.1.</span> <span class="nav-text">1 go注释前的比对</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="张蔡斌"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">张蔡斌</p>
+  <div class="site-description" itemprop="description">糖只有那么甜，盐只有那么咸。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cz6900" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cz6900" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhangcb21@lzu.edu.cn" title="E-Mail → mailto:zhangcb21@lzu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6350133249" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6350133249" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hei-ma-49-26-76" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-ma-49-26-76" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/319272265" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;319272265" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.lzu.edu.cn/" title="http:&#x2F;&#x2F;www.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">兰州大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xjtudlc.com/" title="https:&#x2F;&#x2F;www.xjtudlc.com&#x2F;" rel="noopener" target="_blank">西安交通大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sicau.edu.cn/" title="https:&#x2F;&#x2F;www.sicau.edu.cn&#x2F;" rel="noopener" target="_blank">四川农业大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://my.lzu.edu.cn:8080/login?service=http://my.lzu.edu.cn" title="http:&#x2F;&#x2F;my.lzu.edu.cn:8080&#x2F;login?service&#x3D;http:&#x2F;&#x2F;my.lzu.edu.cn" rel="noopener" target="_blank">工作台|办公邮箱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://pan.reol.me/" title="http:&#x2F;&#x2F;pan.reol.me" rel="noopener" target="_blank">REOL云盘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mp.weixin.qq.com/" title="https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;" rel="noopener" target="_blank">微信平台</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://xiumi.us/" title="https:&#x2F;&#x2F;xiumi.us&#x2F;" rel="noopener" target="_blank">秀米</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.135plat.com/" title="https:&#x2F;&#x2F;www.135plat.com&#x2F;" rel="noopener" target="_blank">135编辑器</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://caoye.lzu.edu.cn/" title="http:&#x2F;&#x2F;caoye.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">草地农业科技学院</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://oversea.cnki.net/index/" title="https:&#x2F;&#x2F;oversea.cnki.net&#x2F;index&#x2F;" rel="noopener" target="_blank">知网</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://scholar.scqylaw.com/" title="http:&#x2F;&#x2F;scholar.scqylaw.com&#x2F;" rel="noopener" target="_blank">谷歌学术镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.webofscience.com/wos/alldb/basic-search" title="https:&#x2F;&#x2F;www.webofscience.com&#x2F;wos&#x2F;alldb&#x2F;basic-search" rel="noopener" target="_blank">WEB OF SCIENCE</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.home-for-researchers.com/" title="https:&#x2F;&#x2F;www.home-for-researchers.com&#x2F;" rel="noopener" target="_blank">科研者之家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.deepl.com/translator" title="https:&#x2F;&#x2F;www.deepl.com&#x2F;translator" rel="noopener" target="_blank">DEEPL翻译</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sci-hub.ren/" title="https:&#x2F;&#x2F;www.sci-hub.ren&#x2F;" rel="noopener" target="_blank">SCI_HUB</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.connectedpapers.com/" title="https:&#x2F;&#x2F;www.connectedpapers.com&#x2F;" rel="noopener" target="_blank">CONNECTEDPAPERS</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-tv"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张蔡斌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>

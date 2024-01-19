@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/photo.jpg">
+  <link rel="mask-icon" href="/images/photo.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cz6900.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="5 HTTP协议一、任务目标理解并掌握HTTP协议的概念和运行机制理解HTTP请求头和响应头的格式和作用熟练掌握各种常用的HTTP请求方法和响应状态码的意义理解Cookie和Session的作用和区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议">
+<meta property="og:url" content="https://cz6900.github.io/2022/03/14/2022-3-14-HTTP%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="劲草笔记">
+<meta property="og:description" content="5 HTTP协议一、任务目标理解并掌握HTTP协议的概念和运行机制理解HTTP请求头和响应头的格式和作用熟练掌握各种常用的HTTP请求方法和响应状态码的意义理解Cookie和Session的作用和区别">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-04.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-05.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-04.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-05.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-04.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-05.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-01.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-02.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-03.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-04.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-05.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-06.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-07.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-08.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-09.png">
+<meta property="og:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-10.png">
+<meta property="article:published_time" content="2022-03-14T13:56:44.000Z">
+<meta property="article:modified_time" content="2023-05-14T14:38:04.749Z">
+<meta property="article:author" content="张蔡斌">
+<meta property="article:tag" content="科工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-01.png">
+
+<link rel="canonical" href="https://cz6900.github.io/2022/03/14/2022-3-14-HTTP%E5%8D%8F%E8%AE%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTTP协议 | 劲草笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">劲草笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，记录知识</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/book/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-english">
+
+    <a href="/english/" rel="section"><i class="fa fa-language fa-fw"></i>EN</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2022/03/14/2022-3-14-HTTP%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTTP协议
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-14 21:56:44" itemprop="dateCreated datePublished" datetime="2022-03-14T21:56:44+08:00">2022-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-14 22:38:04" itemprop="dateModified" datetime="2023-05-14T22:38:04+08:00">2023-05-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="5-HTTP协议"><a href="#5-HTTP协议" class="headerlink" title="5 HTTP协议"></a>5 HTTP协议</h1><h2 id="一、任务目标"><a href="#一、任务目标" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解并掌握HTTP协议的概念和运行机制</strong><br><strong>理解HTTP请求头和响应头的格式和作用</strong><br><strong>熟练掌握各种常用的HTTP请求方法和响应状态码的意义</strong><br><strong>理解Cookie和Session的作用和区别</strong></p>
+<span id="more"></span>
+
+<p>右键&gt;&gt;&gt;审查元素&gt;&gt;&gt;Network&gt;&gt;&gt;刷新&gt;&gt;&gt;请求头 响应头</p>
+<h2 id="二、任务背景"><a href="#二、任务背景" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>超文本传输协议（Hyper Text Transfer Protocol，HTTP）是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可以给服务器发送什么样的消息以及能够得到什么样的响应。这个简单的模型是早期Web应用得以普及的重要保障，可以说没有HTTP协议，就没有今天丰富多彩、繁荣兴旺的互联网。</p>
+<h2 id="三、任务内容"><a href="#三、任务内容" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><blockquote>
+<p>使用Chrome浏览器打开任意一个网站，例如百度（<a target="_blank" rel="noopener" href="https://www.baidu.com),然后在页面上点击鼠标右键,在弹出的菜单上选择「检查」选项./">https://www.baidu.com），然后在页面上点击鼠标右键，在弹出的菜单上选择「检查」选项。</a><br><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-01.png" alt="图1：在网页上选择「检查」选项"><br>在出现的开发者选项界面中，选择「Network」选项。<br><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-02.png" alt="图2：选择「Network」选项"><br>重新刷新页面，点击「Name」列表中的任意一个请求地址，就可以看到HTTP协议在请求&#x2F;响应过程中涉及到的数据内容和格式。<br><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-05-03.png" alt="图3：查看Header头"><br>关注HTTP请求头和响应头（Request Headers和Response Headers）中的内容以及其中的作用。写出Cookie和Session的区别（有多少就写多少）：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>区别项</th>
+<th>Cookie</th>
+<th>Session</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>用户凭证</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>客户端</td>
+<td>服务端</td>
+</tr>
+<tr>
+<td>3</td>
+<td>删去则登陆失效</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>从network中application进入</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="6-HTTPS"><a href="#6-HTTPS" class="headerlink" title="6 HTTPS"></a>6 HTTPS</h1><h2 id="一、任务目标-1"><a href="#一、任务目标-1" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>了解HTTPS中所涉及到的技术及作用</strong></p>
+<p><strong>了解SSL&#x2F;TLS协议的技术机制及意义</strong></p>
+<p><strong>理解加密解密技术在HTTPS中的重要作用</strong></p>
+<p><strong>理解证书在HTTPS中的重要作用</strong></p>
+<h2 id="二、任务背景-1"><a href="#二、任务背景-1" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>HTTPS（全称是Hyper Text Transfer Protocol over SecureSocket Layer）是身披SSL&#x2F;TLS外壳的HTTP。它在HTTP之上利用SSL&#x2F;TLS建立安全的信道，加密数据传输。它被广泛用于互联网上安全敏感的通讯，例如电商、支付等应用。</p>
+<h2 id="三、任务训练"><a href="#三、任务训练" class="headerlink" title="三、任务训练"></a>三、任务训练</h2><h3 id="1、加密算法"><a href="#1、加密算法" class="headerlink" title="1、加密算法"></a>1、加密算法</h3><blockquote>
+<p>对称加密：加密与解密用同一套密钥，如DES、3DES和AES等</p>
+</blockquote>
+<blockquote>
+<p>非对称加密：加密和解密所使用的密钥不同，如RSA、DSA等</p>
+</blockquote>
+<blockquote>
+<p>不可逆加密：明文加密后无法通过解密来复原，如MD5、SHA等</p>
+</blockquote>
+<h3 id="2、SSL"><a href="#2、SSL" class="headerlink" title="2、SSL"></a>2、SSL</h3><blockquote>
+<p>全称Secure Sockets Layer，安全套接字协议，因为HTTP是用明文来传输数据的，传输内容可能会被偷窥（嗅探）和篡改，SSL的出现就是用来解决信息安全问题的，当前版本为3.0。它位于TCP&#x2F;IP协议与各种应用层协议之间，自身又分为两层： SSL记录协议（SSL Record Protocol）和SSL握手协议（SSL Handshake Protocol）。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-01.png" alt="图1：SSL协议结构"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-02.png" alt="图2：SSL运行过程"></p>
+<h3 id="3、TLS"><a href="#3、TLS" class="headerlink" title="3、TLS"></a>3、TLS</h3><blockquote>
+<p>全称Transport Layer Security，传输层协议，它是在SSL3.0基础上设计的，相当于SSL的后续版本，它的目标是让SSL更安全。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-03.png" alt="图3：TLS协议结构"></p>
+<h3 id="4、证书与证书链"><a href="#4、证书与证书链" class="headerlink" title="4、证书与证书链"></a>4、证书与证书链</h3><blockquote>
+<p>大学读完之后有毕业证书，并且这个证书可以在学信网查询</p>
+</blockquote>
+<blockquote>
+<p>专业上有注会、CCIE、律师证等，可以在国家职业认证机构或委托机构的网站上查到</p>
+</blockquote>
+<blockquote>
+<p>公司注册之后，营业执照信息也可以在天眼查或企查查上找到</p>
+</blockquote>
+<blockquote>
+<p>证书的作用</p>
+</blockquote>
+<ul>
+<li>过往经历的证明</li>
+<li>第三方信用担保</li>
+<li>唯一合法性检验</li>
+</ul>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-04.png" alt="图4：证书链"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-06-05.png" alt="图5：证书验证过程"></p>
+<h1 id="7-OSI七层模型"><a href="#7-OSI七层模型" class="headerlink" title="7 OSI七层模型"></a>7 OSI七层模型</h1><h2 id="一、任务目标-2"><a href="#一、任务目标-2" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解OSI七层网络模型中每一层的作用和存在的意义</strong></p>
+<p><strong>理解OSI七层网络模型中每一层所涉及的协议及其作用</strong></p>
+<p><strong>理解并熟知数据从发送到接收的完整传输过程</strong></p>
+<p>ISO 国际标准化组织</p>
+<p>IOS 苹果或思科操作系统</p>
+<p>OSI 七层网络模型</p>
+<p>工程师思维—分层—将复杂问题拆分为简单问题</p>
+<p>软件开发工程师—专注于应用层</p>
+<p>目前，软件工程师范畴常用的是五层模型，即把OSI的应用层，表示层，会话层合并为应用层。（思科华为常用）</p>
+<p>应用层为最上层</p>
+<p>数据链路+物理层为下层</p>
+<h3 id="物理层（解决设备连接网络问题）"><a href="#物理层（解决设备连接网络问题）" class="headerlink" title="物理层（解决设备连接网络问题）"></a>物理层（解决设备连接网络问题）</h3><p>分为</p>
+<p>有线：双绞线，光纤</p>
+<p>无线：WIFI，5G，蓝牙</p>
+<p>lightFI，手电筒也可以传递信号，</p>
+<p>即可收又可发，为全双工</p>
+<p>双绞线为8根线，每两根缠为一股，共四股，最终被压为RC45水晶头里的8个脚。是为网线。</p>
+<p>计算机处理数据，通常需要编码和解码。</p>
+<p>故***<u>调制解调器</u>***就起到将数字信号进行解码的作用。</p>
+<h3 id="数据链路层（局域网内设备通信）"><a href="#数据链路层（局域网内设备通信）" class="headerlink" title="数据链路层（局域网内设备通信）"></a>数据链路层（局域网内设备通信）</h3><p>含数据封装</p>
+<p>***<u>交换机：</u>***一对多设备或多对一设备</p>
+<p>到此层可构建本地局域网</p>
+<p>但次层次 ：华为+思科 协议私有，但标准公有</p>
+<p>每个主机含唯一MAC地址，是为网卡地址</p>
+<hr>
+<p>发送机—二进制数据—数据帧（含MAC地址）—交换机—拆包—目标机</p>
+<hr>
+<h3 id="网络层（多个局域网间设备通信）"><a href="#网络层（多个局域网间设备通信）" class="headerlink" title="网络层（多个局域网间设备通信）"></a>网络层（多个局域网间设备通信）</h3><p><u><em><strong>路由器</strong></em></u>：IPV4:32位，共四字节</p>
+<p>IPV6:128位：共16字节</p>
+<p>数据链路层的数据经过封装后在该层被打包为IP数据包（信封）经路由器，选择正确路由（高速公路）</p>
+<p>ARP和RARP攻击，欺骗协议，在网络层和数据链路层间工作，获取对应的MAC地址和对应数据包</p>
+<p>局域网地址（内部可不同，对外需要一致，接入外网）</p>
+<hr>
+<p>局域网地址通过NAT转化为公网地址</p>
+<hr>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><h3 id="（解决单个设备内各程序调用各自需要数据问题）"><a href="#（解决单个设备内各程序调用各自需要数据问题）" class="headerlink" title="（解决单个设备内各程序调用各自需要数据问题）"></a>（解决单个设备内各程序调用各自需要数据问题）</h3><p>网线端口号——–多个程序</p>
+<p>插台——用电器</p>
+<p>黑客通常侦听全网线，软件工程师通常侦听自己需用端口</p>
+<p>TCP:   可靠传输，确保收到数据，并确保准确，确保顺序一致</p>
+<p>（依赖与三次握手，一系列机制，收到，收到了收到，数据校验）</p>
+<p>（效率慢，质量高）（适合机要）</p>
+<p>UDP： 不可靠传输，三不管</p>
+<p>（效率快，质量低）（适合网游）</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>通用端口&gt;1000</p>
+<p>共享文件FTP</p>
+<p>邮件SMTP,POP3</p>
+<p>网页HTTP(80),HTTP3(443)</p>
+<p>域名（DNS）</p>
+<p>DHCP（IP动态分布）</p>
+<p>TCP和UDP端口号不同，各自独立</p>
+<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>数据编码，格式转换，解密</p>
+<h2 id="二、任务背景-2"><a href="#二、任务背景-2" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>大学计算机网络相关专业的同学，可能都知道OSI七层模型。OSI的全称是Open System Interconnection（开放系统互联），是一个定义得较为完备的协议规范。它最大的意义在于解决了不同网络之间的互联互通问题，并且清晰地定义了不同网络层次之间的边界和职责。</p>
+<h2 id="三、任务内容-1"><a href="#三、任务内容-1" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><blockquote>
+<p>应用层（Application Layer）：是OSI参考模型的最高层，它是用户、应用程序和网络之间的接口，它直接向用户提供服务，替用户在网络上完成各种工作。</p>
+</blockquote>
+<blockquote>
+<p>表示层（Presentation Layer）：是OSI参考模型的第六层，它对来自应用层的指令和数据进行解释，对各种语法赋予相应的含义，它主要功能是处理用户信息的表示问题，例如<em>数据编码、数据格式转换和加解密等</em>。</p>
+</blockquote>
+<blockquote>
+<p>会话层（Session Layer）：是OSI参考模型的第五层，它的<em>主要任务是为两个实体的表示层提供建立和使用连接的方法（不同实体之间表示层的连接称为会话）</em>，组织和协调两个会话进程之间的通信，并对<em>数据交换</em>进行管理。<em>（调用数据）</em></p>
+</blockquote>
+<blockquote>
+<p>传输层（Transport Layer）：是OSI参考模型的第四层。该层的主要任务是向用户提供可靠的端到端的差错和流量控制，保证报文的<em>正确传输</em>，同时向高层屏蔽下层数据通信的细节。</p>
+</blockquote>
+<blockquote>
+<p>网络层（Network Layer）：是OSI参考模型的第三层，它是最复杂的一层，也是通信子网的最高一层。它在下两层的基础上向上层提供服务。它的主要任务是<em>通过路由选择算法，为报文或分组选择最合适的路径</em>。该层控制数据链路层与传输层之间的信息转发，建立、维持和终止网络的连接。</p>
+</blockquote>
+<blockquote>
+<p>数据链路层（Data Link Layer）：是OSI参考模型的第二层，它负责建立和管理节点间的链路。同时通过各种控制协议，将有差错的物理信道变为无差错的、能可靠传输数据帧的数据链路。</p>
+</blockquote>
+<blockquote>
+<p>物理层（Physical Layer）：是OSI参考模型的第一层，也是最底层。它的主要功能是利用传输介质为数据链路层提供物理连接，实现比特流的透明传输。它使数据链路层不必考虑网络的具体传输介质是什么。“比特流的透明传输”表示经实际电路传送后的比特流没有发生变化，对传送的比特流来说，这个电路好像是看不见的。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-01.png" alt="图1：A主机通过互联网发送电子邮件的过程"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-02.png" alt="图2：B主机通过互联网接收电子邮件的过程"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-07-03.png" alt="图3：OSI各层所涉及的网络协议"></p>
+<h1 id="8-IP基础"><a href="#8-IP基础" class="headerlink" title="8 IP基础"></a>8 IP基础</h1><h2 id="一、任务目标-3"><a href="#一、任务目标-3" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>了解IP协议对互联网所起到的重要且不可替代的作用</strong></p>
+<p><strong>掌握IP地址的基础知识</strong></p>
+<p>IP地址：类别位+网络号+主机号</p>
+<h3 id="网络类型"><a href="#网络类型" class="headerlink" title="网络类型"></a>网络类型</h3><p>1 广域网-远程网</p>
+<p>2 城域网-为多个局域网的连接–城市</p>
+<p>3 局域网–公司和学校</p>
+<p>4 个人局域网—个人的多个设备—10m</p>
+<p>互连网 internet，泛指多个计算机互连的网络</p>
+<p>使用TCP&#x2F;IP规则的为互联网 Internet</p>
+<h2 id="二、任务背景-3"><a href="#二、任务背景-3" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>IP是Internet Protocol（网际协议）的缩写，是整个TCP&#x2F;IP协议族的核心，也是构成互联网的基础，可以说，只要计算机在网络中存在，就一定会有能够找得到它的IP地址。IP主要包含三方面的内容：IP编址方案、分组封装格式及分组转发规则。本任务所涉及的仅仅是IP编址方案。</p>
+<h2 id="三、任务内容-2"><a href="#三、任务内容-2" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、IP地址"><a href="#1、IP地址" class="headerlink" title="1、IP地址"></a>1、IP地址</h3><blockquote>
+<p>IP位于网络层，作用是主机间的通信，负责在没有直连的两个网络之间传输通信数据，而MAC位于数据链路层，作用是实现两个设备之间的直连通信</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-01.png" alt="图1：IP和MAC的区别"></p>
+<blockquote>
+<p>IP地址（IPv4）由32位二进制数表示，在计算机中是以二进制的方式处理的，人类为了方便记忆而采用了点分十进制的标记方式：也就是将32位二进制的IP地址以每8位为一组，共分为4组，组之间用“.”隔开，再将每组转换成十进制数表示。也就是说，IP地址的最大值就是232 &#x3D; 4294967296</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-02.png" alt="图2：IPv4的表示方法"></p>
+<h3 id="2、IP地址分类"><a href="#2、IP地址分类" class="headerlink" title="2、IP地址分类"></a>2、IP地址分类</h3><blockquote>
+<p>互联网诞生之初，IP地址显得很充裕，因此计算机科学家们设计了分类地址。他们把IP地址分为五种类型：A、B、C、D、E。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-03.png" alt="图3：A、B、C、D、E五类IP地址"></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>IP地址范围</th>
+<th>最大主机数</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>0.0.0.0 ～ 127.255.255.255</td>
+<td>16777214</td>
+<td>主机数多的大型网络</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128.0.0.0 ～ 191.255.255.255</td>
+<td>65534</td>
+<td>大国际公司</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.0.0.0 ～ 223.255.255.255</td>
+<td>254</td>
+<td>小公司</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>为什么要有网络号？因为除了需要定位某台具体的计算机，还需要定位某个网络。网络号和主机号的关系，就好比楼栋和住户的关系，也就是「网络号:主机号 &#x3D;&#x3D; 楼栋号:住户」。</p>
+</blockquote>
+<blockquote>
+<p>最大主机数 &#x3D; 2主机号的位数 - 2，例如C类IP地址的主机号位数为8，那么C类IP地址的最大主机数 &#x3D; 28 - 2 &#x3D; 254。之所以要减2，是因为有两个IP是特殊的，分别是主机号全为1和主机号全为0。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-04.png" alt="图4：最大主机数要排除全0和全1的主机号"></p>
+<h3 id="3、无分类地址CIDR"><a href="#3、无分类地址CIDR" class="headerlink" title="3、无分类地址CIDR"></a>3、无分类地址CIDR</h3><blockquote>
+<p>不再有A、B、C、D、E等分类的概念，而是仅仅将32位的IP地址划分成两部分：网络号 + 主机号，形式为：a.b.c.d&#x2F;x，其中&#x2F;x表示前x位属于网络号，范围是0～32。例如10.100.122.2&#x2F;24，通过CIDR也可以得到子网掩码。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-08-05.png" alt="图5：CIDR无分类地址"></p>
+<h3 id="4、小知识"><a href="#4、小知识" class="headerlink" title="4、小知识"></a>4、小知识</h3><blockquote>
+<p>在A、B、C三类地址中，分别都有一个保留地址。(用于局域网使用)，可通过路由接入广域网，楚以下的地址为公网广域网地址，广域网上各计算机可互相访问</p>
+</blockquote>
+<ul>
+<li>A类：10.0.0.0 ～ 10.255.255.255</li>
+<li>默认子网掩码:255.0.0.0</li>
+<li>B类：172.16.0.0 ～ 172.31.255.255</li>
+<li>默认子网掩码:255.240.0.0</li>
+<li>C类：192.168.0.0 ～ 192.168.255.255</li>
+<li>默认子网掩码:255.255.0.0</li>
+<li>127.0.0.0-127.255.255.255 系统环回地址</li>
+</ul>
+<p>也就是说，这三组地址是私有网络地址，在互联网上是用不了的</p>
+<blockquote>
+<p>本机IP、127.0.0.1和localhost：经常可以在开发中看到这三个不同的IP地址。他们之间的区别是什么呢？</p>
+</blockquote>
+<ul>
+<li>本机IP：确切地说是本机物理网卡的IP地址，它发送和接收数据会受到防火墙和网卡的限制</li>
+<li>127.0.0.1：这是一个环回地址，也是一个特殊的网络接口，从它发出的任何数据包都不会出现在网络中，它发送和接收数据也会受到防火墙和网卡的限制</li>
+<li>localhost：它是一个域名，过去它指向127.0.0.1这个IP地址，现在它同时还指向IPv6地址：[::1] ，它发送和接收数据不会受防火墙和网卡的限制</li>
+</ul>
+<h1 id="9-IPv6"><a href="#9-IPv6" class="headerlink" title="9 IPv6"></a>9 IPv6</h1><h2 id="一、任务目标-4"><a href="#一、任务目标-4" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解IPv6的表示方法和地址类型</strong></p>
+<h2 id="二、任务背景-4"><a href="#二、任务背景-4" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>在IPv4诞生的时代，是无法预见今日互联网的繁荣程度的，因此很多设计问题在发展的过程中也逐渐暴露出来，例如分类不合理，可用的公网IP地址总数量太少等等。在此情况下，出现了IPv6。IPv6是英文“Internet Protocol Version 6”（互联网协议第6版）的缩写，是互联网工程任务组（IETF）设计的用于替代IPv4的下一代IP协议，其地址数量号称可以为全世界的每一粒沙子编上一个地址。</p>
+<h2 id="三、任务内容-3"><a href="#三、任务内容-3" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><blockquote>
+<p>冒分十六进制表示法：格式为X:X:X:X:X:X:X:X，每个X表示地址中的16个二进制位（或者十六进制数），例如：ABCD:EF01:2345:6789:ABCD:EF01:2345:6789，这种表示法中，X中的前导0是可以省略的。</p>
+</blockquote>
+<blockquote>
+<p>0位压缩表示法：如果一个IPv6地址中间包含很长的一段0，就可以把连续的一段0压缩为“::”。但这种形式“::”只能出现一次。</p>
+</blockquote>
+<blockquote>
+<p>内嵌IPv4表示法：为了和IPv4兼容，IPv4地址可以嵌入IPv6地址中，此时地址格式为：X:X:X:X:X:X:d.d.d.d，前96位采用冒分十六进制表示，而最后32位则使用IPv4的点分十进制表示，例如：::192.168.0.1。</p>
+</blockquote>
+<p>::1&#x2F;128是IPv6的环回地址的缺省写法</p>
+<h1 id="10-网络拓扑"><a href="#10-网络拓扑" class="headerlink" title="10 网络拓扑"></a>10 网络拓扑</h1><h2 id="一、任务目标-5"><a href="#一、任务目标-5" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>理解网络拓扑结构的组成原理和作用</strong><br><strong>知道常用的网络拓扑结构及其适用场景</strong></p>
+<h2 id="二、任务背景-5"><a href="#二、任务背景-5" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>互联网是一个广义上的概念，它泛指的是一切通过网络连接在一起的计算机集合。所以，如果只是观察局部，比如某一家公司的网络的话，那么就不能再说这家公司的网络就是“互联网”了。那么，对于每家公司来说，网络具体又是如何构成的呢？这就是网络拓扑结构要解决的问题。如同数据结构是按照某种形式组织数据一样，网络拓扑结构指的也是按照某种形式将不同的物理计算机连接在一起。</p>
+<h2 id="三、任务内容-4"><a href="#三、任务内容-4" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><blockquote>
+<p>星型结构：是指各计算机以星型方式连接成网。网络有中央节点，其他结点（工作站、服务器）都与中央节点直接相连，这种结构以中央结点为中心，因此又称为集中式网络。它具有结构简单、便于管理、控制简单、网络延迟时间小、传输误差低等特点。但缺点也是明显的：可靠性较低、资源共享能力较差、线路利用率低。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-01.png" alt="图1：星型网络拓扑结构"></p>
+<blockquote>
+<p>总线型结构：是指各工作站和服务器均挂在一条总线上，各工作站地位平等，无中心节点控制，它结构简单、可扩充性好、安装容易，但维护困难。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-02.png" alt="图2：总线网络拓扑结构"></p>
+<blockquote>
+<p>环型结构：由网络中若干结点通过通信链路首尾相连形成一个闭合的环，这种结构使公共传输电缆组成环状，数据在环路中沿着一个方向在各个节点间传输，信息从一个节点传到另一个节点。它实时性强、传输控制容易，但维护困难，可靠性不高。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-03.png" alt="图3：环型网络拓扑结构"></p>
+<blockquote>
+<p>网状结构：它是指每台设备之间均有点到点的链路连接，这种连接不经济，只有每个站点都要频繁发送信息时才使用这种方法。它的安装也比较复杂，但系统可靠性高，容错能力强。有时也称为分布式结构。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-04.png" alt="图4：网状网络拓扑结构"></p>
+<blockquote>
+<p>树型结构：这是一种分级的集中控制式网络，与星型相比，它的通信线路总长度短，成本较低、节点易于扩充、寻找路径方便，但除了叶节点及其相连的线路外，任一节点或其相连的线路故障都会使系统受到影响。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-10-05.png" alt="图5：树型网络拓扑结构"></p>
+<h1 id="11-域名解析"><a href="#11-域名解析" class="headerlink" title="11 域名解析"></a>11 域名解析</h1><h2 id="一、任务目标-6"><a href="#一、任务目标-6" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>了解域名的意义及作用</strong><br><strong>掌握常见的域名解析类型和规则</strong></p>
+<h2 id="二、任务背景-6"><a href="#二、任务背景-6" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>在互联网上有成千上万台计算机，为了能准确地访问其中某台计算机上的服务，在OSI七层模型的网络层中，通过IP地址来唯一标记每台主机在网络里的位置，比如：39.106.226.142。但是这些纯数字的IP地址太难记了，因而就出现了域名（比如csdn.net）这样便于人类记忆的地址符号。这相当于现实世界中城市的名称，如武汉市，IP地址则相当于邮局内部的编码，如420000，而域名解析就是将域名转换为IP地址的过程。</p>
+<h2 id="三、任务内容-5"><a href="#三、任务内容-5" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、域名规则"><a href="#1、域名规则" class="headerlink" title="1、域名规则"></a>1、域名规则</h3><blockquote>
+<p>英文域名只能由26个英文字母、0～9十个数字以及“-”连字符号混合而成（除了“-”不能是第一个字符），不支持使用空格及一些特殊字符，比如!?&#x2F;;:@#$%^~_&#x3D;+,*&lt;&gt;等。</p>
+</blockquote>
+<blockquote>
+<p>英文域名不区分大小写，也可以是纯英文和数字域名，对于中文域名而言，则必须含有中文字符。</p>
+</blockquote>
+<blockquote>
+<p>域名级数是从右至左按照“.”分隔的部分确定的，有几个“.”就是几级，一般情况下，域名最好不超过五级，例如a.com是一级域名，而a.b.com则是二级域名。</p>
+</blockquote>
+<blockquote>
+<p>每一级域名长度的限制是***<u>63</u><em><strong>个字符，域名总长度则不能超过</strong></em><u>253</u>***个字符。</p>
+</blockquote>
+<blockquote>
+<p>常见的通用顶级域名为：.biz .com .edu .gov .info .int .mil .name .net .org。</p>
+</blockquote>
+<blockquote>
+<p>国家顶级域名参照ISO 3166-1中的双字母代码生成，例如中国大陆为.cn，中国香港为.hk，中国台湾为.tw，美国为.us。</p>
+</blockquote>
+<blockquote>
+<p>通用域名可以组合国家域名，标明所在地区（只要域名管理机构允许），例如.gov.cn。</p>
+</blockquote>
+<h3 id="2、域名解析类型"><a href="#2、域名解析类型" class="headerlink" title="2、域名解析类型"></a>2、域名解析类型</h3><blockquote>
+<p>A记录解析：A记录就是Address记录，是用来指定域名对应的IP地址，通常是将网站服务指向服务器地址，例如将域名<a target="_blank" rel="noopener" href="http://www.csdn.net指向39.106.226.142这个ip地址,就是一个典型的a记录解析./">www.csdn.net指向39.106.226.142这个IP地址，就是一个典型的A记录解析。</a></p>
+<p>（将域名直接解析为IP地址）</p>
+</blockquote>
+<blockquote>
+<p>CNAME记录解析：如果服务器的地址发生变动，光靠A记录就不行了。这时候就需要用到CNAME，它又叫别名解析，例如域名<a target="_blank" rel="noopener" href="http://www.csdn.net,真实的ip地址为39.106.226.142,对应的cname可能是abc.csdnweb.com,也就是允许多个域名对应服务器的主机名,这样即使服务器的ip地址发生变更,也不用更改解析记录,域名解析会自动依据主机名更新ip地址.如果a记录解析和cname记录解析并存,那么a记录解析将优先生效./">www.csdn.net，真实的IP地址为39.106.226.142，对应的CNAME可能是abc.csdnweb.com，也就是允许多个域名对应服务器的主机名，这样即使服务器的IP地址发生变更，也不用更改解析记录，域名解析会自动依据主机名更新IP地址。如果A记录解析和CNAME记录解析并存，那么A记录解析将优先生效。</a></p>
+<p>（将域名指向另一个域名）</p>
+<p>（避免A记录下需要多次修改同一IP地址的情况）</p>
+</blockquote>
+<blockquote>
+<p>MX记录解析：即邮件交换记录，这种记录解析用于将以域名为结尾的电子邮件指向对应的邮件服务器，例如用户所用的邮件以csdn.net为结尾，那么就需要在域名管理中添加该域名的MX记录来处理所有以@csdn.net为结尾的邮件。</p>
+<p>（邮件系统专用）</p>
+</blockquote>
+<h3 id="3、泛域名解析"><a href="#3、泛域名解析" class="headerlink" title="3、泛域名解析"></a>3、泛域名解析</h3><blockquote>
+<p>是指将某一类域名解析到同一个IP地址，以通配符的方式实现，例如将*.csdn.net的泛域名指向IP地址39.106.226.142时，那么a.csdn.net、b.csdn.net等所有以csdn.net结尾的域名都会指向39.106.226.142这个IP。</p>
+<p>（同一一级域名指向同一IP）</p>
+</blockquote>
+<h1 id="12-常用网络命令和端口"><a href="#12-常用网络命令和端口" class="headerlink" title="12 常用网络命令和端口"></a>12 常用网络命令和端口</h1><h2 id="一、任务目标-7"><a href="#一、任务目标-7" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>了解常用的网络服务端口号</strong></p>
+<p><strong>掌握常见网络命令及使用场景</strong></p>
+<h2 id="二、任务背景-7"><a href="#二、任务背景-7" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>工程师天天使用计算机做软件开发，有时候出了问题需要确定到底是自己的问题，还是网络的问题。所以学习并了解一些常见的计算机命令和开发中常用的端口，对开发工作会有很多实际的帮助。</p>
+<h2 id="三、任务内容-6"><a href="#三、任务内容-6" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><h3 id="1、常用网络命令"><a href="#1、常用网络命令" class="headerlink" title="1、常用网络命令"></a>1、常用网络命令</h3><blockquote>
+<p>ping命令：这是在开发中使用频率极高的一个命令，主要用于确定网络的连通性，例如很多刚刚安装操作系统的计算机，第一件事就是先看看是否能联网，所以往往执行的第一条命令就是ping命令。它的格式是：ping 主机名&#x2F;域名&#x2F;IP地址。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-01.png" alt="图1：在Windows中使用ping命令"></p>
+<blockquote>
+<p>ipconfig&#x2F;ifconfig命令：当使用不带任何参数选项ipconfig&#x2F;ifconfig命令时，显示每个已经配置了的接口的IP地址、子网掩码和缺省网关值。其中在Windows中使用的是ipconfig，而在Mac或Linux系统中，使用的是ifconfig。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-02.png" alt="图2：在Windows中使用ipconfig命令"></p>
+<blockquote>
+<p>netstat命令：能够显示活动的TCP连接、计算机侦听的端口、以太网统计信息、IP路由表、IPv4以及IPv6统计信息，通过它可以了解网络当前的状态。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-12-03.png" alt="图3：在Windows中使用netstat命令"></p>
+<h3 id="2、常用网络端口"><a href="#2、常用网络端口" class="headerlink" title="2、常用网络端口"></a>2、常用网络端口</h3><blockquote>
+<p>TCP与UDP段结构中端口范围在0～65535之间。</p>
+</blockquote>
+<blockquote>
+<p>端口号小于256的是常用端口，服务器一般都是通过常用端口号来识别的。</p>
+</blockquote>
+<blockquote>
+<p>任何TCP&#x2F;IP实现所提供的服务都用0～1023之间的端口号。</p>
+</blockquote>
+<blockquote>
+<p>1024～49151端口号是被注册的端口号，可以由用户自由使用，也是被IANA指定为特殊服务使用，从49152～65535是动态或私有端口号（以上并不是强制的）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>服务&#x2F;协议</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>FTP</td>
+<td>FTP服务器所开放的端口，用于上传、下载</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>SSH连接</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Telnet</td>
+<td>远程登录服务</td>
+</tr>
+<tr>
+<td>25</td>
+<td>SMTP</td>
+<td>SMTP服务器所开放的端口，用于发送邮件</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+<td>HTTP协议默认端口号</td>
+</tr>
+<tr>
+<td>110</td>
+<td>POP3</td>
+<td>邮局协议端口号</td>
+</tr>
+<tr>
+<td>161</td>
+<td>SNMP</td>
+<td>网络管理协议端口号</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+<td>HTTPS协议默认端口号</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>WWW代理</td>
+<td>一般的网站服务会开放此端口</td>
+</tr>
+</tbody></table>
+<h1 id="13-数据结构常识"><a href="#13-数据结构常识" class="headerlink" title="13 数据结构常识"></a>13 数据结构常识</h1><h2 id="一、任务目标-8"><a href="#一、任务目标-8" class="headerlink" title="一、任务目标"></a>一、任务目标</h2><p><strong>了解常用的数据结构及其分类</strong></p>
+<p><strong>理解不同的数据结构所适用的不同场景</strong></p>
+<p>算法  函数库的直接调用</p>
+<p>实例代码的改编</p>
+<h2 id="二、任务背景-8"><a href="#二、任务背景-8" class="headerlink" title="二、任务背景"></a>二、任务背景</h2><p>数据结构是计算机存储、组织数据的方式，它研究的是如何构造复杂软件系统的根基，它的核心内涵是分解与抽象，并得到软件开发过程中需要用到的逻辑结构。用简单直白的话来说，就是同样的数据，在某些场景下，用数组会比用链表好，而在另一些场景下，可能用栈（一种可以实现「后进先出」的线性表）就是最合理的了。</p>
+<h2 id="三、任务内容-7"><a href="#三、任务内容-7" class="headerlink" title="三、任务内容"></a>三、任务内容</h2><blockquote>
+<p>数组（Array）：它是将具有相同类型的若干数据组织在一起的集合，这是一种最基本而且也是一种最经常使用的数据结构。</p>
+<p>数组下标从0开始，所以array[3][1]代表第四行、第二列，前面的为行，后面的为列</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-01.png" alt="图1：数组"></p>
+<blockquote>
+<p>栈（Stack）：一种特殊的线性表，只能在一个表的固定端进行数据节点的插入和删除操作，栈正是一种按照后进先出（LIFO）的原则来存储数据的数据结构。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-02.png" alt="图2：栈"></p>
+<blockquote>
+<p>队列（Queue）：和栈类似，但不同的是，它是在一端执行入队操作，而在另一端进行出队操作。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-03.png" alt="图3：队列"></p>
+<blockquote>
+<p>链表（Linked List）：它和数组一样，也是一组数据的集合，但和数组不一样的是，它并不是一组连续的数据集合，而是通过指针连接在一起的。</p>
+<p>单向，双向，循环，双循环</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-04.png" alt="图4：链表"></p>
+<blockquote>
+<p>树（Tree）：这是一种典型的非线性结构，之所以叫做“树”，是因为它的结构看起来就像一颗倒过来的树，它只有一个根结点，但可以有多个后继节点。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-05.png" alt="图5：树"></p>
+<blockquote>
+<p>堆（Heap）：它是一种特殊的树型结构，它的特点是根结点的值是所有节点中最大或者最小的，而且根结点的子节点也是一个堆结构。</p>
+<p>最大堆：根节点总比子节点大</p>
+<p>不是，所谓 AVL 树，就是对于任意一个节点来说，它的左子树比它小，它的右子树比它大；而且任意节点的子节点之间高度差距最大为 1</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-06.png" alt="图6：最小堆"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-07.png" alt="图7：最大堆"></p>
+<blockquote>
+<p>图（Graph）：这也是一种非线性数据结构，在图结构中，数据节点称为顶点，顶点之间的连线称为边。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-08.png" alt="图8：有向图"></p>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-09.png" alt="图9：无向图"></p>
+<blockquote>
+<p>散列表（Hash）：这种数据结构来源于散列函数，它的思想是如果存在x，那么就必然有一个唯一的存储位置f(x)可以找到x，这样通过数学函数就直接计算出x的存储位置而不用在进行比较、查找以后才知道。</p>
+</blockquote>
+<p><img src="https://task-study.oss-cn-hangzhou.aliyuncs.com/c1-task/c1-13-10.png" alt="图10：散列表"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢你们对我的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    我愿意资助创作者
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WXZF.jpg" alt="张蔡斌 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/ZFB.jpg" alt="张蔡斌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>张蔡斌
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cz6900.github.io/2022/03/14/2022-3-14-HTTP%E5%8D%8F%E8%AE%AE/" title="HTTP协议">https://cz6900.github.io/2022/03/14/2022-3-14-HTTP协议/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章，均在可信时间戳认证机构完成确权，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处，侵权必究！商业性使用请联系主理人购买授权许可。
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/WX.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E5%B7%A5/" rel="tag"># 科工</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/11/2022-3-11-%E5%9F%BA%E5%9B%A0%E5%AE%B6%E6%97%8F%E9%89%B4%E5%AE%9A%E6%B5%81%E7%A8%8B/" rel="prev" title="基因家族鉴定流程">
+      <i class="fa fa-chevron-left"></i> 基因家族鉴定流程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/14/2022-3-14-%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E8%AF%86/" rel="next" title="计算机通识">
+      计算机通识 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#5-HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.</span> <span class="nav-text">5 HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF"><span class="nav-number">1.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9"><span class="nav-number">1.3.</span> <span class="nav-text">三、任务内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-HTTPS"><span class="nav-number">2.</span> <span class="nav-text">6 HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-1"><span class="nav-number">2.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-1"><span class="nav-number">2.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E8%AE%AD%E7%BB%83"><span class="nav-number">2.3.</span> <span class="nav-text">三、任务训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.3.1.</span> <span class="nav-text">1、加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81SSL"><span class="nav-number">2.3.2.</span> <span class="nav-text">2、SSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81TLS"><span class="nav-number">2.3.3.</span> <span class="nav-text">3、TLS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E8%AF%81%E4%B9%A6%E4%B8%8E%E8%AF%81%E4%B9%A6%E9%93%BE"><span class="nav-number">2.3.4.</span> <span class="nav-text">4、证书与证书链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">7 OSI七层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-2"><span class="nav-number">3.1.</span> <span class="nav-text">一、任务目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%EF%BC%88%E8%A7%A3%E5%86%B3%E8%AE%BE%E5%A4%87%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">3.1.1.</span> <span class="nav-text">物理层（解决设备连接网络问题）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%88%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1%EF%BC%89"><span class="nav-number">3.1.2.</span> <span class="nav-text">数据链路层（局域网内设备通信）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%88%E5%A4%9A%E4%B8%AA%E5%B1%80%E5%9F%9F%E7%BD%91%E9%97%B4%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1%EF%BC%89"><span class="nav-number">3.1.3.</span> <span class="nav-text">网络层（多个局域网间设备通信）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">3.1.4.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E8%A7%A3%E5%86%B3%E5%8D%95%E4%B8%AA%E8%AE%BE%E5%A4%87%E5%86%85%E5%90%84%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E5%90%84%E8%87%AA%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">3.1.5.</span> <span class="nav-text">（解决单个设备内各程序调用各自需要数据问题）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">3.1.6.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E7%A4%BA%E5%B1%82"><span class="nav-number">3.1.7.</span> <span class="nav-text">表示层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-2"><span class="nav-number">3.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-1"><span class="nav-number">3.3.</span> <span class="nav-text">三、任务内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-IP%E5%9F%BA%E7%A1%80"><span class="nav-number">4.</span> <span class="nav-text">8 IP基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-3"><span class="nav-number">4.1.</span> <span class="nav-text">一、任务目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.1.</span> <span class="nav-text">网络类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-3"><span class="nav-number">4.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-2"><span class="nav-number">4.3.</span> <span class="nav-text">三、任务内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81IP%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.1.</span> <span class="nav-text">1、IP地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB"><span class="nav-number">4.3.2.</span> <span class="nav-text">2、IP地址分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%97%A0%E5%88%86%E7%B1%BB%E5%9C%B0%E5%9D%80CIDR"><span class="nav-number">4.3.3.</span> <span class="nav-text">3、无分类地址CIDR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%B0%8F%E7%9F%A5%E8%AF%86"><span class="nav-number">4.3.4.</span> <span class="nav-text">4、小知识</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-IPv6"><span class="nav-number">5.</span> <span class="nav-text">9 IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-4"><span class="nav-number">5.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-4"><span class="nav-number">5.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-3"><span class="nav-number">5.3.</span> <span class="nav-text">三、任务内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91"><span class="nav-number">6.</span> <span class="nav-text">10 网络拓扑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-5"><span class="nav-number">6.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-5"><span class="nav-number">6.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-4"><span class="nav-number">6.3.</span> <span class="nav-text">三、任务内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="nav-number">7.</span> <span class="nav-text">11 域名解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-6"><span class="nav-number">7.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-6"><span class="nav-number">7.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-5"><span class="nav-number">7.3.</span> <span class="nav-text">三、任务内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%9F%9F%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">7.3.1.</span> <span class="nav-text">1、域名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.3.2.</span> <span class="nav-text">2、域名解析类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%B3%9B%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="nav-number">7.3.3.</span> <span class="nav-text">3、泛域名解析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#12-%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E5%92%8C%E7%AB%AF%E5%8F%A3"><span class="nav-number">8.</span> <span class="nav-text">12 常用网络命令和端口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-7"><span class="nav-number">8.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-7"><span class="nav-number">8.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-6"><span class="nav-number">8.3.</span> <span class="nav-text">三、任务内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">8.3.1.</span> <span class="nav-text">1、常用网络命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%B8%B8%E7%94%A8%E7%BD%91%E7%BB%9C%E7%AB%AF%E5%8F%A3"><span class="nav-number">8.3.2.</span> <span class="nav-text">2、常用网络端口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#13-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%B8%B8%E8%AF%86"><span class="nav-number">9.</span> <span class="nav-text">13 数据结构常识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%BB%E5%8A%A1%E7%9B%AE%E6%A0%87-8"><span class="nav-number">9.1.</span> <span class="nav-text">一、任务目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%BB%E5%8A%A1%E8%83%8C%E6%99%AF-8"><span class="nav-number">9.2.</span> <span class="nav-text">二、任务背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%BB%E5%8A%A1%E5%86%85%E5%AE%B9-7"><span class="nav-number">9.3.</span> <span class="nav-text">三、任务内容</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="张蔡斌"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">张蔡斌</p>
+  <div class="site-description" itemprop="description">糖只有那么甜，盐只有那么咸。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cz6900" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cz6900" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhangcb21@lzu.edu.cn" title="E-Mail → mailto:zhangcb21@lzu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6350133249" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6350133249" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hei-ma-49-26-76" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-ma-49-26-76" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/319272265" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;319272265" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.lzu.edu.cn/" title="http:&#x2F;&#x2F;www.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">兰州大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xjtudlc.com/" title="https:&#x2F;&#x2F;www.xjtudlc.com&#x2F;" rel="noopener" target="_blank">西安交通大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sicau.edu.cn/" title="https:&#x2F;&#x2F;www.sicau.edu.cn&#x2F;" rel="noopener" target="_blank">四川农业大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://my.lzu.edu.cn:8080/login?service=http://my.lzu.edu.cn" title="http:&#x2F;&#x2F;my.lzu.edu.cn:8080&#x2F;login?service&#x3D;http:&#x2F;&#x2F;my.lzu.edu.cn" rel="noopener" target="_blank">工作台|办公邮箱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://pan.reol.me/" title="http:&#x2F;&#x2F;pan.reol.me" rel="noopener" target="_blank">REOL云盘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mp.weixin.qq.com/" title="https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;" rel="noopener" target="_blank">微信平台</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://xiumi.us/" title="https:&#x2F;&#x2F;xiumi.us&#x2F;" rel="noopener" target="_blank">秀米</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.135plat.com/" title="https:&#x2F;&#x2F;www.135plat.com&#x2F;" rel="noopener" target="_blank">135编辑器</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://caoye.lzu.edu.cn/" title="http:&#x2F;&#x2F;caoye.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">草地农业科技学院</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://oversea.cnki.net/index/" title="https:&#x2F;&#x2F;oversea.cnki.net&#x2F;index&#x2F;" rel="noopener" target="_blank">知网</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://scholar.scqylaw.com/" title="http:&#x2F;&#x2F;scholar.scqylaw.com&#x2F;" rel="noopener" target="_blank">谷歌学术镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.webofscience.com/wos/alldb/basic-search" title="https:&#x2F;&#x2F;www.webofscience.com&#x2F;wos&#x2F;alldb&#x2F;basic-search" rel="noopener" target="_blank">WEB OF SCIENCE</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.home-for-researchers.com/" title="https:&#x2F;&#x2F;www.home-for-researchers.com&#x2F;" rel="noopener" target="_blank">科研者之家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.deepl.com/translator" title="https:&#x2F;&#x2F;www.deepl.com&#x2F;translator" rel="noopener" target="_blank">DEEPL翻译</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sci-hub.ren/" title="https:&#x2F;&#x2F;www.sci-hub.ren&#x2F;" rel="noopener" target="_blank">SCI_HUB</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.connectedpapers.com/" title="https:&#x2F;&#x2F;www.connectedpapers.com&#x2F;" rel="noopener" target="_blank">CONNECTEDPAPERS</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-tv"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张蔡斌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>

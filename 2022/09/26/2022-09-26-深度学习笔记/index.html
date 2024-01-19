@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/photo.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/photo.jpg">
+  <link rel="mask-icon" href="/images/photo.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cz6900.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="深度学习笔记矩阵运算仿真神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习笔记">
+<meta property="og:url" content="https://cz6900.github.io/2022/09/26/2022-09-26-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="劲草笔记">
+<meta property="og:description" content="深度学习笔记矩阵运算仿真神经网络">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image-20230515174335091.png">
+<meta property="article:published_time" content="2022-09-26T13:56:44.000Z">
+<meta property="article:modified_time" content="2023-05-15T09:43:41.305Z">
+<meta property="article:author" content="张蔡斌">
+<meta property="article:tag" content="科工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/cz6900/img/image-20230515174335091.png">
+
+<link rel="canonical" href="https://cz6900.github.io/2022/09/26/2022-09-26-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深度学习笔记 | 劲草笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">劲草笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录生活，记录知识</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/book/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-english">
+
+    <a href="/english/" rel="section"><i class="fa fa-language fa-fw"></i>EN</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cz6900.github.io/2022/09/26/2022-09-26-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/photo.jpg">
+      <meta itemprop="name" content="张蔡斌">
+      <meta itemprop="description" content="糖只有那么甜，盐只有那么咸。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="劲草笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-26 21:56:44" itemprop="dateCreated datePublished" datetime="2022-09-26T21:56:44+08:00">2022-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-15 17:43:41" itemprop="dateModified" datetime="2023-05-15T17:43:41+08:00">2023-05-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="深度学习笔记"><a href="#深度学习笔记" class="headerlink" title="深度学习笔记"></a>深度学习笔记</h1><h4 id="矩阵运算仿真神经网络"><a href="#矩阵运算仿真神经网络" class="headerlink" title="矩阵运算仿真神经网络"></a>矩阵运算仿真神经网络</h4><span id="more"></span>
+<p>$$<br>x,输入;</p>
+<p>y,输出;</p>
+<p>w,权重;</p>
+<p>b,偏差值.<br>$$</p>
+<p>$$<br>y&#x3D;activation(x*w+b)<br>$$</p>
+<h4 id="多层感知器"><a href="#多层感知器" class="headerlink" title="多层感知器"></a>多层感知器</h4><p><img src="https://cdn.jsdelivr.net/gh/cz6900/img/image-20230515174335091.png" alt="image-20230515174335091"><br>$$<br>h1&#x3D;ReLU(x*w1+b1);<br>$$</p>
+<p>$$<br>y&#x3D;softmax(h1*w2+b2)<br>$$</p>
+<h2 id="深度学习必备软件安装"><a href="#深度学习必备软件安装" class="headerlink" title="深度学习必备软件安装"></a>深度学习必备软件安装</h2><h2 id="1-安装Anaconda"><a href="#1-安装Anaconda" class="headerlink" title="1 安装Anaconda"></a>1 安装Anaconda</h2><h3 id="1-1-下载Anaconda"><a href="#1-1-下载Anaconda" class="headerlink" title="1.1 下载Anaconda"></a>1.1 下载Anaconda</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.anaconda.com/products/distribution</span><br></pre></td></tr></table></figure>
+
+<p>安装时需要勾选add anaconda to my path</p>
+<h3 id="1-2-启动命令提示符"><a href="#1-2-启动命令提示符" class="headerlink" title="1.2 启动命令提示符"></a>1.2 启动命令提示符</h3><p>右击标题栏，可以改变文本与背景颜色</p>
+<h4 id="1-2-1-建立并切换工作目录"><a href="#1-2-1-建立并切换工作目录" class="headerlink" title="1.2.1 建立并切换工作目录"></a>1.2.1 建立并切换工作目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">md \pythonwork</span><br><span class="line"></span><br><span class="line">cd \pythonwork</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-创建Anaconda虚拟环境"><a href="#1-2-2-创建Anaconda虚拟环境" class="headerlink" title="1.2.2 创建Anaconda虚拟环境"></a>1.2.2 创建Anaconda虚拟环境</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name tensorflow python=3.5 anaconda</span><br></pre></td></tr></table></figure>
+
+<p>conda create  建立虚拟环境</p>
+<p>–name tensorflow –建立的虚拟环境名称为tensor flow</p>
+<p>python&#x3D;3.5 安装的python包版本为3.5</p>
+<p>anaconda 在建立虚拟环境的同时也会安装其他的python包</p>
+<p>中途按住y，即可继续安装</p>
+<h4 id="1-2-3-启动Anaconda虚拟环境"><a href="#1-2-3-启动Anaconda虚拟环境" class="headerlink" title="1.2.3 启动Anaconda虚拟环境"></a>1.2.3 启动Anaconda虚拟环境</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate tensorflow </span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-4-关闭Anaconda虚拟环境"><a href="#1-2-4-关闭Anaconda虚拟环境" class="headerlink" title="1.2.4 关闭Anaconda虚拟环境"></a>1.2.4 关闭Anaconda虚拟环境</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate tensorflow </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-在anaconda虚拟环境安装TensorFlow与Keras"><a href="#2-在anaconda虚拟环境安装TensorFlow与Keras" class="headerlink" title="2 在anaconda虚拟环境安装TensorFlow与Keras"></a>2 在anaconda虚拟环境安装TensorFlow与Keras</h2><p>启动Anaconda虚拟环境（注意全为小写）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate tensorflow </span><br></pre></td></tr></table></figure>
+<p>安装TensorFlow CPU 版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorFlow</span><br><span class="line">pip3 install --user --upgrade tensorflow -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>安装Keras</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Keras</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-启动Jupyter-Notebook"><a href="#3-启动Jupyter-Notebook" class="headerlink" title="3 启动Jupyter Notebook"></a>3 启动Jupyter Notebook</h2><p>建立并切换工作目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd \pythonwork</span><br></pre></td></tr></table></figure>
+
+<p>启动Anaconda虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate tensorflow </span><br></pre></td></tr></table></figure>
+
+<p>启动Jupyter Notebook</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Jupyter Notebook</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python</span><br></pre></td></tr></table></figure>
+
+<p>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br></pre></td></tr></table></figure>
+
+<h5 id="出错情况下应该这样处理，具体步骤如下："><a href="#出错情况下应该这样处理，具体步骤如下：" class="headerlink" title="出错情况下应该这样处理，具体步骤如下："></a>出错情况下应该这样处理，具体步骤如下：</h5><p>1.必须保证在（base）与（anaconda）下输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure>
+
+<p> 后都有tnsorflow出现</p>
+<p>2.保证安装包与python版本一一对应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br><span class="line">conda create -n tensorflow python=3.10</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install tensorflow</span><br><span class="line"></span><br><span class="line">pip install tensorflow==2.10.0</span><br></pre></td></tr></table></figure>
+
+<p>2.10.0对应python3.10</p>
+<p>离线版本下载：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pypi.org/project/tensorflow/2.0.0/#files</span><br></pre></td></tr></table></figure>
+
+<p>离线版本安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-2.0.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+
+<p>显示版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(tf.__version__)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import keras</span><br><span class="line"></span><br><span class="line">print(keras.__version__)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ctrl+C退出jupyter notebook网页</p>
+<h2 id="4-keras手写数字识别数据集"><a href="#4-keras手写数字识别数据集" class="headerlink" title="4 keras手写数字识别数据集"></a>4 keras手写数字识别数据集</h2><p>导入keras及其相关模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">from keras.utils import np_utils</span><br><span class="line"></span><br><span class="line">np.random.seed(10)</span><br><span class="line"></span><br><span class="line">from keras.datasets import mnist</span><br></pre></td></tr></table></figure>
+
+<p>下载，读取，查看mnist数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(x_train_image, y_train_label), \</span><br><span class="line">(x_test_image, y_test_label) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">(x_train_image, y_train_label), \</span><br><span class="line">(x_test_image, y_test_label) = mnist.load_data()</span><br><span class="line"></span><br><span class="line">print(&#x27;train data=&#x27;,len(x_train_image))</span><br><span class="line">print(&#x27; test data=&#x27;,len(x_test_image))</span><br></pre></td></tr></table></figure>
+
+<p>mnist数据集位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ZHANGCAIBIN\.keras\datasets</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-1-查看单个训练数据的图像与标签"><a href="#4-1-查看单个训练数据的图像与标签" class="headerlink" title="4.1 查看单个训练数据的图像与标签"></a>4.1 查看单个训练数据的图像与标签</h3><p>显示mnist的训练数据组成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print (&#x27;x_train_image:&#x27;,x_train_image.shape)</span><br><span class="line">print (&#x27;y_train_label:&#x27;,y_train_label.shape)</span><br></pre></td></tr></table></figure>
+
+<p>定义函数以显示数字图像所对应的数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">def plot_image(image):</span><br><span class="line">    fig = plt.gcf()</span><br><span class="line">    fig.set_size_inches(2, 2)</span><br><span class="line">    plt.imshow(image, cmap=&#x27;binary&#x27;)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot_image(x_train_image[0])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train_label[0]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-查看多个训练数据的图像与标签"><a href="#4-2-查看多个训练数据的图像与标签" class="headerlink" title="4.2 查看多个训练数据的图像与标签"></a>4.2 查看多个训练数据的图像与标签</h3><p>导入pyplot模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
+
+<p>定义函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def plot_images_labels_prediction(images,labels,prediction,idx,num=10):</span><br><span class="line">    fig = plt.gcf()</span><br><span class="line">    fig.set_size_inches(12, 14) #设置显示图形大小</span><br><span class="line">    if num&gt;25: num=25 #设置最大显示项目数</span><br><span class="line">    for i in range(0, num): #画出num个图形</span><br><span class="line">        ax=plt.subplot(5,5, 1+i) #设置为5行5列</span><br><span class="line">        ax.imshow(images[idx], cmap=&#x27;binary&#x27;) #显示各子图</span><br><span class="line">        title= &quot;label=&quot; +str(labels[idx]) #显示各子图题目</span><br><span class="line">        if len(prediction)&gt;0:</span><br><span class="line">                title+=&quot;,predict=&quot;+str(prediction[idx]) </span><br><span class="line">        ax.set_title(title,fontsize=10) #设置标题字体大小</span><br><span class="line">        ax.set_xticks([]);ax.set_yticks([]) #不显示刻度</span><br><span class="line">        idx+=1 #读取下一项</span><br><span class="line">    plt.show() #画图</span><br><span class="line"></span><br><span class="line">plot_images_labels_prediction(x_train_image,y_train_label,[],0,10)</span><br><span class="line"></span><br><span class="line">plot_images_labels_prediction(x_test_image,y_test_label,[],0,10)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-3-多层感知器模型数据预处理"><a href="#4-3-多层感知器模型数据预处理" class="headerlink" title="4.3 多层感知器模型数据预处理"></a>4.3 多层感知器模型数据预处理</h3><h4 id="4-3-1-image的features数据预处理"><a href="#4-3-1-image的features数据预处理" class="headerlink" title="4.3.1 image的features数据预处理"></a>4.3.1 image的features数据预处理</h4><p>1.将28*28的图形reshape（一维化）为784长度，且为浮点型（float）</p>
+<p>2.之后进行数字标准化。</p>
+<p>查看image的shape</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print (&#x27;x_train_image:&#x27;,x_train_image.shape)</span><br><span class="line">print (&#x27;y_train_label:&#x27;,y_train_label.shape)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将image以reshape转换为一维向量，再以astype转为784个浮点数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_Train =x_train_image.reshape(60000, 784).astype(&#x27;float32&#x27;)</span><br><span class="line">x_Test = x_test_image.reshape(10000, 784).astype(&#x27;float32&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>查看转换为一维向量的shape</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print (&#x27;x_train:&#x27;,x_Train.shape)</span><br><span class="line">print (&#x27;x_test:&#x27;,x_Test.shape)</span><br></pre></td></tr></table></figure>
+
+<p>查看第0张image图像的768个浮点数，每一个数字从0到255，表示图形每一个点的灰度的深浅</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train_image[0]</span><br></pre></td></tr></table></figure>
+
+<p>将image数字标准化，以提高训练模型的准确率，因此除以255.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_Train_normalize = x_Train/ 255</span><br><span class="line">x_Test_normalize = x_Test/ 255</span><br></pre></td></tr></table></figure>
+
+<p>查看image数字标准化结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_Train_normalize[0]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="4-3-2-label数据预处理"><a href="#4-3-2-label数据预处理" class="headerlink" title="4.3.2 label数据预处理"></a>4.3.2 label数据预处理</h4><p>label本对应0-9十位数字，选哟经过one-hot encoding（一位有效编码）转换为10个0或1的组合，eg. 数字7—-0000000100，即把第8（n-1）位改写为1</p>
+<p>查看原本label标签字段，显示前5个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_train_label[:5]</span><br></pre></td></tr></table></figure>
+
+<p>进行one-hot encoding 转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y_TrainOneHot = np_utils.to_categorical(y_train_label)</span><br><span class="line">y_TestOneHot = np_utils.to_categorical(y_test_label)</span><br></pre></td></tr></table></figure>
+
+<p>查看转换后的label标签字段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_TrainOneHot[:5]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="5-keras多层感知器手写数字识别"><a href="#5-keras多层感知器手写数字识别" class="headerlink" title="5 keras多层感知器手写数字识别"></a>5 keras多层感知器手写数字识别</h2><p>步骤</p>
+<p>数据预处理–建立模型–训练模型–评估模型准确率–进行预测</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>谢谢你们对我的支持！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    我愿意资助创作者
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WXZF.jpg" alt="张蔡斌 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/ZFB.jpg" alt="张蔡斌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>张蔡斌
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cz6900.github.io/2022/09/26/2022-09-26-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="深度学习笔记">https://cz6900.github.io/2022/09/26/2022-09-26-深度学习笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章，均在可信时间戳认证机构完成确权，采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处，侵权必究！商业性使用请联系主理人购买授权许可。
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/WX.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E5%B7%A5/" rel="tag"># 科工</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/20/2022-09-20-%E6%A4%8D%E7%89%A9%E6%A0%B7%E5%93%81%E5%8F%96%E6%A0%B7%E5%8F%8A%E6%A0%B7%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86%E4%B9%8B%E5%8A%9E%E6%B3%95/" rel="prev" title="植物样品取样及样的预处理之办法">
+      <i class="fa fa-chevron-left"></i> 植物样品取样及样的预处理之办法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/08/2022-10-08-JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="JAVA学习笔记">
+      JAVA学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">深度学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97%E4%BB%BF%E7%9C%9F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">矩阵运算仿真神经网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">多层感知器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%BF%85%E5%A4%87%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">深度学习必备软件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85Anaconda"><span class="nav-number">1.2.</span> <span class="nav-text">1 安装Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%B8%8B%E8%BD%BDAnaconda"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 下载Anaconda</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%90%AF%E5%8A%A8%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2 启动命令提示符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E5%BB%BA%E7%AB%8B%E5%B9%B6%E5%88%87%E6%8D%A2%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">1.2.1 建立并切换工作目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-%E5%88%9B%E5%BB%BAAnaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">1.2.2 创建Anaconda虚拟环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-%E5%90%AF%E5%8A%A8Anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">1.2.3 启动Anaconda虚拟环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-4-%E5%85%B3%E9%97%ADAnaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">1.2.4 关闭Anaconda虚拟环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9C%A8anaconda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85TensorFlow%E4%B8%8EKeras"><span class="nav-number">1.3.</span> <span class="nav-text">2 在anaconda虚拟环境安装TensorFlow与Keras</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%90%AF%E5%8A%A8Jupyter-Notebook"><span class="nav-number">1.4.</span> <span class="nav-text">3 启动Jupyter Notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%BA%E9%94%99%E6%83%85%E5%86%B5%E4%B8%8B%E5%BA%94%E8%AF%A5%E8%BF%99%E6%A0%B7%E5%A4%84%E7%90%86%EF%BC%8C%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.4.0.0.1.</span> <span class="nav-text">出错情况下应该这样处理，具体步骤如下：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-keras%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">1.5.</span> <span class="nav-text">4 keras手写数字识别数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%9F%A5%E7%9C%8B%E5%8D%95%E4%B8%AA%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9B%BE%E5%83%8F%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1 查看单个训练数据的图像与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%9F%A5%E7%9C%8B%E5%A4%9A%E4%B8%AA%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9B%BE%E5%83%8F%E4%B8%8E%E6%A0%87%E7%AD%BE"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2 查看多个训练数据的图像与标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.5.3.</span> <span class="nav-text">4.3 多层感知器模型数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-image%E7%9A%84features%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">4.3.1 image的features数据预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-label%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">4.3.2 label数据预处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-keras%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E5%99%A8%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB"><span class="nav-number">1.6.</span> <span class="nav-text">5 keras多层感知器手写数字识别</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="张蔡斌"
+      src="/images/photo.jpg">
+  <p class="site-author-name" itemprop="name">张蔡斌</p>
+  <div class="site-description" itemprop="description">糖只有那么甜，盐只有那么咸。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/cz6900" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;cz6900" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhangcb21@lzu.edu.cn" title="E-Mail → mailto:zhangcb21@lzu.edu.cn" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6350133249" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6350133249" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/hei-ma-49-26-76" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;hei-ma-49-26-76" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i>zhihu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/319272265" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;319272265" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.lzu.edu.cn/" title="http:&#x2F;&#x2F;www.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">兰州大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xjtudlc.com/" title="https:&#x2F;&#x2F;www.xjtudlc.com&#x2F;" rel="noopener" target="_blank">西安交通大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sicau.edu.cn/" title="https:&#x2F;&#x2F;www.sicau.edu.cn&#x2F;" rel="noopener" target="_blank">四川农业大学</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://my.lzu.edu.cn:8080/login?service=http://my.lzu.edu.cn" title="http:&#x2F;&#x2F;my.lzu.edu.cn:8080&#x2F;login?service&#x3D;http:&#x2F;&#x2F;my.lzu.edu.cn" rel="noopener" target="_blank">工作台|办公邮箱</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://pan.reol.me/" title="http:&#x2F;&#x2F;pan.reol.me" rel="noopener" target="_blank">REOL云盘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://mp.weixin.qq.com/" title="https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;" rel="noopener" target="_blank">微信平台</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://xiumi.us/" title="https:&#x2F;&#x2F;xiumi.us&#x2F;" rel="noopener" target="_blank">秀米</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.135plat.com/" title="https:&#x2F;&#x2F;www.135plat.com&#x2F;" rel="noopener" target="_blank">135编辑器</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://caoye.lzu.edu.cn/" title="http:&#x2F;&#x2F;caoye.lzu.edu.cn&#x2F;" rel="noopener" target="_blank">草地农业科技学院</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://oversea.cnki.net/index/" title="https:&#x2F;&#x2F;oversea.cnki.net&#x2F;index&#x2F;" rel="noopener" target="_blank">知网</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://scholar.scqylaw.com/" title="http:&#x2F;&#x2F;scholar.scqylaw.com&#x2F;" rel="noopener" target="_blank">谷歌学术镜像</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.webofscience.com/wos/alldb/basic-search" title="https:&#x2F;&#x2F;www.webofscience.com&#x2F;wos&#x2F;alldb&#x2F;basic-search" rel="noopener" target="_blank">WEB OF SCIENCE</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.home-for-researchers.com/" title="https:&#x2F;&#x2F;www.home-for-researchers.com&#x2F;" rel="noopener" target="_blank">科研者之家</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.deepl.com/translator" title="https:&#x2F;&#x2F;www.deepl.com&#x2F;translator" rel="noopener" target="_blank">DEEPL翻译</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.sci-hub.ren/" title="https:&#x2F;&#x2F;www.sci-hub.ren&#x2F;" rel="noopener" target="_blank">SCI_HUB</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.connectedpapers.com/" title="https:&#x2F;&#x2F;www.connectedpapers.com&#x2F;" rel="noopener" target="_blank">CONNECTEDPAPERS</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">null </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-tv"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张蔡斌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_sphere.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+</body>
+</html>
